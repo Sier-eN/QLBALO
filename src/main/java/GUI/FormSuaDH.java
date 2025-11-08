@@ -55,38 +55,39 @@ public class FormSuaDH extends javax.swing.JDialog {
         btn_huy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         Pnl_Thongtin.setBackground(new java.awt.Color(235, 238, 240));
 
-        lbl_title_ten.setText("Tên Khách:");
         lbl_title_ten.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_title_ten.setText("Tên Khách:");
 
-        lbl_title_diachi.setText("Địa Chỉ:");
         lbl_title_diachi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_title_diachi.setText("Địa Chỉ:");
 
-        lbl_title_sdt.setText("SDT:");
         lbl_title_sdt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_title_sdt.setText("SDT:");
 
-        title_title_sanpham.setText("Sản Phẩm:");
         title_title_sanpham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        title_title_sanpham.setText("Sản Phẩm:");
 
-        lbl_title_tongtien.setText("Tổng Tiền:");
         lbl_title_tongtien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_title_tongtien.setText("Tổng Tiền:");
 
-        lbl_ten.setText("Nguyễn Trọng Nghĩa");
         lbl_ten.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_ten.setText("Nguyễn Trọng Nghĩa");
 
-        lbl_diachi.setText("Số nhà 13, Ngõ 5, Đường Lam Sơn, Vĩnh Yên, Phú Thọ");
         lbl_diachi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_diachi.setText("Số nhà 13, Ngõ 5, Đường Lam Sơn, Vĩnh Yên, Phú Thọ");
 
-        lbl_sdt.setText("0976338231");
         lbl_sdt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_sdt.setText("0976338231");
 
-        lbl_sanpham.setText("Balo Đựng Laptop");
         lbl_sanpham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_sanpham.setText("Balo Đựng Laptop");
 
-        lbl_tongtien.setText("120.000đ");
         lbl_tongtien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_tongtien.setText("120.000đ");
 
         javax.swing.GroupLayout Pnl_ThongtinLayout = new javax.swing.GroupLayout(Pnl_Thongtin);
         Pnl_Thongtin.setLayout(Pnl_ThongtinLayout);
@@ -189,21 +190,21 @@ public class FormSuaDH extends javax.swing.JDialog {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_title_trangthai, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cb_trangthai, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_title_ngaygiaodukien, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dp_ngaygiaodukien, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_xacnhan, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_huy, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1)
-                        .addGap(123, 123, 123)))
+                        .addGap(123, 123, 123))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_title_ngaygiaodukien, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_title_trangthai, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_trangthai, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dp_ngaygiaodukien, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -224,7 +225,7 @@ public class FormSuaDH extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_xacnhan, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_huy, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGap(0, 42, Short.MAX_VALUE))
         );
 
         pack();

@@ -45,6 +45,8 @@ public class UImain extends javax.swing.JFrame {
         setHieuUngBTN(btn_quanlyncc);
         setHieuUngBTN(btn_quanlydvvc);
         setHieuUngBTN(btn_quanlyhanghoa);
+        setHieuUngBTN(btn_quanlyvoucher);
+        setHieuUngBTN(btn_taikhoan);
     }
     private void initChildForm(){
         CardLayout card = (CardLayout) Pnl_childform.getLayout();
@@ -55,6 +57,8 @@ public class UImain extends javax.swing.JFrame {
         ChildformQLNCC panel4 = new ChildformQLNCC();
         ChildformQLDVVC panel5 = new ChildformQLDVVC();
         ChildformQLHH panel6 = new ChildformQLHH();
+        ChildformQLVoucher panel7 = new ChildformQLVoucher();
+        ChildformTaiKhoan panel8 = new ChildformTaiKhoan();
         
         Pnl_childform.add(panel1, "child1");
         Pnl_childform.add(panel2, "child2");
@@ -62,6 +66,8 @@ public class UImain extends javax.swing.JFrame {
         Pnl_childform.add(panel4, "child4");
         Pnl_childform.add(panel5, "child5");
         Pnl_childform.add(panel6, "child6");
+        Pnl_childform.add(panel7, "child7");
+        Pnl_childform.add(panel8, "child8");
     }
     public void setHieuUngBTN(JButton button){
         
@@ -114,6 +120,8 @@ public class UImain extends javax.swing.JFrame {
         btn_quanlydvvc = new javax.swing.JButton();
         btn_trangchu = new javax.swing.JButton();
         btn_quanlyhanghoa = new javax.swing.JButton();
+        btn_quanlyvoucher = new javax.swing.JButton();
+        btn_taikhoan = new javax.swing.JButton();
         Pnl_childform = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -132,7 +140,7 @@ public class UImain extends javax.swing.JFrame {
         lbl_anhheader.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/balo (1).png"))); // NOI18N
         Pnl_header.add(lbl_anhheader, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
-        lbl_header1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        lbl_header1.setFont(new java.awt.Font("Segoe UI Semilight", 1, 36)); // NOI18N
         lbl_header1.setForeground(new java.awt.Color(255, 255, 255));
         lbl_header1.setText("Quản Lý ");
         lbl_header1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -140,13 +148,13 @@ public class UImain extends javax.swing.JFrame {
         Pnl_header.add(lbl_header1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, 40));
 
         lbl_header2.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_header2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lbl_header2.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         lbl_header2.setForeground(new java.awt.Color(255, 255, 255));
         lbl_header2.setText("Bán Balo-Cặp Sách");
         Pnl_header.add(lbl_header2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
         btn_thongke.setBackground(new java.awt.Color(50, 50, 50));
-        btn_thongke.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_thongke.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
         btn_thongke.setForeground(new java.awt.Color(255, 255, 255));
         btn_thongke.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboard.png"))); // NOI18N
         btn_thongke.setText("Thống Kê");
@@ -163,7 +171,7 @@ public class UImain extends javax.swing.JFrame {
         });
 
         btn_quanlydonhang.setBackground(new java.awt.Color(50, 50, 50));
-        btn_quanlydonhang.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_quanlydonhang.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
         btn_quanlydonhang.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlydonhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/order.png"))); // NOI18N
         btn_quanlydonhang.setText("Quản Lý Đơn Hàng");
@@ -180,9 +188,9 @@ public class UImain extends javax.swing.JFrame {
         });
 
         btn_quanlyncc.setBackground(new java.awt.Color(50, 50, 50));
-        btn_quanlyncc.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_quanlyncc.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
         btn_quanlyncc.setForeground(new java.awt.Color(255, 255, 255));
-        btn_quanlyncc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/hanghoa.png"))); // NOI18N
+        btn_quanlyncc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/store.png"))); // NOI18N
         btn_quanlyncc.setText("Quản Lý Nhà Cung Cấp");
         btn_quanlyncc.setBorder(null);
         btn_quanlyncc.setBorderPainted(false);
@@ -197,7 +205,7 @@ public class UImain extends javax.swing.JFrame {
         });
 
         btn_quanlydvvc.setBackground(new java.awt.Color(50, 50, 50));
-        btn_quanlydvvc.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_quanlydvvc.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         btn_quanlydvvc.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlydvvc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delivery.png"))); // NOI18N
         btn_quanlydvvc.setText("Quản Lý Đơn Vị Vận Chuyển");
@@ -214,7 +222,7 @@ public class UImain extends javax.swing.JFrame {
         });
 
         btn_trangchu.setBackground(new java.awt.Color(50, 50, 50));
-        btn_trangchu.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_trangchu.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
         btn_trangchu.setForeground(new java.awt.Color(255, 255, 255));
         btn_trangchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home2.png"))); // NOI18N
         btn_trangchu.setText("Trang Chủ");
@@ -231,7 +239,7 @@ public class UImain extends javax.swing.JFrame {
         });
 
         btn_quanlyhanghoa.setBackground(new java.awt.Color(50, 50, 50));
-        btn_quanlyhanghoa.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_quanlyhanghoa.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
         btn_quanlyhanghoa.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlyhanghoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/donhang.png"))); // NOI18N
         btn_quanlyhanghoa.setText("Quản Lý Hàng Hóa");
@@ -244,6 +252,40 @@ public class UImain extends javax.swing.JFrame {
         btn_quanlyhanghoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_quanlyhanghoaActionPerformed(evt);
+            }
+        });
+
+        btn_quanlyvoucher.setBackground(new java.awt.Color(50, 50, 50));
+        btn_quanlyvoucher.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        btn_quanlyvoucher.setForeground(new java.awt.Color(255, 255, 255));
+        btn_quanlyvoucher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/ticket.png"))); // NOI18N
+        btn_quanlyvoucher.setText("Quản Lý Voucher");
+        btn_quanlyvoucher.setBorder(null);
+        btn_quanlyvoucher.setBorderPainted(false);
+        btn_quanlyvoucher.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_quanlyvoucher.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_quanlyvoucher.setIconTextGap(10);
+        btn_quanlyvoucher.setMargin(new java.awt.Insets(2, 30, 3, 14));
+        btn_quanlyvoucher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_quanlyvoucherActionPerformed(evt);
+            }
+        });
+
+        btn_taikhoan.setBackground(new java.awt.Color(50, 50, 50));
+        btn_taikhoan.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        btn_taikhoan.setForeground(new java.awt.Color(255, 255, 255));
+        btn_taikhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/taikhoan.png"))); // NOI18N
+        btn_taikhoan.setText("Tài Khoản");
+        btn_taikhoan.setBorder(null);
+        btn_taikhoan.setBorderPainted(false);
+        btn_taikhoan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_taikhoan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_taikhoan.setIconTextGap(10);
+        btn_taikhoan.setMargin(new java.awt.Insets(2, 30, 3, 14));
+        btn_taikhoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_taikhoanActionPerformed(evt);
             }
         });
 
@@ -260,7 +302,9 @@ public class UImain extends javax.swing.JFrame {
                     .addComponent(btn_quanlyncc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_quanlydvvc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_trangchu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_quanlyhanghoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_quanlyhanghoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_quanlyvoucher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_taikhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         Pnl_sidebarLayout.setVerticalGroup(
@@ -279,7 +323,11 @@ public class UImain extends javax.swing.JFrame {
                 .addComponent(btn_quanlydvvc, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_quanlyhanghoa, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 205, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_quanlyvoucher, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_taikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         Pnl_tong.add(Pnl_sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -339,6 +387,18 @@ public class UImain extends javax.swing.JFrame {
         card.show(Pnl_childform, "child6");
     }//GEN-LAST:event_btn_quanlyhanghoaActionPerformed
 
+    private void btn_quanlyvoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlyvoucherActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout) Pnl_childform.getLayout();
+        card.show(Pnl_childform, "child7");
+    }//GEN-LAST:event_btn_quanlyvoucherActionPerformed
+
+    private void btn_taikhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_taikhoanActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout) Pnl_childform.getLayout();
+        card.show(Pnl_childform, "child8");
+    }//GEN-LAST:event_btn_taikhoanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,6 +433,8 @@ public class UImain extends javax.swing.JFrame {
     private javax.swing.JButton btn_quanlydvvc;
     private javax.swing.JButton btn_quanlyhanghoa;
     private javax.swing.JButton btn_quanlyncc;
+    private javax.swing.JButton btn_quanlyvoucher;
+    private javax.swing.JButton btn_taikhoan;
     private javax.swing.JButton btn_thongke;
     private javax.swing.JButton btn_trangchu;
     private javax.swing.JLabel lbl_anhheader;

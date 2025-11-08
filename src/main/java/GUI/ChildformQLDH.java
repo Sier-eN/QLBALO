@@ -288,6 +288,7 @@ public class ChildformQLDH extends javax.swing.JPanel {
 
         // Tạo dialog modal
         FormSuaDH dialog = new FormSuaDH(parent, true);
+        dialog.setTitle("Cập Nhật Đơn Hàng");
         dialog.setVisible(true);
     }//GEN-LAST:event_btn_capnhatActionPerformed
 
