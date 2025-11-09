@@ -39,7 +39,6 @@ public class UImain extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //set hiệu ứng cho button
-        setHieuUngBTN(btn_trangchu);
         setHieuUngBTN(btn_thongke);
         setHieuUngBTN(btn_quanlydonhang);
         setHieuUngBTN(btn_quanlyncc);
@@ -47,27 +46,28 @@ public class UImain extends javax.swing.JFrame {
         setHieuUngBTN(btn_quanlyhanghoa);
         setHieuUngBTN(btn_quanlyvoucher);
         setHieuUngBTN(btn_taikhoan);
+        setHieuUngBTN(btn_quanlynhanvien);
     }
     private void initChildForm(){
         CardLayout card = (CardLayout) Pnl_childform.getLayout();
         
-        ChildformTrangChu panel1 = new ChildformTrangChu();
-        ChildformThongke panel2 = new ChildformThongke();
-        ChildformQLDH panel3 = new ChildformQLDH();
-        ChildformQLNCC panel4 = new ChildformQLNCC();
-        ChildformQLDVVC panel5 = new ChildformQLDVVC();
-        ChildformQLHH panel6 = new ChildformQLHH();
-        ChildformQLVoucher panel7 = new ChildformQLVoucher();
-        ChildformTaiKhoan panel8 = new ChildformTaiKhoan();
+        ChildformThongke thongke = new ChildformThongke();
+        ChildformQLDH donhang = new ChildformQLDH();
+        ChildformQLNCC nhacungcap = new ChildformQLNCC();
+        ChildformQLDVVC donvivanchuyen = new ChildformQLDVVC();
+        ChildformQLHH hanghoa = new ChildformQLHH();
+        ChildformQLVoucher voucher = new ChildformQLVoucher();
+        ChildformTaiKhoan taikhoan = new ChildformTaiKhoan();
+        ChildformQLNV nhanvien = new ChildformQLNV();
         
-        Pnl_childform.add(panel1, "child1");
-        Pnl_childform.add(panel2, "child2");
-        Pnl_childform.add(panel3, "child3");
-        Pnl_childform.add(panel4, "child4");
-        Pnl_childform.add(panel5, "child5");
-        Pnl_childform.add(panel6, "child6");
-        Pnl_childform.add(panel7, "child7");
-        Pnl_childform.add(panel8, "child8");
+        Pnl_childform.add(thongke, "thongke");
+        Pnl_childform.add(donhang, "donhang");
+        Pnl_childform.add(nhacungcap, "nhacungcap");
+        Pnl_childform.add(donvivanchuyen, "donvivanchuyen");
+        Pnl_childform.add(hanghoa, "hanghoa");
+        Pnl_childform.add(voucher, "voucher");
+        Pnl_childform.add(taikhoan, "taikhoan");
+        Pnl_childform.add(nhanvien, "nhanvien");
     }
     public void setHieuUngBTN(JButton button){
         
@@ -118,10 +118,10 @@ public class UImain extends javax.swing.JFrame {
         btn_quanlydonhang = new javax.swing.JButton();
         btn_quanlyncc = new javax.swing.JButton();
         btn_quanlydvvc = new javax.swing.JButton();
-        btn_trangchu = new javax.swing.JButton();
         btn_quanlyhanghoa = new javax.swing.JButton();
         btn_quanlyvoucher = new javax.swing.JButton();
         btn_taikhoan = new javax.swing.JButton();
+        btn_quanlynhanvien = new javax.swing.JButton();
         Pnl_childform = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -221,23 +221,6 @@ public class UImain extends javax.swing.JFrame {
             }
         });
 
-        btn_trangchu.setBackground(new java.awt.Color(50, 50, 50));
-        btn_trangchu.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
-        btn_trangchu.setForeground(new java.awt.Color(255, 255, 255));
-        btn_trangchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home2.png"))); // NOI18N
-        btn_trangchu.setText("Trang Chủ");
-        btn_trangchu.setBorder(null);
-        btn_trangchu.setBorderPainted(false);
-        btn_trangchu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btn_trangchu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btn_trangchu.setIconTextGap(10);
-        btn_trangchu.setMargin(new java.awt.Insets(2, 30, 3, 14));
-        btn_trangchu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_trangchuActionPerformed(evt);
-            }
-        });
-
         btn_quanlyhanghoa.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlyhanghoa.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
         btn_quanlyhanghoa.setForeground(new java.awt.Color(255, 255, 255));
@@ -289,6 +272,23 @@ public class UImain extends javax.swing.JFrame {
             }
         });
 
+        btn_quanlynhanvien.setBackground(new java.awt.Color(50, 50, 50));
+        btn_quanlynhanvien.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        btn_quanlynhanvien.setForeground(new java.awt.Color(255, 255, 255));
+        btn_quanlynhanvien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/taikhoan.png"))); // NOI18N
+        btn_quanlynhanvien.setText("Quản Lý Nhân Viên");
+        btn_quanlynhanvien.setBorder(null);
+        btn_quanlynhanvien.setBorderPainted(false);
+        btn_quanlynhanvien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_quanlynhanvien.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_quanlynhanvien.setIconTextGap(10);
+        btn_quanlynhanvien.setMargin(new java.awt.Insets(2, 30, 3, 14));
+        btn_quanlynhanvien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_quanlynhanvienActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Pnl_sidebarLayout = new javax.swing.GroupLayout(Pnl_sidebar);
         Pnl_sidebar.setLayout(Pnl_sidebarLayout);
         Pnl_sidebarLayout.setHorizontalGroup(
@@ -301,18 +301,16 @@ public class UImain extends javax.swing.JFrame {
                     .addComponent(btn_quanlydonhang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_quanlyncc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_quanlydvvc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_trangchu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_quanlyhanghoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_quanlyvoucher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_taikhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_taikhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_quanlynhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         Pnl_sidebarLayout.setVerticalGroup(
             Pnl_sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Pnl_sidebarLayout.createSequentialGroup()
                 .addComponent(Pnl_header, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(btn_trangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_thongke, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -326,8 +324,10 @@ public class UImain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_quanlyvoucher, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_quanlynhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_taikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         Pnl_tong.add(Pnl_sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -354,50 +354,50 @@ public class UImain extends javax.swing.JFrame {
     private void btn_quanlydonhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlydonhangActionPerformed
         // TODO add your handling code here:
         CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "child3");
+        card.show(Pnl_childform, "donhang");
     }//GEN-LAST:event_btn_quanlydonhangActionPerformed
 
     private void btn_thongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thongkeActionPerformed
         // TODO add your handling code here:
         CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "child2");
+        card.show(Pnl_childform, "thongke");
     }//GEN-LAST:event_btn_thongkeActionPerformed
 
     private void btn_quanlynccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlynccActionPerformed
         // TODO add your handling code here:
         CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "child4");
+        card.show(Pnl_childform, "nhacungcap");
     }//GEN-LAST:event_btn_quanlynccActionPerformed
 
     private void btn_quanlydvvcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlydvvcActionPerformed
         // TODO add your handling code here:
         CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "child5");
+        card.show(Pnl_childform, "donvivanchuyen");
     }//GEN-LAST:event_btn_quanlydvvcActionPerformed
-
-    private void btn_trangchuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_trangchuActionPerformed
-        // TODO add your handling code here:
-        CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "child1");
-    }//GEN-LAST:event_btn_trangchuActionPerformed
 
     private void btn_quanlyhanghoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlyhanghoaActionPerformed
         // TODO add your handling code here:
         CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "child6");
+        card.show(Pnl_childform, "hanghoa");
     }//GEN-LAST:event_btn_quanlyhanghoaActionPerformed
 
     private void btn_quanlyvoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlyvoucherActionPerformed
         // TODO add your handling code here:
         CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "child7");
+        card.show(Pnl_childform, "voucher");
     }//GEN-LAST:event_btn_quanlyvoucherActionPerformed
 
     private void btn_taikhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_taikhoanActionPerformed
         // TODO add your handling code here:
         CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "child8");
+        card.show(Pnl_childform, "taikhoan");
     }//GEN-LAST:event_btn_taikhoanActionPerformed
+
+    private void btn_quanlynhanvienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlynhanvienActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout) Pnl_childform.getLayout();
+        card.show(Pnl_childform,"nhanvien");
+    }//GEN-LAST:event_btn_quanlynhanvienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -433,10 +433,10 @@ public class UImain extends javax.swing.JFrame {
     private javax.swing.JButton btn_quanlydvvc;
     private javax.swing.JButton btn_quanlyhanghoa;
     private javax.swing.JButton btn_quanlyncc;
+    private javax.swing.JButton btn_quanlynhanvien;
     private javax.swing.JButton btn_quanlyvoucher;
     private javax.swing.JButton btn_taikhoan;
     private javax.swing.JButton btn_thongke;
-    private javax.swing.JButton btn_trangchu;
     private javax.swing.JLabel lbl_anhheader;
     private javax.swing.JLabel lbl_header1;
     private javax.swing.JLabel lbl_header2;

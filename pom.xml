@@ -18,7 +18,7 @@
         <exec.mainClass>GUI.Quanlybalo</exec.mainClass>
     </properties>
     <dependencies>
-                <!-- FlatLaf core -->
+        <!-- FlatLaf core -->
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf</artifactId>

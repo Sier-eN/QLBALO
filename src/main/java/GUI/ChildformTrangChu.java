@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import App.HintSupport;
+
 /**
  *
  * @author Nghia
@@ -15,6 +17,7 @@ public class ChildformTrangChu extends javax.swing.JPanel {
      */
     public ChildformTrangChu() {
         initComponents();
+        HintSupport.addHint(tf_timkiem,"Tìm Kiếm Sản Phẩm...");
     }
 
     /**
@@ -26,30 +29,81 @@ public class ChildformTrangChu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lbl_title_danhsach = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lbl_loc = new javax.swing.JLabel();
+        cb_loc = new javax.swing.JComboBox<>();
+        tf_timkiem = new javax.swing.JTextField();
+        lbl_timkiem = new javax.swing.JLabel();
 
-        jLabel1.setText("trang chủ");
+        lbl_title_danhsach.setFont(new java.awt.Font("Segoe UI Semilight", 0, 36)); // NOI18N
+        lbl_title_danhsach.setText("Danh Sách Sản Phẩm:");
+
+        jPanel1.setBackground(new java.awt.Color(235, 238, 240));
+
+        lbl_loc.setText("Lọc Theo Giá:");
+
+        cb_loc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        tf_timkiem.setText("jTextField1");
+
+        lbl_timkiem.setText("Tìm Kiếm");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(652, Short.MAX_VALUE)
+                .addComponent(lbl_loc, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_loc, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tf_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(lbl_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_loc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_loc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(535, 535, 535)
-                .addComponent(jLabel1)
-                .addContainerGap(678, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(lbl_title_danhsach, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(405, 405, 405)
-                .addComponent(jLabel1)
-                .addContainerGap(479, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_title_danhsach, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(674, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> cb_loc;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_loc;
+    private javax.swing.JLabel lbl_timkiem;
+    private javax.swing.JLabel lbl_title_danhsach;
+    private javax.swing.JTextField tf_timkiem;
     // End of variables declaration//GEN-END:variables
 }

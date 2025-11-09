@@ -38,9 +38,6 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
         lbl_title_diachi = new javax.swing.JLabel();
         lbl_title_email = new javax.swing.JLabel();
         btn_doimatkhau = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        lbl_title_sodon = new javax.swing.JLabel();
-        lbl_title_xephang = new javax.swing.JLabel();
         lbl_title_sdt = new javax.swing.JLabel();
         lbl_tennguoidung = new javax.swing.JLabel();
         lbl_taikhoan = new javax.swing.JLabel();
@@ -48,10 +45,7 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
         lbl_diachi = new javax.swing.JLabel();
         lbl_email = new javax.swing.JLabel();
         lbl_sdt = new javax.swing.JLabel();
-        lbl_sodon = new javax.swing.JLabel();
-        lbl_xephang = new javax.swing.JLabel();
         btn_dangxuat = new javax.swing.JButton();
-        btn_capnhattnguoidung = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1250, 900));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -116,7 +110,8 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
         lbl_title_matkhau.setToolTipText("");
 
         lbl_title_diachi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_title_diachi.setText("Địa Chỉ:");
+        lbl_title_diachi.setText("Mã Nhân Viên:");
+        lbl_title_diachi.setToolTipText("");
 
         lbl_title_email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_title_email.setText("Email:");
@@ -126,17 +121,11 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
         btn_doimatkhau.setText("Đổi Mật Khẩu");
         btn_doimatkhau.setBorder(null);
         btn_doimatkhau.setBorderPainted(false);
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel7.setText("Trạng Thái Tiêu Dùng:");
-
-        lbl_title_sodon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_title_sodon.setText("Số Đơn Hàng Đã Đặt:");
-        lbl_title_sodon.setToolTipText("");
-
-        lbl_title_xephang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_title_xephang.setText("Xếp Hạng Người Tiêu Dùng:");
-        lbl_title_xephang.setToolTipText("");
+        btn_doimatkhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_doimatkhauActionPerformed(evt);
+            }
+        });
 
         lbl_title_sdt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_title_sdt.setText("SDT:");
@@ -154,7 +143,7 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
         lbl_matkhau.setToolTipText("");
 
         lbl_diachi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_diachi.setText("Vĩnh Yên - Phú Thọ");
+        lbl_diachi.setText("NV2605");
         lbl_diachi.setToolTipText("");
 
         lbl_email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -165,30 +154,15 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
         lbl_sdt.setText("09*******31");
         lbl_sdt.setToolTipText("");
 
-        lbl_sodon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_sodon.setText("20");
-        lbl_sodon.setToolTipText("");
-
-        lbl_xephang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_xephang.setText("Bậc Kim Cương");
-        lbl_xephang.setToolTipText("");
-
         btn_dangxuat.setBackground(new java.awt.Color(50, 50, 50));
         btn_dangxuat.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
         btn_dangxuat.setForeground(new java.awt.Color(255, 255, 255));
         btn_dangxuat.setText("Đăng Xuất");
         btn_dangxuat.setBorder(null);
         btn_dangxuat.setBorderPainted(false);
-
-        btn_capnhattnguoidung.setBackground(new java.awt.Color(50, 50, 50));
-        btn_capnhattnguoidung.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
-        btn_capnhattnguoidung.setForeground(new java.awt.Color(255, 255, 255));
-        btn_capnhattnguoidung.setText("Cập Nhật Thông Tin Người Dùng");
-        btn_capnhattnguoidung.setBorder(null);
-        btn_capnhattnguoidung.setBorderPainted(false);
-        btn_capnhattnguoidung.addActionListener(new java.awt.event.ActionListener() {
+        btn_dangxuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_capnhattnguoidungActionPerformed(evt);
+                btn_dangxuatActionPerformed(evt);
             }
         });
 
@@ -198,55 +172,40 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_capnhattnguoidung, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(btn_dangxuat, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(lbl_title_taikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lbl_taikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(lbl_title_tennguoidung, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lbl_tennguoidung, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbl_title_email, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lbl_title_diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(lbl_title_matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lbl_matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbl_title_taikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btn_doimatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lbl_title_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbl_taikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lbl_title_tennguoidung, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbl_tennguoidung, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_email, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(lbl_title_email, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_title_diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_title_sodon)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbl_sodon, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_title_xephang, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbl_title_matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_xephang, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel7))
+                                .addComponent(lbl_matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_doimatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_title_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_email, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
@@ -277,44 +236,43 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
                         .addComponent(lbl_title_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbl_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbl_matkhau, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_title_sodon, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_sodon, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_title_xephang, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_xephang, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_dangxuat, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_capnhattnguoidung, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 355, Short.MAX_VALUE)
+                .addComponent(btn_dangxuat, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 1250, 660));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_capnhattnguoidungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capnhattnguoidungActionPerformed
-        // TODO add your handling code here:
+    private void btn_doimatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_doimatkhauActionPerformed
+        // TODO add your handling code here:'
         java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        
+        FormDMK dmk = new FormDMK(parent, true);
+        dmk.setTitle("Đổi Mật Khẩu");
+        dmk.setVisible(true);
+    }//GEN-LAST:event_btn_doimatkhauActionPerformed
 
-        // Tạo dialog modal
-        FormSuaTTNguoiDung dialog = new FormSuaTTNguoiDung(parent, true);
-        dialog.setTitle("Cập Nhật Thông Tin Người Dùng");
-        dialog.setVisible(true);   
-    }//GEN-LAST:event_btn_capnhattnguoidungActionPerformed
+    private void btn_dangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangxuatActionPerformed
+        // TODO add your handling code here:
+        java.awt.Window window = javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        // Đóng Frame cha
+        if (window != null) {
+        window.dispose();
+        }
+
+        // Mở lại form đăng nhập
+        FormDN formdn = new FormDN();
+        formdn.setVisible(true);
+    }//GEN-LAST:event_btn_dangxuatActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_capnhatanh;
-    private javax.swing.JButton btn_capnhattnguoidung;
     private javax.swing.JButton btn_dangxuat;
     private javax.swing.JButton btn_doimatkhau;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_avatar;
@@ -323,17 +281,13 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_header_tennguoidung;
     private javax.swing.JLabel lbl_matkhau;
     private javax.swing.JLabel lbl_sdt;
-    private javax.swing.JLabel lbl_sodon;
     private javax.swing.JLabel lbl_taikhoan;
     private javax.swing.JLabel lbl_tennguoidung;
     private javax.swing.JLabel lbl_title_diachi;
     private javax.swing.JLabel lbl_title_email;
     private javax.swing.JLabel lbl_title_matkhau;
     private javax.swing.JLabel lbl_title_sdt;
-    private javax.swing.JLabel lbl_title_sodon;
     private javax.swing.JLabel lbl_title_taikhoan;
     private javax.swing.JLabel lbl_title_tennguoidung;
-    private javax.swing.JLabel lbl_title_xephang;
-    private javax.swing.JLabel lbl_xephang;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,7 @@
 
 package App;
 
-import GUI.UImain;
+import GUI.FormDN;
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -21,7 +21,7 @@ public class main {
         UIManager.put("TextComponent.arc", 15);
         UIManager.put("TextField.arc",16);
         
-        UImain frame = new UImain();
-        frame.setVisible(true);
+        FormDN formdn = new FormDN();
+        formdn.setVisible(true);
     }
 }

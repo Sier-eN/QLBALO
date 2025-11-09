@@ -232,9 +232,9 @@ public class ChildformQLVoucher extends javax.swing.JPanel {
         java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
 
         // Tạo dialog modal
-        FormSuaVoucher dialog = new FormSuaVoucher(parent, true);
-        dialog.setTitle("Cập Nhật Voucher");
-        dialog.setVisible(true);
+        FormSuaVoucher suavoucher = new FormSuaVoucher(parent, true);
+        suavoucher.setTitle("Cập Nhật Voucher");
+        suavoucher.setVisible(true);
     }//GEN-LAST:event_btn_capnhatActionPerformed
 
 

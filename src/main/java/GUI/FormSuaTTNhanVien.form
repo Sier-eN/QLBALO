@@ -26,7 +26,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
               <Component id="btn_xacnhan" min="-2" pref="240" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btn_huy" min="-2" pref="168" max="-2" attributes="0"/>
@@ -37,13 +37,13 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btn_xacnhan" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="btn_huy" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,26 +61,43 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel4" min="-2" pref="117" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="lbl_vaitro" min="-2" pref="117" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField4" max="32767" attributes="0"/>
+                          <Component id="cb_vaitro" min="-2" pref="266" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel3" min="-2" pref="117" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField3" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel2" min="-2" pref="117" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField2" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel1" min="-2" pref="117" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" pref="422" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbl_matkhau" min="-2" pref="117" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tf_matkhau" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbl_sdt" min="-2" pref="117" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tf_sdt" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbl_email" min="-2" pref="117" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tf_email" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbl_diachi" min="-2" pref="117" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tf_diachi" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbl_nhanvien" min="-2" pref="117" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tf_nhanvien" min="-2" pref="422" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbl_taikhoan" min="-2" pref="117" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tf_taikhoan" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="77" max="32767" attributes="0"/>
@@ -92,69 +109,124 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="lbl_nhanvien" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="tf_nhanvien" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="jTextField2" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="lbl_diachi" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="tf_diachi" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="jTextField3" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="lbl_email" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="tf_email" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel4" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="jTextField4" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="lbl_sdt" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="tf_sdt" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbl_taikhoan" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="tf_taikhoan" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbl_matkhau" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="tf_matkhau" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbl_vaitro" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="cb_vaitro" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lbl_nhanvien">
           <Properties>
-            <Property name="text" type="java.lang.String" value="T&#xea;n Ng&#x1b0;&#x1edd;i D&#xf9;ng:"/>
+            <Property name="text" type="java.lang.String" value="T&#xea;n Nh&#xe2;n Vi&#xea;n:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lbl_diachi">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;&#x1ecb;a Ch&#x1ec9;:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="lbl_email">
           <Properties>
             <Property name="text" type="java.lang.String" value="Email:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="lbl_sdt">
           <Properties>
             <Property name="text" type="java.lang.String" value="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="tf_nhanvien">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nguy&#x1ec5;n Tr&#x1ecd;ng Ngh&#x129;a"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="tf_diachi">
           <Properties>
             <Property name="text" type="java.lang.String" value="V&#x129;nh Y&#xea;n - Ph&#xfa; Th&#x1ecd;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="tf_email">
           <Properties>
             <Property name="text" type="java.lang.String" value="nghianguyen262005@gmail.com"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField4">
+        <Component class="javax.swing.JTextField" name="tf_sdt">
           <Properties>
             <Property name="text" type="java.lang.String" value="0976338231"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_matkhau">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="M&#x1ead;t Kh&#x1ea9;u:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_matkhau">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="nghia123224"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_taikhoan">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="T&#xe0;i Kho&#x1ea3;n:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_taikhoan">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="nghia123224"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_vaitro">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vai Tr&#xf2;:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cb_vaitro">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

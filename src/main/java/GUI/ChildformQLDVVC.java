@@ -256,9 +256,9 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
         java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
 
         // Tạo dialog modal
-        FormSuaDVVC dialog = new FormSuaDVVC(parent, true);
-        dialog.setTitle("Cập Nhật Đơn Vị Vận Chuyển");
-        dialog.setVisible(true);
+        FormSuaDVVC suadvvc = new FormSuaDVVC(parent, true);
+        suadvvc.setTitle("Cập Nhật Đơn Vị Vận Chuyển");
+        suadvvc.setVisible(true);
     }//GEN-LAST:event_btn_capnhatActionPerformed
 
 

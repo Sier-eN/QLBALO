@@ -239,9 +239,9 @@ public class ChildformQLNCC extends javax.swing.JPanel {
         java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
 
         // Tạo dialog modal
-        FormSuaNCC dialog = new FormSuaNCC(parent, true);
-        dialog.setTitle("Cập Nhật Nhà Cung Cấp");
-        dialog.setVisible(true);
+        FormSuaNCC suancc = new FormSuaNCC(parent, true);
+        suancc.setTitle("Cập Nhật Nhà Cung Cấp");
+        suancc.setVisible(true);
     }//GEN-LAST:event_btn_capnhatActionPerformed
 
 
