@@ -48,6 +48,7 @@ public class FormSuaNCC extends javax.swing.JDialog {
         btn_huy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         Pnl_Thongtin.setBackground(new java.awt.Color(235, 238, 240));
 

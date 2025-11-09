@@ -104,14 +104,12 @@ public class ChildformQLDH extends javax.swing.JPanel {
 
         btn_them.setText("Thêm");
         btn_them.setBackground(new java.awt.Color(50, 50, 50));
-        btn_them.setBorder(null);
         btn_them.setBorderPainted(false);
         btn_them.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_them.setForeground(new java.awt.Color(255, 255, 255));
 
         btn_capnhat.setText("Cập Nhật");
         btn_capnhat.setBackground(new java.awt.Color(50, 50, 50));
-        btn_capnhat.setBorder(null);
         btn_capnhat.setBorderPainted(false);
         btn_capnhat.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_capnhat.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,7 +121,6 @@ public class ChildformQLDH extends javax.swing.JPanel {
 
         btn_xoa.setText("Xóa");
         btn_xoa.setBackground(new java.awt.Color(50, 50, 50));
-        btn_xoa.setBorder(null);
         btn_xoa.setBorderPainted(false);
         btn_xoa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_xoa.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,7 +129,6 @@ public class ChildformQLDH extends javax.swing.JPanel {
 
         btn_timkiem.setText("Search");
         btn_timkiem.setBackground(new java.awt.Color(50, 50, 50));
-        btn_timkiem.setBorder(null);
         btn_timkiem.setBorderPainted(false);
         btn_timkiem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_timkiem.setForeground(new java.awt.Color(255, 255, 255));

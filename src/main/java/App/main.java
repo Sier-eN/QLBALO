@@ -15,7 +15,9 @@ import javax.swing.UIManager;
 public class main {
 
     public static void main(String[] args) {
+        
         FlatLightLaf.setup();
+        
         UIManager.put("Button.arc",16);
         UIManager.put("Component.arc", 15);
         UIManager.put("TextComponent.arc", 15);

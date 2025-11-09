@@ -29,6 +29,7 @@ public class FormDN extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         SwingUtilities.updateComponentTreeUI(this);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       
     }
 
     /**

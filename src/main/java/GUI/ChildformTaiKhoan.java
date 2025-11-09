@@ -119,7 +119,6 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
         btn_doimatkhau.setBackground(new java.awt.Color(50, 50, 50));
         btn_doimatkhau.setForeground(new java.awt.Color(255, 255, 255));
         btn_doimatkhau.setText("Đổi Mật Khẩu");
-        btn_doimatkhau.setBorder(null);
         btn_doimatkhau.setBorderPainted(false);
         btn_doimatkhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +157,6 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
         btn_dangxuat.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
         btn_dangxuat.setForeground(new java.awt.Color(255, 255, 255));
         btn_dangxuat.setText("Đăng Xuất");
-        btn_dangxuat.setBorder(null);
         btn_dangxuat.setBorderPainted(false);
         btn_dangxuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,7 +234,7 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
                         .addComponent(lbl_title_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbl_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbl_matkhau, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 355, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 354, Short.MAX_VALUE)
                 .addComponent(btn_dangxuat, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );

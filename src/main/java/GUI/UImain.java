@@ -32,11 +32,8 @@ public class UImain extends javax.swing.JFrame {
         initComponents();
         initChildForm();
         
-        //set giao diện của Jframe
+        //set title của Jframe
         setTitle("Quản Lý Bán Balo-Cặp Sách");
-        setLocationRelativeTo(null);
-        SwingUtilities.updateComponentTreeUI(this);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //set hiệu ứng cho button
         setHieuUngBTN(btn_thongke);
@@ -153,13 +150,12 @@ public class UImain extends javax.swing.JFrame {
         lbl_header2.setText("Bán Balo-Cặp Sách");
         Pnl_header.add(lbl_header2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
-        btn_thongke.setBackground(new java.awt.Color(50, 50, 50));
-        btn_thongke.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
-        btn_thongke.setForeground(new java.awt.Color(255, 255, 255));
         btn_thongke.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboard.png"))); // NOI18N
         btn_thongke.setText("Thống Kê");
-        btn_thongke.setBorder(null);
+        btn_thongke.setBackground(new java.awt.Color(50, 50, 50));
         btn_thongke.setBorderPainted(false);
+        btn_thongke.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        btn_thongke.setForeground(new java.awt.Color(255, 255, 255));
         btn_thongke.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_thongke.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_thongke.setIconTextGap(10);
@@ -170,13 +166,12 @@ public class UImain extends javax.swing.JFrame {
             }
         });
 
-        btn_quanlydonhang.setBackground(new java.awt.Color(50, 50, 50));
-        btn_quanlydonhang.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
-        btn_quanlydonhang.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlydonhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/order.png"))); // NOI18N
         btn_quanlydonhang.setText("Quản Lý Đơn Hàng");
-        btn_quanlydonhang.setBorder(null);
+        btn_quanlydonhang.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlydonhang.setBorderPainted(false);
+        btn_quanlydonhang.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        btn_quanlydonhang.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlydonhang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_quanlydonhang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlydonhang.setIconTextGap(10);
@@ -187,13 +182,12 @@ public class UImain extends javax.swing.JFrame {
             }
         });
 
-        btn_quanlyncc.setBackground(new java.awt.Color(50, 50, 50));
-        btn_quanlyncc.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
-        btn_quanlyncc.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlyncc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/store.png"))); // NOI18N
         btn_quanlyncc.setText("Quản Lý Nhà Cung Cấp");
-        btn_quanlyncc.setBorder(null);
+        btn_quanlyncc.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlyncc.setBorderPainted(false);
+        btn_quanlyncc.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        btn_quanlyncc.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlyncc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_quanlyncc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlyncc.setIconTextGap(10);
@@ -204,13 +198,12 @@ public class UImain extends javax.swing.JFrame {
             }
         });
 
-        btn_quanlydvvc.setBackground(new java.awt.Color(50, 50, 50));
-        btn_quanlydvvc.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        btn_quanlydvvc.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlydvvc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delivery.png"))); // NOI18N
         btn_quanlydvvc.setText("Quản Lý Đơn Vị Vận Chuyển");
-        btn_quanlydvvc.setBorder(null);
+        btn_quanlydvvc.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlydvvc.setBorderPainted(false);
+        btn_quanlydvvc.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        btn_quanlydvvc.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlydvvc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_quanlydvvc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlydvvc.setIconTextGap(10);
@@ -221,13 +214,12 @@ public class UImain extends javax.swing.JFrame {
             }
         });
 
-        btn_quanlyhanghoa.setBackground(new java.awt.Color(50, 50, 50));
-        btn_quanlyhanghoa.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
-        btn_quanlyhanghoa.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlyhanghoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/donhang.png"))); // NOI18N
         btn_quanlyhanghoa.setText("Quản Lý Hàng Hóa");
-        btn_quanlyhanghoa.setBorder(null);
+        btn_quanlyhanghoa.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlyhanghoa.setBorderPainted(false);
+        btn_quanlyhanghoa.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        btn_quanlyhanghoa.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlyhanghoa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_quanlyhanghoa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlyhanghoa.setIconTextGap(10);
@@ -238,13 +230,12 @@ public class UImain extends javax.swing.JFrame {
             }
         });
 
-        btn_quanlyvoucher.setBackground(new java.awt.Color(50, 50, 50));
-        btn_quanlyvoucher.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
-        btn_quanlyvoucher.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlyvoucher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/ticket.png"))); // NOI18N
         btn_quanlyvoucher.setText("Quản Lý Voucher");
-        btn_quanlyvoucher.setBorder(null);
+        btn_quanlyvoucher.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlyvoucher.setBorderPainted(false);
+        btn_quanlyvoucher.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        btn_quanlyvoucher.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlyvoucher.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_quanlyvoucher.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlyvoucher.setIconTextGap(10);
@@ -255,13 +246,12 @@ public class UImain extends javax.swing.JFrame {
             }
         });
 
-        btn_taikhoan.setBackground(new java.awt.Color(50, 50, 50));
-        btn_taikhoan.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
-        btn_taikhoan.setForeground(new java.awt.Color(255, 255, 255));
         btn_taikhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/taikhoan.png"))); // NOI18N
         btn_taikhoan.setText("Tài Khoản");
-        btn_taikhoan.setBorder(null);
+        btn_taikhoan.setBackground(new java.awt.Color(50, 50, 50));
         btn_taikhoan.setBorderPainted(false);
+        btn_taikhoan.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        btn_taikhoan.setForeground(new java.awt.Color(255, 255, 255));
         btn_taikhoan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_taikhoan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_taikhoan.setIconTextGap(10);
@@ -272,13 +262,12 @@ public class UImain extends javax.swing.JFrame {
             }
         });
 
-        btn_quanlynhanvien.setBackground(new java.awt.Color(50, 50, 50));
-        btn_quanlynhanvien.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
-        btn_quanlynhanvien.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlynhanvien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/taikhoan.png"))); // NOI18N
         btn_quanlynhanvien.setText("Quản Lý Nhân Viên");
-        btn_quanlynhanvien.setBorder(null);
+        btn_quanlynhanvien.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlynhanvien.setBorderPainted(false);
+        btn_quanlynhanvien.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        btn_quanlynhanvien.setForeground(new java.awt.Color(255, 255, 255));
         btn_quanlynhanvien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_quanlynhanvien.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlynhanvien.setIconTextGap(10);
@@ -349,6 +338,7 @@ public class UImain extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_quanlydonhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlydonhangActionPerformed
