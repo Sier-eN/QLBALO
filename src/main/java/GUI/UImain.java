@@ -262,12 +262,12 @@ public class UImain extends javax.swing.JFrame {
             }
         });
 
-        btn_quanlynhanvien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/taikhoan.png"))); // NOI18N
-        btn_quanlynhanvien.setText("Quản Lý Nhân Viên");
         btn_quanlynhanvien.setBackground(new java.awt.Color(50, 50, 50));
-        btn_quanlynhanvien.setBorderPainted(false);
         btn_quanlynhanvien.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
         btn_quanlynhanvien.setForeground(new java.awt.Color(255, 255, 255));
+        btn_quanlynhanvien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/nhanvien.png"))); // NOI18N
+        btn_quanlynhanvien.setText("Quản Lý Nhân Viên");
+        btn_quanlynhanvien.setBorderPainted(false);
         btn_quanlynhanvien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_quanlynhanvien.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlynhanvien.setIconTextGap(10);
