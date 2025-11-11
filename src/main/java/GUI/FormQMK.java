@@ -50,11 +50,11 @@ public class FormQMK extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 36)); // NOI18N
         jLabel4.setText("Quản Lý Balo - Cặp Sách");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Úi Cha!! Bạn Quên Mật Khẩu Sao");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Hãy Liên Hệ Với Shop Để Lấy Lại Pass nhé <3");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         btn_quaylai.setBackground(new java.awt.Color(50, 50, 50));
         btn_quaylai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -77,15 +77,15 @@ public class FormQMK extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(177, 177, 177)
                         .addComponent(btn_quaylai, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addComponent(jLabel4)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

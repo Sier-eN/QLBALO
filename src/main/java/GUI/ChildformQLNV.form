@@ -33,126 +33,127 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="321" pref="321" max="-2" attributes="0"/>
-                  <Component id="lbl_timkiemnhanvien" min="-2" pref="122" max="-2" attributes="0"/>
-                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                  <Component id="tf_timkiem" min="-2" pref="317" max="-2" attributes="0"/>
-                  <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                  <Component id="btn_timkiem" min="-2" pref="158" max="-2" attributes="0"/>
-                  <EmptySpace min="314" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="61" pref="61" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="70" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_tennv" min="-2" pref="106" max="-2" attributes="0"/>
-                          <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
-                          <Component id="tf_tennv" min="-2" pref="220" max="-2" attributes="0"/>
-                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Component id="lbl_manv" min="-2" pref="106" max="-2" attributes="0"/>
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          <Component id="tf_manv" min="-2" pref="228" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
+                          <Component id="lbl_timkiemnhanvien" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tf_timkiem" min="-2" pref="317" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="btn_timkiem" min="-2" pref="158" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="290" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_diachi" min="-2" pref="106" max="-2" attributes="0"/>
-                              <Component id="lbl_email" min="-2" pref="106" max="-2" attributes="0"/>
-                              <Component id="lbl_sdt" min="-2" pref="106" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lbl_email" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="lbl_sdt" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="lbl_diachi" alignment="1" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="lbl_tennv" min="-2" pref="127" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tf_diachi" min="-2" pref="220" max="-2" attributes="0"/>
-                              <Component id="tf_email" min="-2" pref="220" max="-2" attributes="0"/>
-                              <Component id="tf_sdt" min="-2" pref="220" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="tf_tennv" max="32767" attributes="0"/>
+                              <Component id="tf_diachi" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tf_email" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tf_sdt" alignment="0" min="-2" pref="273" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_taikhoan" min="-2" pref="106" max="-2" attributes="0"/>
-                              <Component id="lbl_matkhau" min="-2" pref="106" max="-2" attributes="0"/>
-                              <Component id="lbl_vaitro" min="-2" pref="106" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lbl_taikhoan" min="-2" pref="115" max="-2" attributes="0"/>
+                              <Component id="lbl_manv" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_matkhau" alignment="1" min="-2" pref="115" max="-2" attributes="0"/>
+                              <Component id="lbl_vaitro" min="-2" pref="115" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tf_tk" min="-2" pref="228" max="-2" attributes="0"/>
-                              <Component id="tf_mk" min="-2" pref="228" max="-2" attributes="0"/>
-                              <Component id="cb_vaitro" min="-2" pref="228" max="-2" attributes="0"/>
+                              <Component id="tf_manv" min="-2" pref="306" max="-2" attributes="0"/>
+                              <Component id="tf_tk" min="-2" pref="306" max="-2" attributes="0"/>
+                              <Component id="tf_mk" min="-2" pref="306" max="-2" attributes="0"/>
+                              <Component id="cb_vaitro" min="-2" pref="306" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btn_them" min="-2" pref="173" max="-2" attributes="0"/>
+                              <Component id="btn_capnhat" min="-2" pref="173" max="-2" attributes="0"/>
+                              <Component id="btn_xoa" min="-2" pref="173" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btn_them" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
-                      <Component id="btn_capnhat" min="-2" pref="173" max="-2" attributes="0"/>
-                      <Component id="btn_xoa" min="-2" pref="173" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="btn_them" min="-2" pref="44" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Component id="btn_capnhat" min="-2" pref="44" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btn_xoa" min="-2" pref="44" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_tennv" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="tf_tennv" min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="lbl_manv" min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="tf_manv" min="-2" pref="34" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="lbl_diachi" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                                  <Component id="lbl_email" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                                  <Component id="lbl_sdt" min="-2" pref="32" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="tf_diachi" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="tf_email" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="tf_sdt" min="-2" pref="34" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="lbl_taikhoan" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="lbl_matkhau" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="lbl_vaitro" min="-2" pref="34" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="tf_tk" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="tf_mk" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="cb_vaitro" min="-2" pref="34" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="tf_tennv" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="lbl_tennv" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="tf_timkiem" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Component id="lbl_timkiemnhanvien" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Component id="tf_diachi" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="lbl_diachi" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="tf_email" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="lbl_email" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="tf_sdt" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="lbl_sdt" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="btn_timkiem" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="tf_manv" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="lbl_manv" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="tf_tk" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="lbl_taikhoan" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="tf_mk" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="lbl_matkhau" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cb_vaitro" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="lbl_vaitro" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="btn_them" min="-2" pref="44" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="btn_capnhat" min="-2" pref="44" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="btn_xoa" min="-2" pref="44" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="tf_timkiem" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="lbl_timkiemnhanvien" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="btn_timkiem" min="-2" pref="40" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -161,6 +162,9 @@
         <Component class="javax.swing.JLabel" name="lbl_tennv">
           <Properties>
             <Property name="text" type="java.lang.String" value="T&#xea;n Nh&#xe2;n Vi&#xea;n:"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[85, 16]"/>
             </Property>
@@ -168,6 +172,9 @@
         </Component>
         <Component class="javax.swing.JTextField" name="tf_tennv">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[86, 16]"/>
@@ -177,66 +184,105 @@
         <Component class="javax.swing.JLabel" name="lbl_diachi">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;&#x1ecb;a Ch&#x1ec9;:"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tf_diachi">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_email">
           <Properties>
             <Property name="text" type="java.lang.String" value="Email:"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tf_email">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_sdt">
           <Properties>
             <Property name="text" type="java.lang.String" value="SDT:"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tf_sdt">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tf_manv">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_manv">
           <Properties>
             <Property name="text" type="java.lang.String" value="M&#xe3; Nh&#xe2;n Vi&#xea;n:"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tf_tk">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_taikhoan">
           <Properties>
             <Property name="text" type="java.lang.String" value="T&#xe0;i Kho&#x1ea3;n:"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tf_mk">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_matkhau">
           <Properties>
             <Property name="text" type="java.lang.String" value="M&#x1ead;t Kh&#x1ea9;u:"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_vaitro">
           <Properties>
             <Property name="text" type="java.lang.String" value="Vai Tr&#xf2;:"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cb_vaitro">
@@ -249,6 +295,9 @@
                 <StringItem index="3" value="Item 4"/>
               </StringArray>
             </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -256,17 +305,17 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_capnhat">
           <Properties>
+            <Property name="text" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;t"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="32" green="32" red="32" type="rgb"/>
             </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;t"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_capnhatActionPerformed"/>
@@ -274,47 +323,47 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_them">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="32" green="32" red="32" type="rgb"/>
             </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btn_xoa">
           <Properties>
+            <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="32" green="32" red="32" type="rgb"/>
             </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btn_timkiem">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Search"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="32" green="32" red="32" type="rgb"/>
             </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Search"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_timkiemActionPerformed"/>
@@ -323,10 +372,16 @@
         <Component class="javax.swing.JLabel" name="lbl_timkiemnhanvien">
           <Properties>
             <Property name="text" type="java.lang.String" value="T&#xec;m Ki&#x1ebf;m Nh&#xe2;n Vi&#xea;n:"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tf_timkiem">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
         </Component>

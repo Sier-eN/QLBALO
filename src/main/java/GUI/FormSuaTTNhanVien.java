@@ -55,32 +55,46 @@ public class FormSuaTTNhanVien extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(235, 238, 240));
 
         lbl_nhanvien.setText("Tên Nhân Viên:");
+        lbl_nhanvien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         lbl_diachi.setText("Địa Chỉ:");
+        lbl_diachi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         lbl_email.setText("Email:");
+        lbl_email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         lbl_sdt.setText("Số Điện Thoại:");
+        lbl_sdt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        tf_nhanvien.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_nhanvien.setText("Nguyễn Trọng Nghĩa");
 
+        tf_diachi.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_diachi.setText("Vĩnh Yên - Phú Thọ");
 
+        tf_email.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_email.setText("nghianguyen262005@gmail.com");
 
+        tf_sdt.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_sdt.setText("0976338231");
 
         lbl_matkhau.setText("Mật Khẩu:");
+        lbl_matkhau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        tf_matkhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_matkhau.setText("nghia123224");
 
         lbl_taikhoan.setText("Tài Khoản:");
+        lbl_taikhoan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        tf_taikhoan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_taikhoan.setText("nghia123224");
 
         lbl_vaitro.setText("Vai Trò:");
+        lbl_vaitro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         cb_vaitro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_vaitro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,25 +165,25 @@ public class FormSuaTTNhanVien extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_vaitro, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_vaitro, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
+        btn_xacnhan.setText("Xác Nhận");
         btn_xacnhan.setBackground(new java.awt.Color(50, 50, 50));
+        btn_xacnhan.setBorderPainted(false);
         btn_xacnhan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_xacnhan.setForeground(new java.awt.Color(255, 255, 255));
-        btn_xacnhan.setText("Xác Nhận");
-        btn_xacnhan.setBorderPainted(false);
         btn_xacnhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_xacnhanActionPerformed(evt);
             }
         });
 
+        btn_huy.setText("Hủy");
         btn_huy.setBackground(new java.awt.Color(50, 50, 50));
+        btn_huy.setBorderPainted(false);
         btn_huy.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_huy.setForeground(new java.awt.Color(255, 255, 255));
-        btn_huy.setText("Hủy");
-        btn_huy.setBorderPainted(false);
         btn_huy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_huyActionPerformed(evt);

@@ -52,44 +52,49 @@ public class FormSuaHH extends javax.swing.JDialog {
 
         Pnl_Thongtin.setBackground(new java.awt.Color(235, 238, 240));
 
-        lbl_title_soluong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_title_soluong.setText("Số Lượng:");
+        lbl_title_soluong.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        lbl_title_gianhap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_title_gianhap.setText("Giá Nhập:");
+        lbl_title_gianhap.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        lbl_title_giaban.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_title_giaban.setText("Giá Bán:");
+        lbl_title_giaban.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        title_title_congty.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         title_title_congty.setText("Công Ty:");
+        title_title_congty.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        tf_soluong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_soluong.setText("50");
 
+        tf_gianhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_gianhap.setText("100.000.000đ");
         tf_gianhap.setToolTipText("");
 
+        tf_giaban.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_giaban.setText("25.000.000đ");
 
-        lbl_title_mahh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_title_mahh.setText("Mã Hàng Hóa:");
+        lbl_title_mahh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        lbl_mahh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_mahh.setText("HH2605");
+        lbl_mahh.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        lbl_title_tenhh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_title_tenhh.setText("Tên Hàng Hóa:");
+        lbl_title_tenhh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        tf_tenhh.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_tenhh.setText("Balo 6 Sao T1 Vô Địch 2025");
 
         cb_congty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_congty.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout Pnl_ThongtinLayout = new javax.swing.GroupLayout(Pnl_Thongtin);
         Pnl_Thongtin.setLayout(Pnl_ThongtinLayout);
         Pnl_ThongtinLayout.setHorizontalGroup(
             Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_ThongtinLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(83, Short.MAX_VALUE)
                 .addGroup(Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Pnl_ThongtinLayout.createSequentialGroup()
                         .addComponent(lbl_title_tenhh, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,7 +117,7 @@ public class FormSuaHH extends javax.swing.JDialog {
                             .addComponent(tf_gianhap, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tf_soluong, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tf_giaban, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(31, 31, 31))
+                .addGap(81, 81, 81))
         );
         Pnl_ThongtinLayout.setVerticalGroup(
             Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,22 +149,22 @@ public class FormSuaHH extends javax.swing.JDialog {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
+        btn_xacnhan.setText("Xác Nhận");
         btn_xacnhan.setBackground(new java.awt.Color(50, 50, 50));
+        btn_xacnhan.setBorderPainted(false);
         btn_xacnhan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_xacnhan.setForeground(new java.awt.Color(255, 255, 255));
-        btn_xacnhan.setText("Xác Nhận");
-        btn_xacnhan.setBorderPainted(false);
         btn_xacnhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_xacnhanActionPerformed(evt);
             }
         });
 
+        btn_huy.setText("Hủy");
         btn_huy.setBackground(new java.awt.Color(50, 50, 50));
+        btn_huy.setBorderPainted(false);
         btn_huy.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_huy.setForeground(new java.awt.Color(255, 255, 255));
-        btn_huy.setText("Hủy");
-        btn_huy.setBorderPainted(false);
         btn_huy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_huyActionPerformed(evt);
@@ -170,22 +175,23 @@ public class FormSuaHH extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Pnl_Thongtin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Pnl_Thongtin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(91, 91, 91)
                 .addComponent(btn_xacnhan, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_huy, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btn_huy, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Pnl_Thongtin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_xacnhan, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_huy, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();

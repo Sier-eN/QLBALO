@@ -68,7 +68,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btn_capnhatanh" min="-2" pref="38" max="-2" attributes="0"/>
-                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                  <EmptySpace pref="32" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -77,7 +77,7 @@
         <Component class="javax.swing.JLabel" name="lbl_avatar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/icons/avatar.png"/>
+              <Image iconType="3" name="/icons/gumayusianhdaihien.jpg"/>
             </Property>
           </Properties>
         </Component>
@@ -90,9 +90,6 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;t &#x1ea2;nh &#x110;&#x1ea1;i Di&#x1ec7;n"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -128,35 +125,26 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbl_title_taikhoan" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                              <Component id="lbl_title_matkhau" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                              <Component id="lbl_title_tennguoidung" min="-2" pref="156" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbl_taikhoan" alignment="0" min="-2" pref="279" max="-2" attributes="0"/>
+                              <Component id="lbl_tennguoidung" alignment="0" min="-2" pref="279" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lbl_title_taikhoan" min="-2" pref="109" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="lbl_taikhoan" min="-2" pref="279" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lbl_title_tennguoidung" min="-2" pref="109" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lbl_tennguoidung" min="-2" pref="279" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lbl_title_email" min="-2" pref="109" max="-2" attributes="0"/>
-                                      <Component id="lbl_title_diachi" min="-2" pref="109" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lbl_title_matkhau" min="-2" pref="109" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="lbl_matkhau" min="-2" pref="130" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                   <Component id="btn_doimatkhau" min="-2" pref="113" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="lbl_title_sdt" min="-2" pref="109" max="-2" attributes="0"/>
                               </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbl_title_email" min="-2" pref="109" max="-2" attributes="0"/>
+                              <Component id="lbl_title_sdt" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                              <Component id="lbl_title_diachi" min="-2" pref="127" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -170,7 +158,7 @@
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="296" max="32767" attributes="0"/>
+                  <EmptySpace pref="211" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -180,32 +168,47 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbl_title_tennguoidung" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="lbl_title_diachi" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="lbl_tennguoidung" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="lbl_diachi" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbl_title_taikhoan" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="lbl_title_email" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="lbl_taikhoan" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="lbl_email" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbl_title_matkhau" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                          <Component id="btn_doimatkhau" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                          <Component id="lbl_title_sdt" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                          <Component id="lbl_sdt" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="lbl_title_tennguoidung" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl_title_taikhoan" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl_title_matkhau" min="-2" pref="46" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lbl_tennguoidung" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl_taikhoan" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btn_doimatkhau" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
+                                      <Component id="lbl_matkhau" alignment="1" min="-2" pref="46" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lbl_diachi" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl_email" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl_sdt" min="-2" pref="46" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="356" max="32767" attributes="0"/>
+                          <Component id="btn_dangxuat" min="-2" pref="65" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="lbl_matkhau" alignment="1" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="lbl_title_diachi" min="-2" pref="46" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lbl_title_email" min="-2" pref="46" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lbl_title_sdt" min="-2" pref="46" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="354" max="32767" attributes="0"/>
-                  <Component id="btn_dangxuat" min="-2" pref="65" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -222,7 +225,7 @@
         <Component class="javax.swing.JLabel" name="lbl_title_tennguoidung">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="T&#xea;n Ng&#x1b0;&#x1edd;i D&#xf9;ng:"/>
           </Properties>
@@ -230,7 +233,7 @@
         <Component class="javax.swing.JLabel" name="lbl_title_taikhoan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="T&#xe0;i Kho&#x1ea3;n:"/>
           </Properties>
@@ -238,7 +241,7 @@
         <Component class="javax.swing.JLabel" name="lbl_title_matkhau">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="M&#x1ead;t Kh&#x1ea9;u:"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -247,7 +250,7 @@
         <Component class="javax.swing.JLabel" name="lbl_title_diachi">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="M&#xe3; Nh&#xe2;n Vi&#xea;n:"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -256,7 +259,7 @@
         <Component class="javax.swing.JLabel" name="lbl_title_email">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Email:"/>
           </Properties>
@@ -279,7 +282,7 @@
         <Component class="javax.swing.JLabel" name="lbl_title_sdt">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="SDT:"/>
           </Properties>
@@ -287,7 +290,7 @@
         <Component class="javax.swing.JLabel" name="lbl_tennguoidung">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nguy&#x1ec5;n Tr&#x1ecd;ng Ngh&#x129;a"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -296,7 +299,7 @@
         <Component class="javax.swing.JLabel" name="lbl_taikhoan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="n********"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -305,7 +308,7 @@
         <Component class="javax.swing.JLabel" name="lbl_matkhau">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="************"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -314,7 +317,7 @@
         <Component class="javax.swing.JLabel" name="lbl_diachi">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="NV2605"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -323,7 +326,7 @@
         <Component class="javax.swing.JLabel" name="lbl_email">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="ng**************05@gmail.com"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -332,7 +335,7 @@
         <Component class="javax.swing.JLabel" name="lbl_sdt">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="09*******31"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>

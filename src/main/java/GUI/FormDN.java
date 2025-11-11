@@ -57,10 +57,13 @@ public class FormDN extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/gumayusi.jpg"))); // NOI18N
 
         jLabel2.setText("Tài Khoản:");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        tf_taikhoan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_taikhoan.setText("jTextField1");
 
         jLabel3.setText("Mật Khẩu:");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         lbl_icon_hienmatkhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/eyeclose.png"))); // NOI18N
         lbl_icon_hienmatkhau.setToolTipText("");
@@ -70,32 +73,33 @@ public class FormDN extends javax.swing.JFrame {
             }
         });
 
+        btn_dangnhap.setText("Đăng Nhập");
         btn_dangnhap.setBackground(new java.awt.Color(50, 50, 50));
+        btn_dangnhap.setBorderPainted(false);
         btn_dangnhap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_dangnhap.setForeground(new java.awt.Color(255, 255, 255));
-        btn_dangnhap.setText("Đăng Nhập");
-        btn_dangnhap.setBorderPainted(false);
         btn_dangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_dangnhapActionPerformed(evt);
             }
         });
 
+        btn_quenmatkhau.setText("Quên Mật Khẩu");
         btn_quenmatkhau.setBackground(new java.awt.Color(50, 50, 50));
+        btn_quenmatkhau.setBorderPainted(false);
         btn_quenmatkhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_quenmatkhau.setForeground(new java.awt.Color(255, 255, 255));
-        btn_quenmatkhau.setText("Quên Mật Khẩu");
-        btn_quenmatkhau.setBorderPainted(false);
         btn_quenmatkhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_quenmatkhauActionPerformed(evt);
             }
         });
 
+        psf_matkhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         psf_matkhau.setText("jPasswordField1");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 36)); // NOI18N
         jLabel4.setText("Quản Lý Balo - Cặp Sách");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 36)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,13 +116,13 @@ public class FormDN extends javax.swing.JFrame {
                         .addGap(35, 35, 35))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tf_taikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(psf_matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_icon_hienmatkhau)))
+                                .addComponent(lbl_icon_hienmatkhau))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(62, 62, 62))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(61, 61, 61))
