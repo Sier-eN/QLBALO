@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -45,8 +46,13 @@ public class UImain extends javax.swing.JFrame {
         setHieuUngBTN(btn_taikhoan);
         setHieuUngBTN(btn_quanlynhanvien);
     }
-    private void initChildForm(){
+    
+    public void HienthiFormcon(String tenform){
         CardLayout card = (CardLayout) Pnl_childform.getLayout();
+        card.show(Pnl_childform, tenform);
+    }
+    
+    private void initChildForm(){
         
         ChildformThongke thongke = new ChildformThongke();
         ChildformQLDH donhang = new ChildformQLDH();
@@ -65,7 +71,42 @@ public class UImain extends javax.swing.JFrame {
         Pnl_childform.add(voucher, "voucher");
         Pnl_childform.add(taikhoan, "taikhoan");
         Pnl_childform.add(nhanvien, "nhanvien");
+        
+        HienthiFormcon("thongke");
+        
+        Pnl_childform.revalidate();
+        Pnl_childform.repaint();
     }
+    
+    public JButton getBtnThongKe(){
+        return btn_thongke;
+    }
+    public JButton getBtnDonHang() { 
+        return btn_quanlydonhang; 
+    }
+    public JButton getBtnNCC() { 
+        return btn_quanlyncc; 
+    }
+    public JButton getBtnDVVC() { 
+        return btn_quanlydvvc; 
+    }
+    public JButton getBtnHangHoa() { 
+        return btn_quanlyhanghoa; 
+    }
+    public JButton getBtnVoucher() { 
+        return btn_quanlyvoucher; 
+    }
+    public JButton getBtnTaiKhoan() {
+        return btn_taikhoan; 
+    }
+    public JButton getBtnNhanVien() {
+        return btn_quanlynhanvien; 
+    }
+
+    public JPanel getPnlChildForm() {
+        return Pnl_childform; 
+    }
+    
     public void setHieuUngBTN(JButton button){
         
         button.setBackground(Maubinhthuong);
@@ -160,11 +201,6 @@ public class UImain extends javax.swing.JFrame {
         btn_thongke.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_thongke.setIconTextGap(10);
         btn_thongke.setMargin(new java.awt.Insets(2, 30, 3, 14));
-        btn_thongke.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_thongkeActionPerformed(evt);
-            }
-        });
 
         btn_quanlydonhang.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlydonhang.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
@@ -176,11 +212,6 @@ public class UImain extends javax.swing.JFrame {
         btn_quanlydonhang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlydonhang.setIconTextGap(10);
         btn_quanlydonhang.setMargin(new java.awt.Insets(2, 30, 3, 14));
-        btn_quanlydonhang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_quanlydonhangActionPerformed(evt);
-            }
-        });
 
         btn_quanlyncc.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlyncc.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
@@ -192,11 +223,6 @@ public class UImain extends javax.swing.JFrame {
         btn_quanlyncc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlyncc.setIconTextGap(10);
         btn_quanlyncc.setMargin(new java.awt.Insets(2, 30, 3, 14));
-        btn_quanlyncc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_quanlynccActionPerformed(evt);
-            }
-        });
 
         btn_quanlydvvc.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlydvvc.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
@@ -208,11 +234,6 @@ public class UImain extends javax.swing.JFrame {
         btn_quanlydvvc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlydvvc.setIconTextGap(10);
         btn_quanlydvvc.setMargin(new java.awt.Insets(2, 30, 3, 14));
-        btn_quanlydvvc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_quanlydvvcActionPerformed(evt);
-            }
-        });
 
         btn_quanlyhanghoa.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlyhanghoa.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
@@ -224,11 +245,6 @@ public class UImain extends javax.swing.JFrame {
         btn_quanlyhanghoa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlyhanghoa.setIconTextGap(10);
         btn_quanlyhanghoa.setMargin(new java.awt.Insets(2, 30, 3, 14));
-        btn_quanlyhanghoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_quanlyhanghoaActionPerformed(evt);
-            }
-        });
 
         btn_quanlyvoucher.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlyvoucher.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
@@ -240,11 +256,6 @@ public class UImain extends javax.swing.JFrame {
         btn_quanlyvoucher.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlyvoucher.setIconTextGap(10);
         btn_quanlyvoucher.setMargin(new java.awt.Insets(2, 30, 3, 14));
-        btn_quanlyvoucher.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_quanlyvoucherActionPerformed(evt);
-            }
-        });
 
         btn_taikhoan.setBackground(new java.awt.Color(50, 50, 50));
         btn_taikhoan.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
@@ -256,11 +267,6 @@ public class UImain extends javax.swing.JFrame {
         btn_taikhoan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_taikhoan.setIconTextGap(10);
         btn_taikhoan.setMargin(new java.awt.Insets(2, 30, 3, 14));
-        btn_taikhoan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_taikhoanActionPerformed(evt);
-            }
-        });
 
         btn_quanlynhanvien.setBackground(new java.awt.Color(50, 50, 50));
         btn_quanlynhanvien.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
@@ -272,11 +278,6 @@ public class UImain extends javax.swing.JFrame {
         btn_quanlynhanvien.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_quanlynhanvien.setIconTextGap(10);
         btn_quanlynhanvien.setMargin(new java.awt.Insets(2, 30, 3, 14));
-        btn_quanlynhanvien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_quanlynhanvienActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout Pnl_sidebarLayout = new javax.swing.GroupLayout(Pnl_sidebar);
         Pnl_sidebar.setLayout(Pnl_sidebarLayout);
@@ -340,54 +341,6 @@ public class UImain extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_quanlydonhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlydonhangActionPerformed
-        // TODO add your handling code here:
-        CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "donhang");
-    }//GEN-LAST:event_btn_quanlydonhangActionPerformed
-
-    private void btn_thongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thongkeActionPerformed
-        // TODO add your handling code here:
-        CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "thongke");
-    }//GEN-LAST:event_btn_thongkeActionPerformed
-
-    private void btn_quanlynccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlynccActionPerformed
-        // TODO add your handling code here:
-        CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "nhacungcap");
-    }//GEN-LAST:event_btn_quanlynccActionPerformed
-
-    private void btn_quanlydvvcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlydvvcActionPerformed
-        // TODO add your handling code here:
-        CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "donvivanchuyen");
-    }//GEN-LAST:event_btn_quanlydvvcActionPerformed
-
-    private void btn_quanlyhanghoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlyhanghoaActionPerformed
-        // TODO add your handling code here:
-        CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "hanghoa");
-    }//GEN-LAST:event_btn_quanlyhanghoaActionPerformed
-
-    private void btn_quanlyvoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlyvoucherActionPerformed
-        // TODO add your handling code here:
-        CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "voucher");
-    }//GEN-LAST:event_btn_quanlyvoucherActionPerformed
-
-    private void btn_taikhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_taikhoanActionPerformed
-        // TODO add your handling code here:
-        CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform, "taikhoan");
-    }//GEN-LAST:event_btn_taikhoanActionPerformed
-
-    private void btn_quanlynhanvienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quanlynhanvienActionPerformed
-        // TODO add your handling code here:
-        CardLayout card = (CardLayout) Pnl_childform.getLayout();
-        card.show(Pnl_childform,"nhanvien");
-    }//GEN-LAST:event_btn_quanlynhanvienActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,7 @@
 package GUI;
 
 import App.HintSupport;
+import BLL.TaiKhoanBLL;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -17,6 +18,8 @@ public class FormDN extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormDN.class.getName());
 
     private boolean isPasswordVisible = false;
+    
+    private TaiKhoanBLL taiKhoanBLL = new TaiKhoanBLL();
     /**
      * Creates new form FormDN
      */
@@ -178,9 +181,27 @@ public class FormDN extends javax.swing.JFrame {
 
     private void btn_dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangnhapActionPerformed
         // TODO add your handling code here:
-        UImain main = new UImain();
-        main.setVisible(true);
-        this.dispose();
+        String taiKhoan = tf_taikhoan.getText();
+        String matKhau = new String(psf_matkhau.getPassword()); // Lấy mật khẩu đúng cách
+
+    // Gọi BLL để kiểm tra (Đây là bước quan trọng nhất!)
+        String ketQua = taiKhoanBLL.kiemtraDangNhap(taiKhoan, matKhau);
+
+    // Kiểm tra kết quả
+        if (ketQua.equals("Success")) {
+            // --- Đăng nhập thành công ---
+            javax.swing.JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
+        
+            UImain main = new UImain();
+            BLL.MainController controller = new BLL.MainController(main);
+            controller.HienthiForm();
+            main.setVisible(true);
+            
+            this.dispose(); // Đóng form đăng nhập
+        } else {
+            // --- Đăng nhập thất bại ---
+            javax.swing.JOptionPane.showMessageDialog(this, ketQua, "Lỗi Đăng Nhập", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_dangnhapActionPerformed
 
     /**

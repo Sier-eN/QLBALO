@@ -50,10 +50,11 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE270</version>
         </dependency>
+        <!-- Kết nối với sql server -->
         <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>flatlaf-demo-3.6.2</artifactId>
-            <version>SNAPSHOT</version>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>12.6.0.jre11</version>
         </dependency>
     </dependencies>
 </project>

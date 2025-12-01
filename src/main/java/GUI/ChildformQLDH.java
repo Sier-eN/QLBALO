@@ -6,6 +6,8 @@ package GUI;
 
 import App.DateTimeBoGoc;
 import App.HintSupport;
+import java.lang.ModuleLayer.Controller;
+import javax.swing.JButton;
 import javax.swing.UIManager;
 
 
@@ -32,7 +34,6 @@ public class ChildformQLDH extends javax.swing.JPanel {
         //Bo Góc cho DateTimePicker
         DateTimeBoGoc.lamBoGoc(dp_ngaydathang);
     }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

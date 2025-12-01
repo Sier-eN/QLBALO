@@ -194,9 +194,6 @@
                   <Insets value="[2, 30, 3, 14]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_thongkeActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_quanlydonhang">
               <Properties>
@@ -221,9 +218,6 @@
                   <Insets value="[2, 30, 3, 14]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_quanlydonhangActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_quanlyncc">
               <Properties>
@@ -248,9 +242,6 @@
                   <Insets value="[2, 30, 3, 14]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_quanlynccActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_quanlydvvc">
               <Properties>
@@ -275,9 +266,6 @@
                   <Insets value="[2, 30, 3, 14]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_quanlydvvcActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_quanlyhanghoa">
               <Properties>
@@ -302,9 +290,6 @@
                   <Insets value="[2, 30, 3, 14]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_quanlyhanghoaActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_quanlyvoucher">
               <Properties>
@@ -329,9 +314,6 @@
                   <Insets value="[2, 30, 3, 14]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_quanlyvoucherActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_taikhoan">
               <Properties>
@@ -356,9 +338,6 @@
                   <Insets value="[2, 30, 3, 14]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_taikhoanActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_quanlynhanvien">
               <Properties>
@@ -383,9 +362,6 @@
                   <Insets value="[2, 30, 3, 14]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_quanlynhanvienActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
