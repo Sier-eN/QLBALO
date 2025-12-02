@@ -2,6 +2,8 @@ GUI\ChildformQLDVVC$2.class
 GUI\FormDN$2.class
 GUI\UImain$1.class
 GUI\FormSuaVoucher.class
+DTO\DonHangDTO.class
+GUI\ChildformQLDVVC$5.class
 GUI\FormSuaTTNhanVien$3$1.class
 GUI\FormSuaDH$1.class
 GUI\FormSuaTTNhanVien$2.class
@@ -15,6 +17,7 @@ GUI\FormSuaHH$3.class
 GUI\ChildformTaiKhoan.class
 GUI\ChildformQLNV$2.class
 BLL\MainController$5.class
+DTO\DonViVanChuyenDTO.class
 GUI\FormDN.class
 GUI\ChildformQLDH$1.class
 GUI\FormSuaHH$1.class
@@ -25,6 +28,7 @@ GUI\ChildformTaiKhoan$1.class
 GUI\FormDN$1.class
 BLL\MainController$6.class
 GUI\ChildformQLNV.class
+GUI\FormSuaDVVC$4$1.class
 GUI\FormSuaVoucher$3.class
 GUI\ChildformQLNV$1.class
 GUI\ChildformQLVoucher.class
@@ -41,6 +45,7 @@ GUI\FormSuaTTNhanVien$1.class
 GUI\FormDMK$2.class
 GUI\FormSuaNCC$3.class
 GUI\ChildformQLDH.class
+GUI\FormSuaDVVC$4.class
 GUI\FormSuaVoucher$2.class
 GUI\FormSuaHH$2.class
 App\main.class
@@ -48,7 +53,6 @@ GUI\FormSuaDH$3.class
 GUI\FormSuaHH.class
 BLL\MainController$7.class
 DAL\Database.class
-GUI\FormSuaDVVC$3$1.class
 GUI\ChildformTrangChu.class
 GUI\ChildformQLNCC.class
 BLL\MainController$1.class
@@ -57,10 +61,12 @@ GUI\ChildformQLHH$1.class
 GUI\FormSuaHH$3$1.class
 GUI\UImain$2.class
 GUI\FormSuaTTNhanVien.class
+GUI\ChildformQLDVVC$4.class
 GUI\FormSuaDVVC$1.class
 DTO\TaiKhoanDTO.class
 GUI\FormDMK$4$1.class
 GUI\ChildformQLDVVC$1.class
+DAL\DonViVanChuyenDAL.class
 GUI\ChildformQLNCC$1.class
 GUI\ChildformQLVoucher$1.class
 App\DateTimeBoGoc.class
@@ -72,11 +78,15 @@ GUI\FormSuaNCC$2.class
 GUI\FormSuaVoucher$1.class
 GUI\ChildformThongke.class
 GUI\FormQMK.class
+App\LuuTruTK.class
+BLL\DonViVanChuyenBLL.class
 GUI\FormSuaDVVC$2.class
 GUI\FormSuaDVVC.class
 GUI\FormDN$3.class
 GUI\FormSuaDVVC$3.class
 GUI\FormDMK$1.class
 GUI\FormSuaDH$3$1.class
+GUI\ChildformQLDVVC$3.class
+DAL\DonHangDAL.class
 BLL\MainController$3.class
 App\HintSupport$1.class

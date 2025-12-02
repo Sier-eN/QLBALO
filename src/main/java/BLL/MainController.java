@@ -4,9 +4,11 @@
  */
 package BLL;
 
+import App.LuuTruTK;
 import GUI.UImain;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +20,20 @@ public class MainController {
     public MainController(UImain uimain){
         this.uimain = uimain;
         HienthiForm();
+    }
+    
+    private boolean KiemTraQuyen(){
+        if (LuuTruTK.taiKhoanHienTai == null) return false;
+        return LuuTruTK.taiKhoanHienTai.getVaiTro().equalsIgnoreCase("Admin");
+    }
+    
+    private void PhanQuyenGiaoDien() {
+        if (KiemTraQuyen() == false) {
+            uimain.getBtnNCC().setEnabled(false);
+            uimain.getBtnDVVC().setVisible(false);
+            uimain.getBtnVoucher().setEnabled(false);
+            uimain.getBtnNhanVien().setEnabled(false);
+        }
     }
     
     public void HienthiForm(){
@@ -37,14 +53,22 @@ public class MainController {
         uimain.getBtnNCC().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                uimain.HienthiFormcon("nhacungcap");
+                if (KiemTraQuyen()) {
+                    uimain.HienthiFormcon("nhacungcap");
+                } else {
+                    JOptionPane.showMessageDialog(uimain, "Chức năng này chỉ dành cho Quản lý (Admin)!");
+                }
             }
         });
 
         uimain.getBtnDVVC().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                uimain.HienthiFormcon("donvivanchuyen");
+                if (KiemTraQuyen()) {
+                    uimain.HienthiFormcon("donvivanchuyen");
+                } else {
+                    JOptionPane.showMessageDialog(uimain,"Chức năng này chỉ dành cho Quản lý (Admin)!");
+                }
             }
         });
 
@@ -58,7 +82,11 @@ public class MainController {
         uimain.getBtnVoucher().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                uimain.HienthiFormcon("voucher");
+                if (KiemTraQuyen()) {
+                    uimain.HienthiFormcon("voucher");
+                } else {
+                    JOptionPane.showMessageDialog(uimain,"Chức năng này chỉ dành cho Quản lý (Admin)!");
+                }
             }
         });
 
@@ -72,7 +100,11 @@ public class MainController {
         uimain.getBtnNhanVien().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                uimain.HienthiFormcon("nhanvien");
+                if (KiemTraQuyen()) {
+                    uimain.HienthiFormcon("nhanvien");
+                } else {
+                    JOptionPane.showMessageDialog(uimain,"Chức năng này chỉ dành cho Quản lý (Admin)!");
+                }
             }
         });
     }

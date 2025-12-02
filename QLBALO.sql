@@ -76,14 +76,20 @@ GO
 -- Lưu ý: Giao diện của bạn cho chọn 1 "Hàng Hóa" trong đơn hàng.
 -- Nếu 1 đơn mua nhiều món, cần tách thêm bảng ChiTietDonHang.
 -- Ở đây tôi làm theo đúng giao diện UI (1 đơn - 1 loại hàng).
+-- 7. Bảng Đơn Hàng (Quản lý Đơn Hàng - Image 2)
 CREATE TABLE DonHang (
     MaDH VARCHAR(20) PRIMARY KEY,
     TenNguoiMua NVARCHAR(100),
     DiaChi NVARCHAR(255),
     Email VARCHAR(100),
     SDT VARCHAR(15),
-    NgayDatHang DATETIME DEFAULT GETDATE(),
-    TrangThai NVARCHAR(50), -- Chờ xử lý, Đang giao, Hoàn thành
+    
+    -- Các cột mốc thời gian
+    NgayDatHang DATETIME,  -- 
+    NgayDuKien DATETIME,   -- Mới thêm: Ngày dự kiến giao
+    NgayNhanHang DATETIME, -- Mới thêm: Ngày nhận thực tế
+    
+    TrangThai NVARCHAR(50), -- Chờ xử lý, Đang giao, Hoàn thành, Đã hủy
     
     -- Các khóa ngoại
     MaHangHoa VARCHAR(20),
@@ -94,4 +100,48 @@ CREATE TABLE DonHang (
     FOREIGN KEY (MaDVVC) REFERENCES DonViVanChuyen(MaDVVC),
     FOREIGN KEY (MaVoucher) REFERENCES Voucher(MaVoucher)
 );
+GO
+
+USE master;
+GO
+
+-- Bước 1: Ngắt kết nối các user đang dùng database (nếu có)
+ALTER DATABASE QuanLyBaLoCapSach
+SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO
+
+-- Bước 2: Xóa database
+DROP DATABASE QuanLyBaLoCapSach;
+GO
+
+INSERT INTO TaiKhoan (TenDangNhap, MatKhau, VaiTro)
+VALUES ('nhanvien', '1', 'NhanVien')
+
+-- 2. Lấy ID vừa tạo để gắn vào nhân viên
+DECLARE @NewID INT = SCOPE_IDENTITY();
+
+INSERT INTO NhanVien (MaNhanVien, TenNhanVien, DiaChi, Email, SDT, ID_TaiKhoan)
+VALUES ('NV002', N'Nguyễn Trọng Nghĩa', N'Phú Thọ', 'nhanvien1@gmail.com', '0909123456', @NewID);
+GO
+
+
+
+-- 1. Tạo tài khoản đăng nhập trước
+INSERT INTO TaiKhoan (TenDangNhap, MatKhau, VaiTro)
+VALUES ('admin', '1', 'Admin');
+
+-- 2. Lấy ID vừa tạo để gắn vào nhân viên
+DECLARE @NewID INT = SCOPE_IDENTITY();
+
+-- 3. Tạo thông tin nhân viên tương ứng
+INSERT INTO NhanVien (MaNhanVien, TenNhanVien, DiaChi, Email, SDT, ID_TaiKhoan)
+VALUES ('NV001', N'Quản Trị Viên', N'Hà Nội', 'admin@gmail.com', '0909123456', @NewID);
+GO
+
+INSERT INTO DonViVanChuyen (MaDVVC, TenCongTy, SDT_LienHe, Email, NguoiLienHeChinh, LoaiVanChuyen, ThoiGianGiaoHang)
+VALUES ('GHTK', N'Giao Hàng Tiết Kiệm', '19006092', 'cskh@ghtk.vn', N'Nguyễn Văn A', N'Đường Bộ', N'2-3 Ngày');
+
+-- Ví dụ 2: Viettel Post (Hỏa Tốc)
+INSERT INTO DonViVanChuyen (MaDVVC, TenCongTy, SDT_LienHe, Email, NguoiLienHeChinh, LoaiVanChuyen, ThoiGianGiaoHang)
+VALUES ('VTP', N'Viettel Post', '19008095', 'support@viettelpost.com.vn', N'Trần Thị B', N'Hỏa Tốc', N'24 Giờ');
 GO

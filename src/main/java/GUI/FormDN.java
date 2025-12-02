@@ -27,6 +27,7 @@ public class FormDN extends javax.swing.JFrame {
         initComponents();
         
         HintSupport.addHint(tf_taikhoan,"Nhập Tài Khoản");
+        HintSupport.addHint(psf_matkhau,"Nhập Mật Khẩu");
         
         setTitle("Đăng Nhập");
         setLocationRelativeTo(null);
@@ -63,7 +64,6 @@ public class FormDN extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         tf_taikhoan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        tf_taikhoan.setText("jTextField1");
 
         jLabel3.setText("Mật Khẩu:");
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -99,7 +99,6 @@ public class FormDN extends javax.swing.JFrame {
         });
 
         psf_matkhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        psf_matkhau.setText("jPasswordField1");
 
         jLabel4.setText("Quản Lý Balo - Cặp Sách");
         jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 36)); // NOI18N
@@ -190,11 +189,9 @@ public class FormDN extends javax.swing.JFrame {
     // Kiểm tra kết quả
         if (ketQua.equals("Success")) {
             // --- Đăng nhập thành công ---
-            javax.swing.JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
-        
+            
             UImain main = new UImain();
-            BLL.MainController controller = new BLL.MainController(main);
-            controller.HienthiForm();
+            BLL.MainController controller = new BLL.MainController(main);;
             main.setVisible(true);
             
             this.dispose(); // Đóng form đăng nhập

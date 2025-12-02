@@ -4,6 +4,7 @@
  */
 package BLL;
 
+import App.LuuTruTK;
 import DAL.TaiKhoanDAL;
 import DTO.TaiKhoanDTO;
 
@@ -28,6 +29,8 @@ public class TaiKhoanBLL {
         TaiKhoanDTO tk = dal.kiemtraDN(tenDangNhap, matKhau);
         
         if (tk != null) {
+            
+            LuuTruTK.taiKhoanHienTai = tk;
             return "Success";
         } else {
             return "Tài khoản hoặc mật khẩu không chính xác";

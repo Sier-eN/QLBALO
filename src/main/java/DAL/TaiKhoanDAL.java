@@ -47,6 +47,7 @@ public class TaiKhoanDAL {
                 tk = new TaiKhoanDTO();
                 tk.setTenDangNhap(rs.getString("TenDangNhap"));
                 tk.setMatKhau(rs.getString("MatKhau"));
+                tk.setVaiTro(rs.getString("VaiTro"));
             }
         } catch (Exception e) {
             e.printStackTrace();

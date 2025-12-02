@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import App.LuuTruTK;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -76,6 +77,18 @@ public class UImain extends javax.swing.JFrame {
         
         Pnl_childform.revalidate();
         Pnl_childform.repaint();
+    }
+    
+    private void PhanQuyen() {
+        
+        String vaiTro = LuuTruTK.taiKhoanHienTai.getVaiTro();
+        
+        if (vaiTro.equals("NhanVien")) {
+            btn_quanlydvvc.setVisible(false);
+            btn_quanlyncc.setVisible(false);
+            btn_quanlynhanvien.setVisible(false);
+            btn_quanlyvoucher.setVisible(false);
+        }
     }
     
     public JButton getBtnThongKe(){
