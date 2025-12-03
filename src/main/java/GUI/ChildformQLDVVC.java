@@ -115,6 +115,16 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
         return javax.swing.SwingUtilities.getWindowAncestor(this);
     }
     
+    private boolean checkInput(javax.swing.JTextField tf, String hint, String fieldName) {
+        String text = tf.getText().trim();
+        if (text.isEmpty() || text.equals(hint)) {
+            javax.swing.JOptionPane.showMessageDialog(getFrame(), "Vui lòng nhập " + fieldName + "!");
+            tf.requestFocus(); // Đưa con trỏ chuột về ô bị thiếu
+            return true; // Có lỗi
+        }
+        return false; // Không có lỗi, dữ liệu hợp lệ
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -341,47 +351,13 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
         // TODO add your handling code here:
-        if (tf_madvvc.getText().trim().isEmpty() || tf_madvvc.getText().equals("Nhập mã...")) {
-            javax.swing.JOptionPane.showMessageDialog(getFrame(), "Vui lòng nhập Mã ĐVVC!");
-            tf_madvvc.requestFocus();
-            return;
-        }
-
-        if (tf_tencongty.getText().trim().isEmpty() || tf_tencongty.getText().equals("Nhập tên công ty...")) {
-            javax.swing.JOptionPane.showMessageDialog(getFrame(), "Vui lòng nhập Tên công ty!");
-            tf_tencongty.requestFocus();
-            return;
-        }
-
-        if (tf_sdtdvvc.getText().trim().isEmpty() || tf_sdtdvvc.getText().equals("Nhập số điện thoại...")) {
-            javax.swing.JOptionPane.showMessageDialog(getFrame(), "Vui lòng nhập Số điện thoại liên hệ!");
-            tf_sdtdvvc.requestFocus();
-            return;
-        }
-
-        if (tf_emaildvvc.getText().trim().isEmpty() || tf_emaildvvc.getText().equals("Nhập email...")) {
-            javax.swing.JOptionPane.showMessageDialog(getFrame(), "Vui lòng nhập Email!");
-            tf_emaildvvc.requestFocus();
-            return;
-        }
-
-        if (tf_nguoilh.getText().trim().isEmpty() || tf_nguoilh.getText().equals("Nhập tên người liên hệ...")) {
-            javax.swing.JOptionPane.showMessageDialog(getFrame(), "Vui lòng nhập Tên người liên hệ chính!");
-            tf_nguoilh.requestFocus();
-            return;
-        }
-
-        if (tf_loaivanchuyen.getText().trim().isEmpty() || tf_loaivanchuyen.getText().equals("Nhập loại vận chuyển...")) {
-            javax.swing.JOptionPane.showMessageDialog(getFrame(), "Vui lòng nhập Loại hình vận chuyển!");
-            tf_loaivanchuyen.requestFocus();
-            return;
-        }
-
-        if (tf_tggiaohang.getText().trim().isEmpty() || tf_tggiaohang.getText().equals("Nhập thời gian giao hàng trung bình...")) {
-            javax.swing.JOptionPane.showMessageDialog(getFrame(), "Vui lòng nhập Thời gian giao hàng dự kiến!");
-            tf_tggiaohang.requestFocus();
-            return;
-        }
+        if (checkInput(tf_madvvc, "Nhập mã...", "Mã ĐVVC")) return;
+        if (checkInput(tf_tencongty, "Nhập tên công ty...", "Tên Công Ty")) return;
+        if (checkInput(tf_sdtdvvc, "Nhập số điện thoại...", "Số Điện Thoại")) return;
+        if (checkInput(tf_emaildvvc, "Nhập email...", "Email")) return;
+        if (checkInput(tf_nguoilh, "Nhập tên người liên hệ...", "Người Liên Hệ Chính")) return;
+        if (checkInput(tf_loaivanchuyen, "Nhập loại vận chuyển...", "Loại Vận Chuyển")) return;
+        if (checkInput(tf_tggiaohang, "Nhập thời gian giao hàng trung bình...", "Thời Gian Giao Hàng")) return;
 
         DonViVanChuyenDTO dv = new DonViVanChuyenDTO();
         dv.setMaDVVC(tf_madvvc.getText());

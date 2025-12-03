@@ -145,3 +145,27 @@ VALUES ('GHTK', N'Giao Hàng Tiết Kiệm', '19006092', 'cskh@ghtk.vn', N'Nguy�
 INSERT INTO DonViVanChuyen (MaDVVC, TenCongTy, SDT_LienHe, Email, NguoiLienHeChinh, LoaiVanChuyen, ThoiGianGiaoHang)
 VALUES ('VTP', N'Viettel Post', '19008095', 'support@viettelpost.com.vn', N'Trần Thị B', N'Hỏa Tốc', N'24 Giờ');
 GO
+
+INSERT INTO NhaCungCap (MaNhaCungCap, TenCongTy, DiaChi, SDT_LienHe, Email, NguoiLienHeChinh)
+VALUES ('NCC01', N'Công ty May Mặc Việt', N'Hà Nội', '0988111222', 'lienhe@maymac.vn', N'Trần Văn A');
+
+INSERT INTO NhaCungCap (MaNhaCungCap, TenCongTy, DiaChi, SDT_LienHe, Email, NguoiLienHeChinh)
+VALUES ('NCC02', N'Balo Hàng Hiệu LTD', N'TP.HCM', '0909333444', 'admin@hanghieu.com', N'Lê Thị B');
+GO
+
+INSERT INTO HangHoa (MaHangHoa, TenHangHoa, SoLuong, GiaBan, GiaNhap, MaNhaCungCap)
+VALUES ('HH01', N'Balo Chống Gù Nhật Bản', 50, 1200000, 800000, 'NCC01');
+
+-- Ví dụ 2: Cặp sách phổ thông
+INSERT INTO HangHoa (MaHangHoa, TenHangHoa, SoLuong, GiaBan, GiaNhap, MaNhaCungCap)
+VALUES ('HH02', N'Cặp Sách Học Sinh Cấp 1', 100, 350000, 200000, 'NCC02');
+GO
+
+-- Ví dụ 1: Voucher giảm giá trực tiếp 50k
+INSERT INTO Voucher (MaVoucher, TenVoucher, ChucNang, GiaTri, SoLuong)
+VALUES ('SALE50K', N'Giảm giá Khai Trương', N'Giảm Giá Hàng', 50000, 100);
+
+-- Ví dụ 2: Voucher miễn phí vận chuyển (Tối đa 30k)
+INSERT INTO Voucher (MaVoucher, TenVoucher, ChucNang, GiaTri, SoLuong)
+VALUES ('FREESHIP', N'Miễn Phí Vận Chuyển Hè', N'Free Ship', 30000, 200);
+GO

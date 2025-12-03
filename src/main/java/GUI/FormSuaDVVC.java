@@ -256,7 +256,6 @@ public class FormSuaDVVC extends javax.swing.JDialog {
         
         dv.setMaDVVC(lbl_madvvc.getText());
         dv.setTenCongTy(tf_tencongtydvvc.getText());
-        // dv.setDiaChi(...); <--- KHÔNG CẦN DÒNG NÀY NỮA
         dv.setSdt(tf_sdtdvvc.getText());
         dv.setEmail(tf_emaildvvc.getText());
         dv.setNguoiLienHe(tf_nguoilhdvvc.getText());

@@ -5,12 +5,19 @@
 package GUI;
 
 import App.HintSupport;
+import BLL.NhaCungCapBLL;
+import DTO.NhaCungCapDTO;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Nghia
  */
 public class ChildformQLNCC extends javax.swing.JPanel {
+    
+    private NhaCungCapBLL bll = new NhaCungCapBLL();
 
     /**
      * Creates new form ChildformQLNCC
@@ -26,6 +33,67 @@ public class ChildformQLNCC extends javax.swing.JPanel {
         HintSupport.addHint(tf_sdtncc, "Nhập SDT...");
         HintSupport.addHint(tf_timkiem, "Tìm Kiếm");
         HintSupport.addHint(tf_tencongtyncc, "Nhập tên công ty...");
+        
+        cauHinhBang();
+        loadTable();
+    }
+    
+    private void cauHinhBang() {
+        String[] headers = {"Mã NCC", "Tên Công Ty", "Địa Chỉ", "SĐT", "Email", "Người Liên Hệ"};
+        DefaultTableModel model = new DefaultTableModel(headers, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Quan trọng: Không cho sửa trên bảng
+            }
+        };
+        tb_dulieu.setModel(model);
+    }
+    
+    private void loadTable() {
+        DefaultTableModel model = (DefaultTableModel) tb_dulieu.getModel();
+        model.setRowCount(0); // Xóa dữ liệu cũ
+        
+        ArrayList<NhaCungCapDTO> list = bll.layDanhSach();
+        for (NhaCungCapDTO x : list) {
+            model.addRow(new Object[]{
+                x.getMaNCC(), x.getTenCongTy(), x.getDiaChi(), 
+                x.getSdt(), x.getEmail(), x.getNguoiLienHe()
+            });
+        }
+    }
+    
+    private void timKiem() {
+        DefaultTableModel model = (DefaultTableModel) tb_dulieu.getModel();
+        model.setRowCount(0);
+        
+        String tuKhoa = tf_timkiem.getText();
+        ArrayList<NhaCungCapDTO> list = bll.timKiemNCC(tuKhoa);
+        
+        for (NhaCungCapDTO x : list) {
+            model.addRow(new Object[]{
+                x.getMaNCC(), x.getTenCongTy(), x.getDiaChi(), 
+                x.getSdt(), x.getEmail(), x.getNguoiLienHe()
+            });
+        }
+    }
+    
+    private boolean checkInput(javax.swing.JTextField tf, String hint, String name) {
+        if (tf.getText().trim().isEmpty() || tf.getText().equals(hint)) {
+            JOptionPane.showMessageDialog(getFrame(), "Vui lòng nhập " + name + "!");
+            tf.requestFocus();
+            return true; // Có lỗi
+        }
+        return false; // Không lỗi
+    }
+
+    private java.awt.Component getFrame() {
+        return javax.swing.SwingUtilities.getWindowAncestor(this);
+    }
+    
+    private void lamMoiForm() {
+        tf_mancc.setText(""); tf_tencongtyncc.setText(""); tf_diachincc.setText("");
+        tf_sdtncc.setText(""); tf_emailncc.setText(""); tf_nguoilh.setText("");
+        tf_mancc.requestFocus();
     }
 
     /**
@@ -50,11 +118,9 @@ public class ChildformQLNCC extends javax.swing.JPanel {
         tf_mancc = new javax.swing.JTextField();
         tf_timkiem = new javax.swing.JTextField();
         btn_them = new javax.swing.JButton();
-        btn_capnhat = new javax.swing.JButton();
-        btn_xoa = new javax.swing.JButton();
-        btn_timkiem = new javax.swing.JButton();
         tf_tencongtyncc = new javax.swing.JTextField();
         lbl_tencongtyncc = new javax.swing.JLabel();
+        lbl_timkiem = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_dulieu = new javax.swing.JTable();
 
@@ -105,35 +171,22 @@ public class ChildformQLNCC extends javax.swing.JPanel {
         tf_timkiem.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_timkiem.setText("jTextField1");
         tf_timkiem.setPreferredSize(new java.awt.Dimension(86, 16));
+        tf_timkiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tf_timkiemKeyReleased(evt);
+            }
+        });
 
         btn_them.setBackground(new java.awt.Color(50, 50, 50));
         btn_them.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_them.setForeground(new java.awt.Color(255, 255, 255));
         btn_them.setText("Thêm");
         btn_them.setBorderPainted(false);
-
-        btn_capnhat.setBackground(new java.awt.Color(50, 50, 50));
-        btn_capnhat.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_capnhat.setForeground(new java.awt.Color(255, 255, 255));
-        btn_capnhat.setText("Cập Nhật");
-        btn_capnhat.setBorderPainted(false);
-        btn_capnhat.addActionListener(new java.awt.event.ActionListener() {
+        btn_them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_capnhatActionPerformed(evt);
+                btn_themActionPerformed(evt);
             }
         });
-
-        btn_xoa.setBackground(new java.awt.Color(50, 50, 50));
-        btn_xoa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_xoa.setForeground(new java.awt.Color(255, 255, 255));
-        btn_xoa.setText("Xóa");
-        btn_xoa.setBorderPainted(false);
-
-        btn_timkiem.setText("Search");
-        btn_timkiem.setBackground(new java.awt.Color(50, 50, 50));
-        btn_timkiem.setBorderPainted(false);
-        btn_timkiem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_timkiem.setForeground(new java.awt.Color(255, 255, 255));
 
         tf_tencongtyncc.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_tencongtyncc.setText("jTextField1");
@@ -142,6 +195,10 @@ public class ChildformQLNCC extends javax.swing.JPanel {
         lbl_tencongtyncc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_tencongtyncc.setText("Tên Công Ty:");
         lbl_tencongtyncc.setPreferredSize(new java.awt.Dimension(85, 16));
+
+        lbl_timkiem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_timkiem.setText("Tìm Kiếm:");
+        lbl_timkiem.setPreferredSize(new java.awt.Dimension(85, 16));
 
         javax.swing.GroupLayout Pnl_thongtinLayout = new javax.swing.GroupLayout(Pnl_thongtin);
         Pnl_thongtin.setLayout(Pnl_thongtinLayout);
@@ -169,18 +226,14 @@ public class ChildformQLNCC extends javax.swing.JPanel {
                     .addComponent(tf_emailncc, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                     .addComponent(tf_nguoilh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tf_mancc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(66, 66, 66)
-                .addGroup(Pnl_thongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Pnl_thongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btn_capnhat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_them, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn_xoa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54))
+                .addGap(76, 76, 76)
+                .addComponent(btn_them, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
             .addGroup(Pnl_thongtinLayout.createSequentialGroup()
-                .addGap(316, 316, 316)
-                .addComponent(tf_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(355, 355, 355)
+                .addComponent(lbl_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Pnl_thongtinLayout.setVerticalGroup(
@@ -195,7 +248,8 @@ public class ChildformQLNCC extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Pnl_thongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_nguoilh, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_nguoilh, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tf_nguoilh, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_them, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Pnl_thongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tf_mancc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,18 +265,12 @@ public class ChildformQLNCC extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Pnl_thongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tf_sdtncc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_sdtncc, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(Pnl_thongtinLayout.createSequentialGroup()
-                        .addComponent(btn_them, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_capnhat, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39)
+                            .addComponent(lbl_sdtncc, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(Pnl_thongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                    .addComponent(lbl_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34))
         );
 
         add(Pnl_thongtin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 310));
@@ -238,28 +286,79 @@ public class ChildformQLNCC extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tb_dulieu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_dulieuMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_dulieu);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 1250, 590));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_capnhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capnhatActionPerformed
+    private void tf_timkiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_timkiemKeyReleased
         // TODO add your handling code here:
-        java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        timKiem();
+    }//GEN-LAST:event_tf_timkiemKeyReleased
 
-        // Tạo dialog modal
-        FormSuaNCC suancc = new FormSuaNCC(parent, true);
-        suancc.setTitle("Cập Nhật Nhà Cung Cấp");
-        suancc.setVisible(true);
-    }//GEN-LAST:event_btn_capnhatActionPerformed
+    private void tb_dulieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_dulieuMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) { // Kiểm tra click đúp
+            int row = tb_dulieu.getSelectedRow();
+            if (row >= 0) {
+
+                String ma = tb_dulieu.getValueAt(row, 0).toString();
+                String ten = tb_dulieu.getValueAt(row, 1).toString();
+                String diachi = tb_dulieu.getValueAt(row, 2).toString();
+                String sdt = tb_dulieu.getValueAt(row, 3).toString();
+                String email = tb_dulieu.getValueAt(row, 4).toString();
+                String nguoilh = tb_dulieu.getValueAt(row, 5).toString();
+
+                java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
+                FormSuaNCC formSua = new FormSuaNCC(parent, true);
+                
+                formSua.setDuLieu(ma, ten, diachi, sdt, email, nguoilh); // Truyền dữ liệu
+                formSua.setTitle("Cập Nhật Nhà Cung Cấp");
+                formSua.setVisible(true); // Code sẽ dừng tại đây chờ Form sửa đóng lại
+                
+                loadTable();
+            }
+        }
+    }//GEN-LAST:event_tb_dulieuMouseClicked
+
+    private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
+        // TODO add your handling code here:
+
+        if (checkInput(tf_mancc, "Nhập mã nhà cung cấp...", "Mã NCC")) return;
+        if (checkInput(tf_tencongtyncc, "Nhập tên công ty...", "Tên Công Ty")) return;
+        if (checkInput(tf_diachincc, "Nhập địa chỉ...", "Địa Chỉ")) return;
+        if (checkInput(tf_sdtncc, "Nhập SDT...", "Số Điện Thoại")) return;
+        if (checkInput(tf_emailncc, "Nhập email...", "Email")) return;
+        if (checkInput(tf_nguoilh, "Nhập tên người liên hệ chính...", "Người Liên Hệ")) return;
+
+        DTO.NhaCungCapDTO ncc = new DTO.NhaCungCapDTO();
+        
+        ncc.setMaNCC(tf_mancc.getText().trim());
+        ncc.setTenCongTy(tf_tencongtyncc.getText().trim());
+        ncc.setDiaChi(tf_diachincc.getText().trim());
+        ncc.setSdt(tf_sdtncc.getText().trim());
+        ncc.setEmail(tf_emailncc.getText().trim());
+        ncc.setNguoiLienHe(tf_nguoilh.getText().trim());
+
+        String ketQua = bll.themNCC(ncc);
+        
+        javax.swing.JOptionPane.showMessageDialog(getFrame(), ketQua);
+
+        if (ketQua.contains("thành công")) {
+            loadTable();   // Load lại bảng để thấy dòng mới
+            lamMoiForm();  // Xóa trắng các ô nhập liệu
+        }
+    }//GEN-LAST:event_btn_themActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Pnl_thongtin;
-    private javax.swing.JButton btn_capnhat;
     private javax.swing.JButton btn_them;
-    private javax.swing.JButton btn_timkiem;
-    private javax.swing.JButton btn_xoa;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_diachincc;
     private javax.swing.JLabel lbl_emailncc;
@@ -267,6 +366,7 @@ public class ChildformQLNCC extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_nguoilh;
     private javax.swing.JLabel lbl_sdtncc;
     private javax.swing.JLabel lbl_tencongtyncc;
+    private javax.swing.JLabel lbl_timkiem;
     private javax.swing.JTable tb_dulieu;
     private javax.swing.JTextField tf_diachincc;
     private javax.swing.JTextField tf_emailncc;

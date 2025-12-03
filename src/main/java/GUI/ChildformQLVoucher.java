@@ -5,6 +5,11 @@
 package GUI;
 
 import App.HintSupport;
+import BLL.VoucherBLL;
+import DTO.VoucherDTO;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,6 +17,8 @@ import App.HintSupport;
  */
 public class ChildformQLVoucher extends javax.swing.JPanel {
 
+    private VoucherBLL bll = new VoucherBLL();
+    
     /**
      * Creates new form ChildformQLVoucher
      */
@@ -23,6 +30,68 @@ public class ChildformQLVoucher extends javax.swing.JPanel {
         HintSupport.addHint(tf_mavoucher,"Nhập mã voucher...");
         HintSupport.addHint(tf_timkiem,"Tìm Kiếm");
         HintSupport.addHint(tf_soluong,"Nhập số lượng...");
+        
+        cauHinhBang();
+        loadTable();
+    }
+    
+    // --- CẤU HÌNH BẢNG ---
+    private void cauHinhBang() {
+        String[] headers = {"Mã Voucher", "Tên Voucher", "Chức Năng", "Giá Trị", "Số Lượng"};
+        DefaultTableModel model = new DefaultTableModel(headers, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Chặn sửa
+            }
+        };
+        tb_dulieu.setModel(model);
+    }
+    
+    // --- LOAD DỮ LIỆU ---
+    public void loadTable() {
+        DefaultTableModel model = (DefaultTableModel) tb_dulieu.getModel();
+        model.setRowCount(0);
+        
+        ArrayList<VoucherDTO> list = bll.layDanhSach();
+        for (VoucherDTO v : list) {
+            model.addRow(new Object[]{
+                v.getMaVoucher(), v.getTenVoucher(), v.getChucNang(), 
+                v.getGiaTri(), v.getSoLuong()
+            });
+        }
+    }
+    
+    // --- TÌM KIẾM ---
+    private void timKiem() {
+        DefaultTableModel model = (DefaultTableModel) tb_dulieu.getModel();
+        model.setRowCount(0);
+        ArrayList<VoucherDTO> list = bll.timKiemVoucher(tf_timkiem.getText());
+        for (VoucherDTO v : list) {
+            model.addRow(new Object[]{
+                v.getMaVoucher(), v.getTenVoucher(), v.getChucNang(), 
+                v.getGiaTri(), v.getSoLuong()
+            });
+        }
+    }
+    
+    // --- HÀM XÓA TRẮNG & HỖ TRỢ ---
+    private void lamMoiForm() {
+        tf_mavoucher.setText(""); tf_tenvoucher.setText("");
+        tf_giatri.setText(""); tf_soluong.setText("");
+        tf_mavoucher.requestFocus();
+    }
+    
+    private java.awt.Component getFrame() {
+        return javax.swing.SwingUtilities.getWindowAncestor(this);
+    }
+    
+    private boolean checkInput(javax.swing.JTextField tf, String hint, String name) {
+        if (tf.getText().trim().isEmpty() || tf.getText().equals(hint)) {
+            JOptionPane.showMessageDialog(getFrame(), "Vui lòng nhập " + name + "!");
+            tf.requestFocus();
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -44,44 +113,42 @@ public class ChildformQLVoucher extends javax.swing.JPanel {
         lbl_mavoucher = new javax.swing.JLabel();
         tf_mavoucher = new javax.swing.JTextField();
         tf_timkiem = new javax.swing.JTextField();
-        btn_timkiem = new javax.swing.JButton();
         btn_them = new javax.swing.JButton();
-        btn_capnhat = new javax.swing.JButton();
-        btn_xoa = new javax.swing.JButton();
         lbl_soluong = new javax.swing.JLabel();
         tf_soluong = new javax.swing.JTextField();
+        lbl_timkiem = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_dulieu = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(235, 238, 240));
 
-        lbl_chucnang.setText("Chức Năng:");
         lbl_chucnang.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_chucnang.setText("Chức Năng:");
         lbl_chucnang.setPreferredSize(new java.awt.Dimension(85, 16));
 
-        cb_chucnang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cb_chucnang.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cb_chucnang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Free Ship", "Giảm Giá Hàng" }));
 
-        lbl_giatri.setText("Giá Trị:");
         lbl_giatri.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_giatri.setText("Giá Trị:");
         lbl_giatri.setPreferredSize(new java.awt.Dimension(85, 16));
 
         tf_giatri.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_giatri.setText("jTextField1");
         tf_giatri.setPreferredSize(new java.awt.Dimension(86, 16));
 
-        lbl_tenvoucher.setText("Tên Voucher:");
         lbl_tenvoucher.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_tenvoucher.setText("Tên Voucher:");
         lbl_tenvoucher.setPreferredSize(new java.awt.Dimension(85, 16));
 
         tf_tenvoucher.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_tenvoucher.setText("jTextField1");
         tf_tenvoucher.setPreferredSize(new java.awt.Dimension(86, 16));
 
-        lbl_mavoucher.setText("Mã Voucher:");
         lbl_mavoucher.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_mavoucher.setText("Mã Voucher:");
         lbl_mavoucher.setPreferredSize(new java.awt.Dimension(85, 16));
 
         tf_mavoucher.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -91,43 +158,34 @@ public class ChildformQLVoucher extends javax.swing.JPanel {
         tf_timkiem.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_timkiem.setText("jTextField1");
         tf_timkiem.setPreferredSize(new java.awt.Dimension(86, 16));
-
-        btn_timkiem.setText("Search");
-        btn_timkiem.setBackground(new java.awt.Color(50, 50, 50));
-        btn_timkiem.setBorderPainted(false);
-        btn_timkiem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_timkiem.setForeground(new java.awt.Color(255, 255, 255));
-
-        btn_them.setText("Thêm");
-        btn_them.setBackground(new java.awt.Color(50, 50, 50));
-        btn_them.setBorderPainted(false);
-        btn_them.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_them.setForeground(new java.awt.Color(255, 255, 255));
-
-        btn_capnhat.setText("Cập Nhật");
-        btn_capnhat.setBackground(new java.awt.Color(50, 50, 50));
-        btn_capnhat.setBorderPainted(false);
-        btn_capnhat.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_capnhat.setForeground(new java.awt.Color(255, 255, 255));
-        btn_capnhat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_capnhatActionPerformed(evt);
+        tf_timkiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tf_timkiemKeyReleased(evt);
             }
         });
 
-        btn_xoa.setText("Xóa");
-        btn_xoa.setBackground(new java.awt.Color(50, 50, 50));
-        btn_xoa.setBorderPainted(false);
-        btn_xoa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_xoa.setForeground(new java.awt.Color(255, 255, 255));
+        btn_them.setBackground(new java.awt.Color(50, 50, 50));
+        btn_them.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_them.setForeground(new java.awt.Color(255, 255, 255));
+        btn_them.setText("Thêm");
+        btn_them.setBorderPainted(false);
+        btn_them.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_themActionPerformed(evt);
+            }
+        });
 
-        lbl_soluong.setText("Số Lượng:");
         lbl_soluong.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_soluong.setText("Số Lượng:");
         lbl_soluong.setPreferredSize(new java.awt.Dimension(85, 16));
 
         tf_soluong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_soluong.setText("jTextField1");
         tf_soluong.setPreferredSize(new java.awt.Dimension(86, 16));
+
+        lbl_timkiem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_timkiem.setText("Tìm Kiếm:");
+        lbl_timkiem.setPreferredSize(new java.awt.Dimension(85, 16));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,29 +223,23 @@ public class ChildformQLVoucher extends javax.swing.JPanel {
                 .addGap(121, 121, 121)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(tf_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_them, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_capnhat, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(119, 119, 119))
+                        .addGap(477, 477, 477))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(295, 295, 295))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54)
+                .addComponent(lbl_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_them, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_capnhat, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btn_them, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(104, 104, 104))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
@@ -219,7 +271,7 @@ public class ChildformQLVoucher extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 310));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_dulieu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -230,36 +282,90 @@ public class ChildformQLVoucher extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tb_dulieu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_dulieuMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tb_dulieu);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 1250, 590));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_capnhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capnhatActionPerformed
+    private void tf_timkiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_timkiemKeyReleased
         // TODO add your handling code here:
-        java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        timKiem();
+    }//GEN-LAST:event_tf_timkiemKeyReleased
 
-        // Tạo dialog modal
-        FormSuaVoucher suavoucher = new FormSuaVoucher(parent, true);
-        suavoucher.setTitle("Cập Nhật Voucher");
-        suavoucher.setVisible(true);
-    }//GEN-LAST:event_btn_capnhatActionPerformed
+    private void tb_dulieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_dulieuMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            int row = tb_dulieu.getSelectedRow();
+            if (row >= 0) {
+                try {
+                    String ma = tb_dulieu.getValueAt(row, 0).toString();
+                    String ten = tb_dulieu.getValueAt(row, 1).toString();
+                    String chucNang = tb_dulieu.getValueAt(row, 2).toString();
+                    double giaTri = Double.parseDouble(tb_dulieu.getValueAt(row, 3).toString());
+                    int soLuong = Integer.parseInt(tb_dulieu.getValueAt(row, 4).toString());
+
+                    java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
+                    FormSuaVoucher sua = new FormSuaVoucher(parent, true);
+                    
+                    sua.setDuLieu(ma, ten, chucNang, giaTri, soLuong);
+                    sua.setTitle("Cập Nhật Voucher");
+                    sua.setVisible(true);
+                    
+                    loadTable();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }//GEN-LAST:event_tb_dulieuMouseClicked
+
+    private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
+        // TODO add your handling code here:
+        if (checkInput(tf_mavoucher, "Nhập mã voucher...", "Mã Voucher")) return;
+        if (checkInput(tf_tenvoucher, "Nhập tên voucher...", "Tên Voucher")) return;
+        if (checkInput(tf_giatri, "Nhập giá trị...", "Giá Trị")) return;
+        if (checkInput(tf_soluong, "Nhập số lượng...", "Số Lượng")) return;
+
+        VoucherDTO v = new VoucherDTO();
+        v.setMaVoucher(tf_mavoucher.getText().trim());
+        v.setTenVoucher(tf_tenvoucher.getText().trim());
+        v.setChucNang(cb_chucnang.getSelectedItem().toString());
+        
+        try {
+            v.setGiaTri(Double.parseDouble(tf_giatri.getText().trim()));
+            v.setSoLuong(Integer.parseInt(tf_soluong.getText().trim()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(getFrame(), "Giá trị và Số lượng phải là số!");
+            return;
+        }
+
+        String kq = bll.themVoucher(v);
+        JOptionPane.showMessageDialog(getFrame(), kq);
+        
+        if (kq.contains("thành công")) {
+            loadTable();
+            lamMoiForm();
+        }
+    }//GEN-LAST:event_btn_themActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_capnhat;
     private javax.swing.JButton btn_them;
-    private javax.swing.JButton btn_timkiem;
-    private javax.swing.JButton btn_xoa;
     private javax.swing.JComboBox<String> cb_chucnang;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_chucnang;
     private javax.swing.JLabel lbl_giatri;
     private javax.swing.JLabel lbl_mavoucher;
     private javax.swing.JLabel lbl_soluong;
     private javax.swing.JLabel lbl_tenvoucher;
+    private javax.swing.JLabel lbl_timkiem;
+    private javax.swing.JTable tb_dulieu;
     private javax.swing.JTextField tf_giatri;
     private javax.swing.JTextField tf_mavoucher;
     private javax.swing.JTextField tf_soluong;

@@ -4,11 +4,17 @@
  */
 package GUI;
 
+import BLL.NhaCungCapBLL;
+import DTO.NhaCungCapDTO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Nghia
  */
 public class FormSuaNCC extends javax.swing.JDialog {
+    
+    private NhaCungCapBLL bll = new NhaCungCapBLL();
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormSuaNCC.class.getName());
 
@@ -20,6 +26,15 @@ public class FormSuaNCC extends javax.swing.JDialog {
         initComponents();
         
         setLocationRelativeTo(parent);
+    }
+    
+    public void setDuLieu(String ma, String ten, String diachi, String sdt, String email, String nguoiLH) {
+        lbl_mancc.setText(ma); // Mã hiển thị lên Label (không cho sửa)
+        tf_tencongtyncc.setText(ten);
+        tf_diachincc.setText(diachi);
+        tf_sdtncc.setText(sdt);
+        tf_emailncc.setText(email);
+        tf_nguoilhncc.setText(nguoiLH);
     }
 
     /**
@@ -44,7 +59,8 @@ public class FormSuaNCC extends javax.swing.JDialog {
         lbl_mancc = new javax.swing.JLabel();
         lbl_title_tencongty = new javax.swing.JLabel();
         tf_tencongtyncc = new javax.swing.JTextField();
-        btn_xacnhan = new javax.swing.JButton();
+        btn_capnhat = new javax.swing.JButton();
+        btn_xoa = new javax.swing.JButton();
         btn_huy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -52,17 +68,17 @@ public class FormSuaNCC extends javax.swing.JDialog {
 
         Pnl_Thongtin.setBackground(new java.awt.Color(235, 238, 240));
 
-        lbl_title_ten.setText("Địa Chỉ:");
         lbl_title_ten.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_title_ten.setText("Địa Chỉ:");
 
-        lbl_title_diachi.setText("SDT:");
         lbl_title_diachi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_title_diachi.setText("SDT:");
 
-        lbl_title_sdt.setText("Email:");
         lbl_title_sdt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_title_sdt.setText("Email:");
 
-        title_title_sanpham.setText("Người Liên Hệ:");
         title_title_sanpham.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        title_title_sanpham.setText("Người Liên Hệ:");
 
         tf_diachincc.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_diachincc.setText("Vĩnh Yên - Phú Thọ");
@@ -76,14 +92,14 @@ public class FormSuaNCC extends javax.swing.JDialog {
         tf_nguoilhncc.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_nguoilhncc.setText("Nguyễn Trọng Nghĩa");
 
-        lbl_title_mancc.setText("Mã NCC:");
         lbl_title_mancc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_title_mancc.setText("Mã NCC:");
 
-        lbl_mancc.setText("NCC2605");
         lbl_mancc.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbl_mancc.setText("NCC2605");
 
-        lbl_title_tencongty.setText("Tên Công Ty:");
         lbl_title_tencongty.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_title_tencongty.setText("Tên Công Ty:");
 
         tf_tencongtyncc.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_tencongtyncc.setText("Công TY 1 thành viên");
@@ -93,7 +109,7 @@ public class FormSuaNCC extends javax.swing.JDialog {
         Pnl_ThongtinLayout.setHorizontalGroup(
             Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_ThongtinLayout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Pnl_ThongtinLayout.createSequentialGroup()
                         .addComponent(lbl_title_tencongty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,7 +131,7 @@ public class FormSuaNCC extends javax.swing.JDialog {
                         .addComponent(title_title_sanpham, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tf_nguoilhncc, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(54, 54, 54))
+                .addGap(64, 64, 64))
         );
         Pnl_ThongtinLayout.setVerticalGroup(
             Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,22 +163,33 @@ public class FormSuaNCC extends javax.swing.JDialog {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        btn_xacnhan.setText("Xác Nhận");
-        btn_xacnhan.setBackground(new java.awt.Color(50, 50, 50));
-        btn_xacnhan.setBorderPainted(false);
-        btn_xacnhan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_xacnhan.setForeground(new java.awt.Color(255, 255, 255));
-        btn_xacnhan.addActionListener(new java.awt.event.ActionListener() {
+        btn_capnhat.setBackground(new java.awt.Color(50, 50, 50));
+        btn_capnhat.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_capnhat.setForeground(new java.awt.Color(255, 255, 255));
+        btn_capnhat.setText("Cập Nhật");
+        btn_capnhat.setBorderPainted(false);
+        btn_capnhat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_xacnhanActionPerformed(evt);
+                btn_capnhatActionPerformed(evt);
             }
         });
 
-        btn_huy.setText("Hủy");
+        btn_xoa.setBackground(new java.awt.Color(50, 50, 50));
+        btn_xoa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_xoa.setForeground(new java.awt.Color(255, 255, 255));
+        btn_xoa.setText("Xóa");
+        btn_xoa.setBorderPainted(false);
+        btn_xoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_xoaActionPerformed(evt);
+            }
+        });
+
         btn_huy.setBackground(new java.awt.Color(50, 50, 50));
-        btn_huy.setBorderPainted(false);
         btn_huy.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_huy.setForeground(new java.awt.Color(255, 255, 255));
+        btn_huy.setText("Hủy");
+        btn_huy.setBorderPainted(false);
         btn_huy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_huyActionPerformed(evt);
@@ -175,8 +202,10 @@ public class FormSuaNCC extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Pnl_Thongtin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(btn_xacnhan, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(btn_capnhat, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_huy, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -187,7 +216,8 @@ public class FormSuaNCC extends javax.swing.JDialog {
                 .addComponent(Pnl_Thongtin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_xacnhan, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_capnhat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_huy, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -195,10 +225,44 @@ public class FormSuaNCC extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_xacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xacnhanActionPerformed
+    private void btn_capnhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capnhatActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btn_xacnhanActionPerformed
+        NhaCungCapDTO ncc = new NhaCungCapDTO();
+        ncc.setMaNCC(lbl_mancc.getText());
+        ncc.setTenCongTy(tf_tencongtyncc.getText());
+        ncc.setDiaChi(tf_diachincc.getText());
+        ncc.setSdt(tf_sdtncc.getText());
+        ncc.setEmail(tf_emailncc.getText());
+        ncc.setNguoiLienHe(tf_nguoilhncc.getText());
+
+        // Gọi BLL sửa
+        String ketQua = bll.suaNCC(ncc);
+        JOptionPane.showMessageDialog(this, ketQua);
+        
+        // Đóng form nếu thành công
+        if (ketQua.contains("thành công")) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_btn_capnhatActionPerformed
+
+    private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
+        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(this,
+                "Bạn có chắc chắn muốn xóa NCC này?",
+                "Xác nhận",
+                JOptionPane.YES_NO_OPTION);
+        
+        if (confirm == JOptionPane.YES_OPTION) {
+            String ma = lbl_mancc.getText();
+            String ketQua = bll.xoaNCC(ma);
+            
+            JOptionPane.showMessageDialog(this, ketQua);
+            
+            if (ketQua.contains("thành công")) {
+                this.dispose();
+            }
+        }
+    }//GEN-LAST:event_btn_xoaActionPerformed
 
     private void btn_huyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_huyActionPerformed
         // TODO add your handling code here:
@@ -244,8 +308,9 @@ public class FormSuaNCC extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Pnl_Thongtin;
+    private javax.swing.JButton btn_capnhat;
     private javax.swing.JButton btn_huy;
-    private javax.swing.JButton btn_xacnhan;
+    private javax.swing.JButton btn_xoa;
     private javax.swing.JLabel lbl_mancc;
     private javax.swing.JLabel lbl_title_diachi;
     private javax.swing.JLabel lbl_title_mancc;
