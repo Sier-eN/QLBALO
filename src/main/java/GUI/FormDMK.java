@@ -4,11 +4,17 @@
  */
 package GUI;
 
+import App.LuuTruTK;
+import BLL.TaiKhoanBLL;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Nghia
  */
 public class FormDMK extends javax.swing.JDialog {
+    
+    private TaiKhoanBLL taiKhoanBLL = new TaiKhoanBLL(); // Gọi BLL
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormDMK.class.getName());
 
@@ -21,7 +27,6 @@ public class FormDMK extends javax.swing.JDialog {
     public FormDMK(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
         setLocationRelativeTo(parent);
     }
 
@@ -68,12 +73,6 @@ public class FormDMK extends javax.swing.JDialog {
                 lbl_icon_hienmatkhauMouseClicked(evt);
             }
         });
-
-        psf_mkcu.setText("jPasswordField1");
-
-        psf_mkmoi.setText("jPasswordField1");
-
-        psf_nhaplaimk.setText("jPasswordField1");
 
         btn_xacnhan.setText("Xác Nhận");
         btn_xacnhan.setBackground(new java.awt.Color(50, 50, 50));
@@ -156,7 +155,38 @@ public class FormDMK extends javax.swing.JDialog {
 
     private void btn_xacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xacnhanActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        // 0. Kiểm tra an toàn: Xem có ai đang đăng nhập không?
+        if (LuuTruTK.taiKhoanHienTai == null) {
+            JOptionPane.showMessageDialog(this, "Lỗi: Chưa đăng nhập!");
+            return;
+        }
+
+        // 1. Lấy Tên Đăng Nhập từ biến toàn cục (Session)
+        String tenDangNhap = LuuTruTK.taiKhoanHienTai.getTenDangNhap();
+
+        // 2. Lấy dữ liệu từ các ô nhập
+        String mkCu = new String(psf_mkcu.getPassword());
+        String mkMoi = new String(psf_mkmoi.getPassword());
+        String mkNhapLai = new String(psf_nhaplaimk.getPassword());
+
+        // 3. Gọi BLL xử lý (Hàm này code ở phần trước)
+        String ketQua = taiKhoanBLL.doiMatKhau(tenDangNhap, mkCu, mkMoi, mkNhapLai);
+
+        // 4. Hiển thị kết quả
+        if (ketQua.equals("Đổi mật khẩu thành công")) {
+            JOptionPane.showMessageDialog(this, ketQua);
+            
+            // (Tùy chọn) Cập nhật lại mật khẩu trong Session luôn để đồng bộ
+            LuuTruTK.taiKhoanHienTai.setMatKhau(mkMoi);
+           
+            if (ChildformQLNV.instance != null) {
+                ChildformQLNV.instance.loadTable(); // <--- Gọi hàm loadTable() từ xa
+            }
+            
+            this.dispose(); 
+        } else {
+            JOptionPane.showMessageDialog(this, ketQua);
+        }
     }//GEN-LAST:event_btn_xacnhanActionPerformed
 
     private void btn_huyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_huyActionPerformed

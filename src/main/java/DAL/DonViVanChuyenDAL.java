@@ -45,7 +45,8 @@ public class DonViVanChuyenDAL {
                     rs.getString("Email"),
                     rs.getString("NguoiLienHeChinh"),
                     rs.getString("LoaiVanChuyen"),
-                    rs.getString("ThoiGianGiaoHang")
+                    rs.getString("ThoiGianGiaoHang"),
+                    rs.getDouble("PhiVanChuyen")
                 ));
             }
         } catch (Exception e) {
@@ -73,7 +74,8 @@ public class DonViVanChuyenDAL {
                     rs.getString("Email"),
                     rs.getString("NguoiLienHeChinh"),
                     rs.getString("LoaiVanChuyen"),
-                    rs.getString("ThoiGianGiaoHang")
+                    rs.getString("ThoiGianGiaoHang"),
+                    rs.getDouble("PhiVanChuyen")
                 ));
             }
         } catch (Exception e) { e.printStackTrace(); }
@@ -81,7 +83,7 @@ public class DonViVanChuyenDAL {
     }
     
     public boolean them(DonViVanChuyenDTO dv) {
-        String sql = "INSERT INTO DonViVanChuyen VALUES(?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO DonViVanChuyen VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement p = conn.prepareStatement(sql)) {
             p.setString(1, dv.getMaDVVC());
             p.setString(2, dv.getTenCongTy());
@@ -90,12 +92,13 @@ public class DonViVanChuyenDAL {
             p.setString(5, dv.getNguoiLienHe());
             p.setString(6, dv.getLoaiVanChuyen());
             p.setString(7, dv.getThoiGianGiao());
+            p.setDouble(8, dv.getPhiVanChuyen());
             return p.executeUpdate() > 0;
         } catch (Exception e) { e.printStackTrace(); return false; }
     }
     
     public boolean sua(DonViVanChuyenDTO dv) {
-        String sql = "UPDATE DonViVanChuyen SET TenCongTy=?, SDT_LienHe=?, Email=?, NguoiLienHeChinh=?, LoaiVanChuyen=?, ThoiGianGiaoHang=? WHERE MaDVVC=?";
+        String sql = "UPDATE DonViVanChuyen SET TenCongTy=?, SDT_LienHe=?, Email=?, NguoiLienHeChinh=?, LoaiVanChuyen=?, ThoiGianGiaoHang=?, PhiVanChuyen=? WHERE MaDVVC=?";
         try (Connection conn = getConnection(); PreparedStatement p = conn.prepareStatement(sql)) {
             p.setString(1, dv.getTenCongTy());
             p.setString(2, dv.getSdt());
@@ -103,7 +106,8 @@ public class DonViVanChuyenDAL {
             p.setString(4, dv.getNguoiLienHe());
             p.setString(5, dv.getLoaiVanChuyen());
             p.setString(6, dv.getThoiGianGiao());
-            p.setString(7, dv.getMaDVVC()); // Điều kiện WHERE nằm cuối
+            p.setDouble(7, dv.getPhiVanChuyen());
+            p.setString(8, dv.getMaDVVC()); // Điều kiện WHERE nằm cuối
             return p.executeUpdate() > 0;
         } catch (Exception e) { e.printStackTrace(); return false; }
     }

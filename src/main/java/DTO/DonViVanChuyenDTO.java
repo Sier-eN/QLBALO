@@ -16,11 +16,20 @@ public class DonViVanChuyenDTO {
     private String nguoiLienHe;
     private String loaiVanChuyen;
     private String thoiGianGiao; 
+    private double phiVanChuyen;
     
     public DonViVanChuyenDTO(){
     }
 
-    public DonViVanChuyenDTO(String maDVVC, String tenCongTy, String sdt, String email, String nguoiLienHe, String loaiVanChuyen, String thoiGianGiao) {
+    public double getPhiVanChuyen() {
+        return phiVanChuyen;
+    }
+
+    public void setPhiVanChuyen(double phiVanChuyen) {
+        this.phiVanChuyen = phiVanChuyen;
+    }
+
+    public DonViVanChuyenDTO(String maDVVC, String tenCongTy, String sdt, String email, String nguoiLienHe, String loaiVanChuyen, String thoiGianGiao, double phiVanChuyen) {
         this.maDVVC = maDVVC;
         this.tenCongTy = tenCongTy;
         this.sdt = sdt;
@@ -28,6 +37,7 @@ public class DonViVanChuyenDTO {
         this.nguoiLienHe = nguoiLienHe;
         this.loaiVanChuyen = loaiVanChuyen;
         this.thoiGianGiao = thoiGianGiao;
+        this.phiVanChuyen = phiVanChuyen;
     }
 
     public String getMaDVVC() {

@@ -7,6 +7,7 @@ package GUI;
 import App.HintSupport;
 import BLL.DonViVanChuyenBLL;
 import DTO.DonViVanChuyenDTO;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class ChildformQLDVVC extends javax.swing.JPanel {
     
     private DonViVanChuyenBLL bll = new DonViVanChuyenBLL();
+    DecimalFormat df = new DecimalFormat("#,###");
 
     /**
      * Creates new form ChildformQLDVVC
@@ -32,6 +34,7 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
         HintSupport.addHint(tf_tencongty, "Nhập tên công ty...");
         HintSupport.addHint(tf_tggiaohang, "Nhập thời gian giao hàng trung bình...");
         HintSupport.addHint(tf_timkiem, "Tìm Kiếm");
+        HintSupport.addHint(tf_phivanchuyen, "Nhập phí vận chuyển...");
         
         cauHinhBang(); 
         loadTable();
@@ -41,7 +44,7 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
     private void cauHinhBang() {
         
         String[] columnNames = {
-            "Mã DVVC", "Tên Công Ty", "SĐT", "Email", "Người Liên Hệ", "Loại VC", "Thời Gian"
+            "Mã DVVC", "Tên Công Ty", "SĐT", "Email", "Người Liên Hệ", "Loại VC", "Thời Gian", "Phí Ship"
         };
 
         DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
@@ -68,7 +71,8 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
                 x.getEmail(),
                 x.getNguoiLienHe(),
                 x.getLoaiVanChuyen(),
-                x.getThoiGianGiao()
+                x.getThoiGianGiao(),
+                df.format(x.getPhiVanChuyen())
             });
         }
     }
@@ -81,7 +85,7 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
         tf_nguoilh.setText("");
         tf_loaivanchuyen.setText("");
         tf_tggiaohang.setText("");
-        
+        tf_phivanchuyen.setText("");
         // Vì bạn dùng HintSupport, có thể cần focus lại hoặc set lại hint nếu cần
         tf_tencongty.requestFocus(); 
     }
@@ -106,7 +110,8 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
                 x.getEmail(),
                 x.getNguoiLienHe(),
                 x.getLoaiVanChuyen(),
-                x.getThoiGianGiao()
+                x.getThoiGianGiao(),
+                x.getPhiVanChuyen()
             });
         }
     }
@@ -152,6 +157,8 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
         btn_them = new javax.swing.JButton();
         tf_timkiem = new javax.swing.JTextField();
         lbl_madvvc1 = new javax.swing.JLabel();
+        lbl_tggiaohang1 = new javax.swing.JLabel();
+        tf_phivanchuyen = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tb_Dulieu = new javax.swing.JTable();
 
@@ -239,6 +246,14 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
         lbl_madvvc1.setText("Tìm Kiếm:");
         lbl_madvvc1.setPreferredSize(new java.awt.Dimension(85, 16));
 
+        lbl_tggiaohang1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_tggiaohang1.setText("Phí Vận Chuyển:");
+        lbl_tggiaohang1.setPreferredSize(new java.awt.Dimension(85, 16));
+
+        tf_phivanchuyen.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tf_phivanchuyen.setText("jTextField1");
+        tf_phivanchuyen.setPreferredSize(new java.awt.Dimension(86, 16));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -257,21 +272,23 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
                     .addComponent(tf_emaildvvc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tf_madvvc, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_nguoilh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_loaivanchuyen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_tggiaohang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_nguoilh, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_loaivanchuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_tggiaohang, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_tggiaohang1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tf_nguoilh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tf_loaivanchuyen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_tggiaohang, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_tggiaohang, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                    .addComponent(tf_phivanchuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(btn_them, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(360, 360, 360)
-                .addComponent(lbl_madvvc1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(399, 399, 399)
+                .addComponent(lbl_madvvc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tf_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -297,7 +314,9 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tf_madvvc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_madvvc, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lbl_madvvc, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_tggiaohang1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_phivanchuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tf_nguoilh, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -358,6 +377,7 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
         if (checkInput(tf_nguoilh, "Nhập tên người liên hệ...", "Người Liên Hệ Chính")) return;
         if (checkInput(tf_loaivanchuyen, "Nhập loại vận chuyển...", "Loại Vận Chuyển")) return;
         if (checkInput(tf_tggiaohang, "Nhập thời gian giao hàng trung bình...", "Thời Gian Giao Hàng")) return;
+        if (checkInput(tf_phivanchuyen, "Nhập phí vận chuyển...", "Phí Vận Chuyển")) return;
 
         DonViVanChuyenDTO dv = new DonViVanChuyenDTO();
         dv.setMaDVVC(tf_madvvc.getText());
@@ -367,10 +387,21 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
         dv.setNguoiLienHe(tf_nguoilh.getText());
         dv.setLoaiVanChuyen(tf_loaivanchuyen.getText());
         dv.setThoiGianGiao(tf_tggiaohang.getText());
-
+        try {
+            double phi = Double.parseDouble(tf_phivanchuyen.getText());
+            if (phi < 0) {
+                javax.swing.JOptionPane.showMessageDialog(getFrame(), "Phí vận chuyển không được âm!");
+                return;
+            }
+            dv.setPhiVanChuyen(phi);
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(getFrame(), "Phí vận chuyển phải là số!");
+            return;
+        }
+        
         String ketQua = bll.themDVVC(dv);
 
-        javax.swing.JOptionPane.showMessageDialog(this, ketQua);
+        javax.swing.JOptionPane.showMessageDialog(getFrame(), ketQua);
 
         if (ketQua.contains("thành công")) {
             loadTable();
@@ -391,11 +422,12 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
                 String nguoilh = Tb_Dulieu.getValueAt(row, 4).toString();
                 String loai = Tb_Dulieu.getValueAt(row, 5).toString();
                 String tg = Tb_Dulieu.getValueAt(row, 6).toString();
+                String phiShip = Tb_Dulieu.getValueAt(row, 7).toString();
 
                 java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
                 FormSuaDVVC suadvvc = new FormSuaDVVC(parent, true);
                 
-                suadvvc.setDuLieu(ma, ten, sdt, email, nguoilh, loai, tg);
+                suadvvc.setDuLieu(ma, ten, sdt, email, nguoilh, loai, tg, phiShip);
                 
                 suadvvc.setTitle("Cập Nhật Đơn Vị Vận Chuyển");
                 suadvvc.setVisible(true);
@@ -423,10 +455,12 @@ public class ChildformQLDVVC extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_sdtdvvc;
     private javax.swing.JLabel lbl_tencongti;
     private javax.swing.JLabel lbl_tggiaohang;
+    private javax.swing.JLabel lbl_tggiaohang1;
     private javax.swing.JTextField tf_emaildvvc;
     private javax.swing.JTextField tf_loaivanchuyen;
     private javax.swing.JTextField tf_madvvc;
     private javax.swing.JTextField tf_nguoilh;
+    private javax.swing.JTextField tf_phivanchuyen;
     private javax.swing.JTextField tf_sdtdvvc;
     private javax.swing.JTextField tf_tencongty;
     private javax.swing.JTextField tf_tggiaohang;

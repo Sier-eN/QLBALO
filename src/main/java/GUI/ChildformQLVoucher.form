@@ -74,67 +74,57 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btn_them" min="-2" pref="173" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="477" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_timkiem" min="-2" pref="124" max="-2" attributes="0"/>
-                              <Component id="tf_timkiem" min="-2" pref="352" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lbl_timkiem" min="-2" pref="124" max="-2" attributes="0"/>
+                      <Component id="tf_timkiem" min="-2" pref="352" max="-2" attributes="0"/>
+                      <Component id="btn_them" min="-2" pref="173" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                  <Component id="lbl_timkiem" min="-2" pref="32" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tf_timkiem" min="-2" pref="45" max="-2" attributes="0"/>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
-                  <Component id="btn_them" min="-2" pref="44" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="lbl_mavoucher" min="-2" pref="32" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="tf_mavoucher" min="-2" pref="45" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="lbl_timkiem" min="-2" pref="32" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tf_timkiem" min="-2" pref="45" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btn_them" min="-2" pref="44" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="tf_mavoucher" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="lbl_mavoucher" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="tf_tenvoucher" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="lbl_tenvoucher" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cb_chucnang" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="lbl_chucnang" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="tf_giatri" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="lbl_giatri" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="tf_soluong" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="lbl_soluong" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tf_tenvoucher" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="lbl_tenvoucher" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cb_chucnang" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="lbl_chucnang" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tf_giatri" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="lbl_giatri" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tf_soluong" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="lbl_soluong" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

@@ -19,6 +19,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ChildformQLHH extends javax.swing.JPanel {
     
+    public static ChildformQLHH instance;
+    
     private HangHoaBLL bll = new HangHoaBLL();
     private NhaCungCapBLL nccBLL = new NhaCungCapBLL(); // Để lấy danh sách NCC
 
@@ -26,6 +28,8 @@ public class ChildformQLHH extends javax.swing.JPanel {
      * Creates new form ChildformQLHH
      */
     public ChildformQLHH() {
+        instance = this;
+        
         initComponents();
         
         HintSupport.addHint(tf_giaban,"Nhập giá bán sản phẩm...");

@@ -38,7 +38,6 @@ CREATE TABLE NhaCungCap (
 );
 GO
 
--- 4. Bảng Đơn Vị Vận Chuyển (Quản lý ĐVVC - Image 7)
 CREATE TABLE DonViVanChuyen (
     MaDVVC VARCHAR(20) PRIMARY KEY,
     TenCongTy NVARCHAR(100) NOT NULL,
@@ -46,7 +45,10 @@ CREATE TABLE DonViVanChuyen (
     Email VARCHAR(100),
     NguoiLienHeChinh NVARCHAR(100),
     LoaiVanChuyen NVARCHAR(50), -- Đường bộ, Hàng không...
-    ThoiGianGiaoHang NVARCHAR(50) -- Ví dụ: 3-5 ngày
+    ThoiGianGiaoHang NVARCHAR(50), -- Ví dụ: 3-5 ngày
+    
+    -- Thêm cột này để tính tiền
+    PhiVanChuyen DECIMAL(18, 0) DEFAULT 0 
 );
 GO
 
@@ -84,26 +86,186 @@ CREATE TABLE DonHang (
     Email VARCHAR(100),
     SDT VARCHAR(15),
     
-    -- Các cột mốc thời gian
-    NgayDatHang DATETIME,  -- 
-    NgayDuKien DATETIME,   -- Mới thêm: Ngày dự kiến giao
-    NgayNhanHang DATETIME, -- Mới thêm: Ngày nhận thực tế
-    
-    TrangThai NVARCHAR(50), -- Chờ xử lý, Đang giao, Hoàn thành, Đã hủy
-    
-    -- Các khóa ngoại
+    -- THÔNG TIN MUA HÀNG
     MaHangHoa VARCHAR(20),
+    SoLuong INT DEFAULT 1,    
+    TongTien DECIMAL(18, 0),  
+    
+    -- CÁC KHÓA NGOẠI KHÁC
     MaDVVC VARCHAR(20),
     MaVoucher VARCHAR(20),
     
+    -- TRẠNG THÁI (Đã sửa)
+    NgayDatHang DATETIME DEFAULT GETDATE(),
+    NgayDuKien DATETIME,
+    NgayNhanHang DATETIME,
+    
+    -- Thêm DEFAULT N'Chờ Duyệt' ở đây
+    TrangThai NVARCHAR(50) DEFAULT N'Chờ Duyệt', 
+    
+    -- LIÊN KẾT
     FOREIGN KEY (MaHangHoa) REFERENCES HangHoa(MaHangHoa),
     FOREIGN KEY (MaDVVC) REFERENCES DonViVanChuyen(MaDVVC),
     FOREIGN KEY (MaVoucher) REFERENCES Voucher(MaVoucher)
 );
 GO
 
-USE master;
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TRIGGER trg_XuLyDonHang
+ON DonHang
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    -- 1. TỰ ĐỘNG TÍNH TỔNG TIỀN
+    -- Logic: Lấy các dòng vừa thêm/sửa (trong bảng inserted)
+    -- Join với Hàng hóa, Voucher, DVVC để lấy giá
+    UPDATE dh
+    SET dh.TongTien = 
+        (hh.GiaBan * i.SoLuong) -- Tiền hàng
+        - ISNULL(v.GiaTri, 0)   -- Trừ Voucher (ISNULL là để nếu ko có voucher thì tính là 0)
+        + ISNULL(dv.PhiVanChuyen, 0) -- Cộng phí ship
+    FROM DonHang dh
+    JOIN inserted i ON dh.MaDH = i.MaDH
+    JOIN HangHoa hh ON dh.MaHangHoa = hh.MaHangHoa
+    LEFT JOIN Voucher v ON dh.MaVoucher = v.MaVoucher -- Dùng LEFT JOIN vì có thể ko có voucher
+    JOIN DonViVanChuyen dv ON dh.MaDVVC = dv.MaDVVC;
+
+    -- 2. TỰ ĐỘNG TRỪ KHO (CHỈ KHI ĐÃ THANH TOÁN)
+    -- Logic: Chỉ trừ khi đơn hàng ở trạng thái 'Đã thanh toán'
+    -- Lưu ý: Để tránh trừ 2 lần khi sửa đơn, ta cần kiểm tra kỹ thuật (nhưng ở mức cơ bản, code dưới đây sẽ trừ khi trạng thái là Đã thanh toán)
+    
+    -- Trường hợp 1: Mới thêm đơn hàng (INSERT) mà đã set là "Đã thanh toán" luôn
+    IF EXISTS (SELECT * FROM inserted WHERE TrangThai = N'Đã Giao Hàng')
+       AND NOT EXISTS (SELECT * FROM deleted) -- Đảm bảo đây là lệnh INSERT mới
+    BEGIN
+        UPDATE hh
+        SET hh.SoLuong = hh.SoLuong - i.SoLuong
+        FROM HangHoa hh
+        JOIN inserted i ON hh.MaHangHoa = i.MaHangHoa
+        WHERE i.TrangThai = N'Đã Giao Hàng';
+    END
+
+    -- Trường hợp 2: Sửa đơn hàng (UPDATE) từ trạng thái khác -> sang "Đã thanh toán"
+    IF EXISTS (SELECT * FROM inserted WHERE TrangThai = N'Đã Giao Hàng')
+       AND EXISTS (SELECT * FROM deleted WHERE TrangThai <> N'Đã Giao Hàng') -- Trước đó chưa thanh toán
+    BEGIN
+        UPDATE hh
+        SET hh.SoLuong = hh.SoLuong - i.SoLuong
+        FROM HangHoa hh
+        JOIN inserted i ON hh.MaHangHoa = i.MaHangHoa
+        WHERE i.TrangThai = N'Đã Giao Hàng';
+    END
+END;
 GO
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE sp_CapNhatNhanVien
+    @MaNhanVien VARCHAR(20),
+    @TenNhanVien NVARCHAR(100),
+    @DiaChi NVARCHAR(255),
+    @Email VARCHAR(100),
+    @SDT VARCHAR(15),
+    @TenDangNhap VARCHAR(50), -- Cho phép sửa tên đăng nhập nếu muốn
+    @MatKhau VARCHAR(255),
+    @VaiTro NVARCHAR(50)
+AS
+BEGIN
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        -- 1. Cập nhật bảng Tài Khoản trước
+        -- (Tìm ID_TaiKhoan thông qua MaNhanVien)
+        UPDATE TaiKhoan
+        SET TenDangNhap = @TenDangNhap,
+            MatKhau = @MatKhau,
+            VaiTro = @VaiTro
+        FROM TaiKhoan t
+        INNER JOIN NhanVien n ON t.ID_TaiKhoan = n.ID_TaiKhoan
+        WHERE n.MaNhanVien = @MaNhanVien;
+
+        -- 2. Cập nhật bảng Nhân Viên
+        UPDATE NhanVien
+        SET TenNhanVien = @TenNhanVien,
+            DiaChi = @DiaChi,
+            Email = @Email,
+            SDT = @SDT
+        WHERE MaNhanVien = @MaNhanVien;
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END;
+GO
+
+CREATE OR ALTER PROCEDURE sp_ThemNhanVienVaTaiKhoan
+    @MaNhanVien VARCHAR(20),
+    @TenNhanVien NVARCHAR(100),
+    @DiaChi NVARCHAR(255),
+    @Email VARCHAR(100),
+    @SDT VARCHAR(15),
+    @TenDangNhap VARCHAR(50),
+    @MatKhau VARCHAR(255),
+    @VaiTro NVARCHAR(50)
+AS
+BEGIN
+    BEGIN TRANSACTION; -- Bắt đầu giao dịch an toàn
+    BEGIN TRY
+        -- 1. Thêm vào bảng TaiKhoan
+        INSERT INTO TaiKhoan (TenDangNhap, MatKhau, VaiTro)
+        VALUES (@TenDangNhap, @MatKhau, @VaiTro);
+
+        -- 2. Lấy ID_TaiKhoan vừa sinh ra
+        DECLARE @NewID INT = SCOPE_IDENTITY();
+
+        -- 3. Thêm vào bảng NhanVien (Dùng ID vừa lấy)
+        INSERT INTO NhanVien (MaNhanVien, TenNhanVien, DiaChi, Email, SDT, ID_TaiKhoan)
+        VALUES (@MaNhanVien, @TenNhanVien, @DiaChi, @Email, @SDT, @NewID);
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW; -- Ném lỗi ra nếu trùng mã hoặc lỗi hệ thống
+    END CATCH
+END;
+GO
+
+CREATE OR ALTER PROCEDURE sp_XoaNhanVien
+    @MaNhanVien VARCHAR(20)
+AS
+BEGIN
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        -- 1. Tìm ID_TaiKhoan để xóa sau này
+        DECLARE @ID_TaiKhoan INT;
+        SELECT @ID_TaiKhoan = ID_TaiKhoan FROM NhanVien WHERE MaNhanVien = @MaNhanVien;
+
+        -- 2. Xóa NhanVien trước
+        DELETE FROM NhanVien WHERE MaNhanVien = @MaNhanVien;
+
+        -- 3. Xóa TaiKhoan sau (Nếu tìm thấy ID)
+        IF @ID_TaiKhoan IS NOT NULL
+        BEGIN
+            DELETE FROM TaiKhoan WHERE ID_TaiKhoan = @ID_TaiKhoan;
+        END
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW; -- Ném lỗi ra (ví dụ: Không xóa được do NV đã lập đơn hàng)
+    END CATCH
+END;
+GO
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+GO
+USE master;
+Go
 
 -- Bước 1: Ngắt kết nối các user đang dùng database (nếu có)
 ALTER DATABASE QuanLyBaLoCapSach
@@ -113,6 +275,8 @@ GO
 -- Bước 2: Xóa database
 DROP DATABASE QuanLyBaLoCapSach;
 GO
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO TaiKhoan (TenDangNhap, MatKhau, VaiTro)
 VALUES ('nhanvien', '1', 'NhanVien')
@@ -137,15 +301,14 @@ DECLARE @NewID INT = SCOPE_IDENTITY();
 INSERT INTO NhanVien (MaNhanVien, TenNhanVien, DiaChi, Email, SDT, ID_TaiKhoan)
 VALUES ('NV001', N'Quản Trị Viên', N'Hà Nội', 'admin@gmail.com', '0909123456', @NewID);
 GO
+-- 1. Giao Hàng Tiết Kiệm (Đi thường - Giá rẻ)
+INSERT INTO DonViVanChuyen (MaDVVC, TenCongTy, SDT_LienHe, Email, NguoiLienHeChinh, LoaiVanChuyen, ThoiGianGiaoHang, PhiVanChuyen)
+VALUES ('GHTK', N'Giao Hàng Tiết Kiệm', '1900 6092', 'cskh@ghtk.vn', N'Nguyễn Văn A', N'Đường Bộ', N'3-5 Ngày', 30000);
 
-INSERT INTO DonViVanChuyen (MaDVVC, TenCongTy, SDT_LienHe, Email, NguoiLienHeChinh, LoaiVanChuyen, ThoiGianGiaoHang)
-VALUES ('GHTK', N'Giao Hàng Tiết Kiệm', '19006092', 'cskh@ghtk.vn', N'Nguyễn Văn A', N'Đường Bộ', N'2-3 Ngày');
-
--- Ví dụ 2: Viettel Post (Hỏa Tốc)
-INSERT INTO DonViVanChuyen (MaDVVC, TenCongTy, SDT_LienHe, Email, NguoiLienHeChinh, LoaiVanChuyen, ThoiGianGiaoHang)
-VALUES ('VTP', N'Viettel Post', '19008095', 'support@viettelpost.com.vn', N'Trần Thị B', N'Hỏa Tốc', N'24 Giờ');
+-- 2. Viettel Post (Hỏa tốc - Giá cao hơn)
+INSERT INTO DonViVanChuyen (MaDVVC, TenCongTy, SDT_LienHe, Email, NguoiLienHeChinh, LoaiVanChuyen, ThoiGianGiaoHang, PhiVanChuyen)
+VALUES ('VTP', N'Viettel Post', '1900 8095', 'support@viettelpost.com.vn', N'Trần Thị B', N'Hỏa Tốc', N'24 Giờ', 55000);
 GO
-
 INSERT INTO NhaCungCap (MaNhaCungCap, TenCongTy, DiaChi, SDT_LienHe, Email, NguoiLienHeChinh)
 VALUES ('NCC01', N'Công ty May Mặc Việt', N'Hà Nội', '0988111222', 'lienhe@maymac.vn', N'Trần Văn A');
 
@@ -168,4 +331,26 @@ VALUES ('SALE50K', N'Giảm giá Khai Trương', N'Giảm Giá Hàng', 50000, 10
 -- Ví dụ 2: Voucher miễn phí vận chuyển (Tối đa 30k)
 INSERT INTO Voucher (MaVoucher, TenVoucher, ChucNang, GiaTri, SoLuong)
 VALUES ('FREESHIP', N'Miễn Phí Vận Chuyển Hè', N'Free Ship', 30000, 200);
+GO
+
+-- 1. Đơn hàng mới (Trạng thái: Chờ Duyệt) - Mua Balo (HH01), ship GHTK, không dùng Voucher
+INSERT INTO DonHang (MaDH, TenNguoiMua, DiaChi, Email, SDT, MaHangHoa, SoLuong, TongTien, MaDVVC, MaVoucher, NgayDatHang, NgayDuKien, NgayNhanHang, TrangThai)
+VALUES ('DH001', N'Nguyễn Văn An', N'123 Cầu Giấy, Hà Nội', 'an@gmail.com', '0912345678', 'HH01', 1, 0, 'GHTK', NULL, GETDATE(), GETDATE()+3, NULL, N'Chờ Duyệt');
+
+-- 2. Đơn hàng đang đi (Trạng thái: Đang Giao) - Mua Cặp (HH02), ship Viettel, dùng Voucher 50K
+INSERT INTO DonHang (MaDH, TenNguoiMua, DiaChi, Email, SDT, MaHangHoa, SoLuong, TongTien, MaDVVC, MaVoucher, NgayDatHang, NgayDuKien, NgayNhanHang, TrangThai)
+VALUES ('DH002', N'Trần Thị Bích', N'456 Lê Lợi, TP.HCM', 'bich@gmail.com', '0987654321', 'HH02', 2, 0, 'VTP', 'SALE50K', GETDATE()-1, GETDATE()+2, NULL, N'Đang Giao');
+
+-- 3. Đơn hàng thành công (Trạng thái: Đã thanh toán) - Mua Balo (HH01), ship GHTK, dùng Voucher Freeship
+-- (Lưu ý: Trigger sẽ tự động trừ kho của HH01 đi 1 cái)
+INSERT INTO DonHang (MaDH, TenNguoiMua, DiaChi, Email, SDT, MaHangHoa, SoLuong, TongTien, MaDVVC, MaVoucher, NgayDatHang, NgayDuKien, NgayNhanHang, TrangThai)
+VALUES ('DH003', N'Lê Văn Cường', N'789 Hải Phòng, Đà Nẵng', 'cuong@gmail.com', '0905123123', 'HH01', 1, 0, 'GHTK', 'FREESHIP', '2023-11-20', '2023-11-23', '2023-11-23', N'Đã thanh toán');
+
+-- 4. Đơn hàng bị bom/hủy (Trạng thái: Đã Hủy) - Mua số lượng lớn 10 cái nhưng hủy
+INSERT INTO DonHang (MaDH, TenNguoiMua, DiaChi, Email, SDT, MaHangHoa, SoLuong, TongTien, MaDVVC, MaVoucher, NgayDatHang, NgayDuKien, NgayNhanHang, TrangThai)
+VALUES ('DH004', N'Phạm Tuấn Tú', N'Số 1 Hùng Vương, Cần Thơ', 'tuantut@gmail.com', '0939393939', 'HH02', 10, 0, 'VTP', NULL, '2023-10-10', '2023-10-12', NULL, N'Đã Hủy');
+
+-- 5. Đơn hàng thành công khác (Trạng thái: Đã thanh toán) - Mua Cặp (HH02)
+INSERT INTO DonHang (MaDH, TenNguoiMua, DiaChi, Email, SDT, MaHangHoa, SoLuong, TongTien, MaDVVC, MaVoucher, NgayDatHang, NgayDuKien, NgayNhanHang, TrangThai)
+VALUES ('DH005', N'Hoàng Thùy Linh', N'Vĩnh Yên, Vĩnh Phúc', 'linh@gmail.com', '0968686868', 'HH02', 3, 0, 'GHTK', 'SALE50K', GETDATE(), GETDATE()+3, GETDATE(), N'Đã thanh toán');
 GO

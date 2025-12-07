@@ -54,4 +54,20 @@ public class TaiKhoanDAL {
         }
         return tk;
     }
+    
+    public boolean capNhatMatKhau(String tenDangNhap, String matKhauMoi) {
+        String query = "UPDATE TaiKhoan SET MatKhau = ? WHERE TenDangNhap = ?";
+        try (Connection ketnoi = getConnection();
+             PreparedStatement pstmt = ketnoi.prepareStatement(query)) {
+            
+            pstmt.setString(1, matKhauMoi);
+            pstmt.setString(2, tenDangNhap);
+            
+            int rows = pstmt.executeUpdate();
+            return rows > 0; // Trả về true nếu update thành công
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

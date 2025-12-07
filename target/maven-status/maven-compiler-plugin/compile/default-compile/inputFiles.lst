@@ -2,10 +2,12 @@ D:\quanlybalo\src\main\java\App\DateTimeBoGoc.java
 D:\quanlybalo\src\main\java\App\HintSupport.java
 D:\quanlybalo\src\main\java\App\LuuTruTK.java
 D:\quanlybalo\src\main\java\App\main.java
+D:\quanlybalo\src\main\java\BLL\DonHangBLL.java
 D:\quanlybalo\src\main\java\BLL\DonViVanChuyenBLL.java
 D:\quanlybalo\src\main\java\BLL\HangHoaBLL.java
 D:\quanlybalo\src\main\java\BLL\MainController.java
 D:\quanlybalo\src\main\java\BLL\NhaCungCapBLL.java
+D:\quanlybalo\src\main\java\BLL\NhanVienBLL.java
 D:\quanlybalo\src\main\java\BLL\TaiKhoanBLL.java
 D:\quanlybalo\src\main\java\BLL\VoucherBLL.java
 D:\quanlybalo\src\main\java\DAL\Database.java
@@ -13,12 +15,14 @@ D:\quanlybalo\src\main\java\DAL\DonHangDAL.java
 D:\quanlybalo\src\main\java\DAL\DonViVanChuyenDAL.java
 D:\quanlybalo\src\main\java\DAL\HangHoaDAL.java
 D:\quanlybalo\src\main\java\DAL\NhaCungCapDAL.java
+D:\quanlybalo\src\main\java\DAL\NhanVienDAL.java
 D:\quanlybalo\src\main\java\DAL\TaiKhoanDAL.java
 D:\quanlybalo\src\main\java\DAL\VoucherDAL.java
 D:\quanlybalo\src\main\java\DTO\DonHangDTO.java
 D:\quanlybalo\src\main\java\DTO\DonViVanChuyenDTO.java
 D:\quanlybalo\src\main\java\DTO\HangHoaDTO.java
 D:\quanlybalo\src\main\java\DTO\NhaCungCapDTO.java
+D:\quanlybalo\src\main\java\DTO\NhanVienDTO.java
 D:\quanlybalo\src\main\java\DTO\TaiKhoanDTO.java
 D:\quanlybalo\src\main\java\DTO\VoucherDTO.java
 D:\quanlybalo\src\main\java\GUI\ChildformQLDH.java

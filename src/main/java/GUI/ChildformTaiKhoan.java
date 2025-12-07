@@ -4,19 +4,60 @@
  */
 package GUI;
 
+import App.LuuTruTK;
+import BLL.NhanVienBLL;
+import DTO.NhanVienDTO;
+
 /**
  *
  * @author Nghia
  */
 public class ChildformTaiKhoan extends javax.swing.JPanel {
 
+    private NhanVienBLL nvBLL = new NhanVienBLL();
     /**
      * Creates new form ChildformTaiKhoan
      */
     public ChildformTaiKhoan() {
         initComponents();
+        loadThongTinCaNhan();
     }
 
+    private void loadThongTinCaNhan() {
+        // 1. Kiểm tra đã đăng nhập chưa
+        if (LuuTruTK.taiKhoanHienTai == null) {
+            return; // Chưa đăng nhập thì thôi
+        }
+        
+        // 2. Lấy tên đăng nhập hiện tại
+        String username = LuuTruTK.taiKhoanHienTai.getTenDangNhap();
+        
+        // 3. Gọi BLL lấy thông tin chi tiết
+        NhanVienDTO nv = nvBLL.layThongTinCaNhan(username);
+        
+        if (nv != null) {
+            // 4. Gán dữ liệu lên Label
+            lbl_header_tennguoidung.setText(nv.getTenNV()); // Tên to ở trên cùng
+            lbl_tennguoidung.setText(nv.getTenNV());
+            
+            lbl_taikhoan.setText(nv.getTenDangNhap());
+            
+            // Mật khẩu thì nên ẩn đi hoặc hiện dấu sao
+            String matKhauAn = "*".repeat(nv.getMatKhau().length());
+            lbl_matkhau.setText(matKhauAn); 
+            
+            // Lưu ý: Trong code GUI của bạn, lbl_title_diachi có text là "Mã Nhân Viên"
+            // Nên tôi gán Mã NV vào lbl_manv (hoặc lbl_diachi tùy cách bạn đặt tên biến)
+            lbl_manv.setText(nv.getMaNV()); 
+            
+            // Nếu bạn muốn hiện địa chỉ thật, hãy đảm bảo có label tương ứng
+            // Ví dụ: lbl_diachi.setText(nv.getDiaChi());
+            
+            lbl_email.setText(nv.getEmail());
+            lbl_sdt.setText(nv.getSdt());
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,7 +83,7 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
         lbl_tennguoidung = new javax.swing.JLabel();
         lbl_taikhoan = new javax.swing.JLabel();
         lbl_matkhau = new javax.swing.JLabel();
-        lbl_diachi = new javax.swing.JLabel();
+        lbl_manv = new javax.swing.JLabel();
         lbl_email = new javax.swing.JLabel();
         lbl_sdt = new javax.swing.JLabel();
         btn_dangxuat = new javax.swing.JButton();
@@ -140,9 +181,9 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
         lbl_matkhau.setText("************");
         lbl_matkhau.setToolTipText("");
 
-        lbl_diachi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbl_diachi.setText("NV2605");
-        lbl_diachi.setToolTipText("");
+        lbl_manv.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_manv.setText("NV2605");
+        lbl_manv.setToolTipText("");
 
         lbl_email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_email.setText("ng**************05@gmail.com");
@@ -194,7 +235,7 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
                             .addComponent(lbl_title_diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_manv, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_email, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -226,7 +267,7 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
                                     .addComponent(btn_doimatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbl_matkhau, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbl_manv, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbl_email, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -278,9 +319,9 @@ public class ChildformTaiKhoan extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_avatar;
-    private javax.swing.JLabel lbl_diachi;
     private javax.swing.JLabel lbl_email;
     private javax.swing.JLabel lbl_header_tennguoidung;
+    private javax.swing.JLabel lbl_manv;
     private javax.swing.JLabel lbl_matkhau;
     private javax.swing.JLabel lbl_sdt;
     private javax.swing.JLabel lbl_taikhoan;
