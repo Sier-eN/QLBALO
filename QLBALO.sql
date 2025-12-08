@@ -419,18 +419,18 @@ VALUES ('DH001', N'Nguyễn Văn An', N'123 Cầu Giấy, Hà Nội', 'an@gmail.
 
 -- 2. Đơn hàng đang đi (Trạng thái: Đang Giao) - Mua Cặp (HH02), ship Viettel, dùng Voucher 50K
 INSERT INTO DonHang (MaDH, TenNguoiMua, DiaChi, Email, SDT, MaHangHoa, SoLuong, TongTien, MaDVVC, MaVoucher, NgayDatHang, NgayDuKien, NgayNhanHang, TrangThai)
-VALUES ('DH002', N'Trần Thị Bích', N'456 Lê Lợi, TP.HCM', 'bich@gmail.com', '0987654321', 'HH02', 2, 0, 'VTP', 'SALE50K', GETDATE()-1, GETDATE()+2, NULL, N'Đang Giao');
+VALUES ('DH002', N'Trần Thị Bích', N'456 Lê Lợi, TP.HCM', 'bich@gmail.com', '0987654321', 'HH02', 2, 0, 'VTP', 'SALE50K', GETDATE()-1, GETDATE()+2, NULL, N'Đang Giao Hàng');
 
 -- 3. Đơn hàng thành công (Trạng thái: Đã thanh toán) - Mua Balo (HH01), ship GHTK, dùng Voucher Freeship
 -- (Lưu ý: Trigger sẽ tự động trừ kho của HH01 đi 1 cái)
 INSERT INTO DonHang (MaDH, TenNguoiMua, DiaChi, Email, SDT, MaHangHoa, SoLuong, TongTien, MaDVVC, MaVoucher, NgayDatHang, NgayDuKien, NgayNhanHang, TrangThai)
-VALUES ('DH003', N'Lê Văn Cường', N'789 Hải Phòng, Đà Nẵng', 'cuong@gmail.com', '0905123123', 'HH01', 1, 0, 'GHTK', 'FREESHIP', '2023-11-20', '2023-11-23', '2023-11-23', N'Đã thanh toán');
+VALUES ('DH003', N'Lê Văn Cường', N'789 Hải Phòng, Đà Nẵng', 'cuong@gmail.com', '0905123123', 'HH01', 1, 0, 'GHTK', 'FREESHIP', '2023-11-20', '2023-11-23', '2023-11-23', N'Đã Giao Hàng');
 
 -- 4. Đơn hàng bị bom/hủy (Trạng thái: Đã Hủy) - Mua số lượng lớn 10 cái nhưng hủy
 INSERT INTO DonHang (MaDH, TenNguoiMua, DiaChi, Email, SDT, MaHangHoa, SoLuong, TongTien, MaDVVC, MaVoucher, NgayDatHang, NgayDuKien, NgayNhanHang, TrangThai)
-VALUES ('DH004', N'Phạm Tuấn Tú', N'Số 1 Hùng Vương, Cần Thơ', 'tuantut@gmail.com', '0939393939', 'HH02', 10, 0, 'VTP', NULL, '2023-10-10', '2023-10-12', NULL, N'Đã Hủy');
+VALUES ('DH004', N'Phạm Tuấn Tú', N'Số 1 Hùng Vương, Cần Thơ', 'tuantut@gmail.com', '0939393939', 'HH02', 10, 0, 'VTP', NULL, '2023-10-10', '2023-10-12', NULL, N'Hủy Đơn');
 
 -- 5. Đơn hàng thành công khác (Trạng thái: Đã thanh toán) - Mua Cặp (HH02)
 INSERT INTO DonHang (MaDH, TenNguoiMua, DiaChi, Email, SDT, MaHangHoa, SoLuong, TongTien, MaDVVC, MaVoucher, NgayDatHang, NgayDuKien, NgayNhanHang, TrangThai)
-VALUES ('DH005', N'Hoàng Thùy Linh', N'Vĩnh Yên, Vĩnh Phúc', 'linh@gmail.com', '0968686868', 'HH02', 3, 0, 'GHTK', 'SALE50K', GETDATE(), GETDATE()+3, GETDATE(), N'Đã thanh toán');
+VALUES ('DH005', N'Hoàng Thùy Linh', N'Vĩnh Yên, Vĩnh Phúc', 'linh@gmail.com', '0968686868', 'HH02', 3, 0, 'GHTK', 'SALE50K', GETDATE(), GETDATE()+3, GETDATE(), N'Đã Giao Hàng');
 GO
