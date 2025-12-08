@@ -267,16 +267,15 @@ public class FormSuaHH extends javax.swing.JDialog {
     private void btn_capnhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capnhatActionPerformed
         // TODO add your handling code here:
         HangHoaDTO hh = new HangHoaDTO();
-        hh.setMaHangHoa(lbl_mahh.getText()); // Lấy mã từ Label
+        hh.setMaHangHoa(lbl_mahh.getText());
         hh.setTenHangHoa(tf_tenhh.getText().trim());
         
         try {
-            // Chuyển đổi số
-            hh.setSoLuong(Integer.parseInt(tf_soluong.getText().trim()));
+            hh.setSoLuongNhap(Integer.parseInt(tf_soluong.getText().trim()));
             hh.setGiaNhap(Double.parseDouble(tf_gianhap.getText().trim()));
             hh.setGiaBan(Double.parseDouble(tf_giaban.getText().trim()));
             
-            if (hh.getSoLuong() < 0 || hh.getGiaNhap() < 0 || hh.getGiaBan() < 0) {
+            if (hh.getSoLuongNhap() < 0 || hh.getGiaNhap() < 0 || hh.getGiaBan() < 0) {
                 JOptionPane.showMessageDialog(this, "Số lượng và Giá không được âm!");
                 return;
             }
@@ -285,14 +284,12 @@ public class FormSuaHH extends javax.swing.JDialog {
             return;
         }
         
-        // Lấy Mã NCC từ ComboBox
         if (cb_congty.getSelectedItem() != null) {
             String selected = cb_congty.getSelectedItem().toString();
             String maNCC = selected.split(" - ")[0];
             hh.setMaNhaCungCap(maNCC);
         }
 
-        // 2. Gọi BLL Sửa
         String ketQua = hhBLL.suaHangHoa(hh);
         JOptionPane.showMessageDialog(this, ketQua);
         

@@ -22,7 +22,8 @@ public class HangHoaBLL {
     public String themHangHoa(HangHoaDTO hh) {
         if (hh.getMaHangHoa().isEmpty()) return "Vui lòng nhập Mã hàng hóa!";
         if (hh.getTenHangHoa().isEmpty()) return "Vui lòng nhập Tên hàng hóa!";
-        if (hh.getSoLuong() < 0) return "Số lượng không được âm!";
+        // Sửa: Kiểm tra soLuongNhap
+        if (hh.getSoLuongNhap() < 0) return "Số lượng nhập không được âm!";
         if (hh.getGiaBan() < 0 || hh.getGiaNhap() < 0) return "Giá tiền không được âm!";
         
         if (dal.them(hh)) return "Thêm thành công";
@@ -30,6 +31,8 @@ public class HangHoaBLL {
     }
 
     public String suaHangHoa(HangHoaDTO hh) {
+        // Sửa: Kiểm tra soLuongConLai
+        if (hh.getSoLuongConLai() < 0) return "Số lượng tồn kho không được âm!";
         if (dal.sua(hh)) return "Cập nhật thành công";
         else return "Cập nhật thất bại";
     }

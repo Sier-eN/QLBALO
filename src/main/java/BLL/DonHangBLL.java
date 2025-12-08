@@ -23,8 +23,16 @@ public class DonHangBLL {
     public String themDonHang(DonHangDTO dh) {
         if (dh.getMaDH().isEmpty()) return "Mã ĐH trống!";
         if (dh.getSoLuong() <= 0) return "Số lượng phải > 0";
-        if (dal.them(dh)) return "Thêm thành công";
-        return "Thêm thất bại (Có thể trùng mã)";
+        
+        double[] thongTin = dal.getThongTinHangHoa(dh.getMaHangHoa());
+        int tonKho = (int) thongTin[1];
+        if (tonKho < dh.getSoLuong()) {
+            return "Kho không đủ hàng! (Hiện còn: " + tonKho + ")";
+        }
+        if (dal.them(dh)) {
+            return "Thêm thành công";
+        }
+        return "Thêm thất bại (Có thể trùng mã ĐH)";
     }
 
     public String capNhatDonHang(DonHangDTO dh) {
@@ -57,31 +65,24 @@ public class DonHangBLL {
     
     // 1. Kiểm tra logic chuyển đổi trạng thái
     public String kiemTraTrangThaiHople(String cu, String moi) {
-        // Nếu không đổi trạng thái thì OK
         if (cu.equals(moi)) return "OK"; 
-
+        
+        // Logic chặt chẽ
         switch (cu) {
             case "Chờ Duyệt":
-                // Chỉ được lên Chờ Giao Hàng hoặc Hủy
-                if (moi.equals("Chờ Giao Hàng") || moi.equals("Hủy Đơn")) {
-                     return "OK";
-                }
-                return "Đơn 'Chờ Duyệt' chỉ có thể chuyển sang 'Chờ Giao Hàng' hoặc 'Hủy Đơn'!";
-
+                if (moi.equals("Chờ Giao Hàng") || moi.equals("Hủy Đơn")) return "OK";
+                return "Đơn 'Chờ Duyệt' chỉ được sang 'Chờ Giao' hoặc 'Hủy'!";
             case "Chờ Giao Hàng":
-                // Chỉ được lên Đã Giao hoặc Hủy
-                if (moi.equals("Hủy Đơn") || moi.equals("Đã Giao Hàng")) {
-                    return "OK";
-                }
-                return "Đơn 'Chờ Giao Hàng' chỉ có thể chuyển sang 'Đã Giao Hàng' hoặc 'Hủy Đơn'!";
-
-            case "Đã Giao Hàng":
-            case "Hủy Đơn":
-                // Trạng thái cuối cùng, không được sửa nữa
-                return "Đơn hàng đã hoàn tất, không thể thay đổi trạng thái!";
+                if (moi.equals("Đã Giao Hàng") || moi.equals("Hủy Đơn")) return "OK";
+                return "Đơn 'Chờ Giao' chỉ được sang 'Đã Giao' hoặc 'Hủy'!";
+            case "Đã Giao Hàng": // Đã trừ kho rồi
+                if (moi.equals("Hủy Đơn")) return "OK"; // Cho phép hủy để hoàn kho (nhờ Trigger)
+                return "Đơn đã giao chỉ có thể Hủy (Hoàn hàng)!";
                 
-            default:
-                return "OK";
+            case "Hủy Đơn":
+                return "Đơn đã hủy không thể khôi phục!";
+                
+            default: return "OK";
         }
     }
 

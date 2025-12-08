@@ -11,20 +11,24 @@ package DTO;
 public class HangHoaDTO {
     private String maHangHoa;
     private String tenHangHoa;
-    private int soLuong;
+    private int soLuongNhap;      // Hiển thị SL Nhập
+    private int soLuongConLai;    // Hiển thị SL Còn
     private double giaBan;
     private double giaNhap;
-    private String maNhaCungCap; // Lưu mã để tương tác với SQL
+    private double tongTienNhap;  // Thêm: Hiển thị Tổng tiền nhập
+    private String maNhaCungCap;
 
     public HangHoaDTO() {
     }
 
-    public HangHoaDTO(String maHangHoa, String tenHangHoa, int soLuong, double giaBan, double giaNhap, String maNhaCungCap) {
+    public HangHoaDTO(String maHangHoa, String tenHangHoa, int soLuongNhap, int soLuongConLai, double giaBan, double giaNhap, double tongTienNhap, String maNhaCungCap) {
         this.maHangHoa = maHangHoa;
         this.tenHangHoa = tenHangHoa;
-        this.soLuong = soLuong;
+        this.soLuongNhap = soLuongNhap;
+        this.soLuongConLai = soLuongConLai;
         this.giaBan = giaBan;
         this.giaNhap = giaNhap;
+        this.tongTienNhap = tongTienNhap;
         this.maNhaCungCap = maNhaCungCap;
     }
 
@@ -44,12 +48,20 @@ public class HangHoaDTO {
         this.tenHangHoa = tenHangHoa;
     }
 
-    public int getSoLuong() {
-        return soLuong;
+    public int getSoLuongNhap() {
+        return soLuongNhap;
     }
 
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+    public void setSoLuongNhap(int soLuongNhap) {
+        this.soLuongNhap = soLuongNhap;
+    }
+
+    public int getSoLuongConLai() {
+        return soLuongConLai;
+    }
+
+    public void setSoLuongConLai(int soLuongConLai) {
+        this.soLuongConLai = soLuongConLai;
     }
 
     public double getGiaBan() {
@@ -68,6 +80,14 @@ public class HangHoaDTO {
         this.giaNhap = giaNhap;
     }
 
+    public double getTongTienNhap() {
+        return tongTienNhap;
+    }
+
+    public void setTongTienNhap(double tongTienNhap) {
+        this.tongTienNhap = tongTienNhap;
+    }
+
     public String getMaNhaCungCap() {
         return maNhaCungCap;
     }
@@ -75,4 +95,6 @@ public class HangHoaDTO {
     public void setMaNhaCungCap(String maNhaCungCap) {
         this.maNhaCungCap = maNhaCungCap;
     }
+
+    
 }

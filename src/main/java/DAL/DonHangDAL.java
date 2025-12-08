@@ -88,7 +88,9 @@ public class DonHangDAL {
 
     // 3. Thêm
     public boolean them(DonHangDTO dh) {
-        String sql = "INSERT INTO DonHang (MaDH, TenNguoiMua, DiaChi, Email, SDT, MaHangHoa, SoLuong, MaDVVC, MaVoucher, NgayDatHang, TrangThai) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        // Ta truyền TongTien = 0. Trigger sẽ tự lấy giá * số lượng - voucher + phí ship để update lại.
+        String sql = "INSERT INTO DonHang (MaDH, TenNguoiMua, DiaChi, Email, SDT, MaHangHoa, SoLuong, TongTien, MaDVVC, MaVoucher, NgayDatHang, TrangThai) VALUES (?,?,?,?,?,?,?, 0, ?,?,?,?)";
+        
         try (Connection conn = getConnection(); PreparedStatement p = conn.prepareStatement(sql)) {
             p.setString(1, dh.getMaDH());
             p.setString(2, dh.getTenNguoiMua());
@@ -98,24 +100,40 @@ public class DonHangDAL {
             p.setString(6, dh.getMaHangHoa());
             p.setInt(7, dh.getSoLuong());
             p.setString(8, dh.getMaDVVC());
-            p.setString(9, dh.getMaVoucher());
+            if (dh.getMaVoucher() == null || dh.getMaVoucher().isEmpty()) {
+                p.setNull(9, java.sql.Types.VARCHAR);
+            } else {
+                p.setString(9, dh.getMaVoucher());
+            }
             p.setDate(10, dh.getNgayDat());
             p.setString(11, dh.getTrangThai());
             return p.executeUpdate() > 0;
-        } catch (Exception e) { e.printStackTrace(); return false; }
+        } catch (Exception e) { 
+            e.printStackTrace(); 
+            return false; 
+        }
     }
     
     // 4. Sửa
     public boolean sua(DonHangDTO dh) {
-        String sql = "UPDATE DonHang SET TenNguoiMua=?, DiaChi=?, SDT=?, MaDVVC=?, TrangThai=?, NgayDuKien=? WHERE MaDH=?";
+        String sql = "UPDATE DonHang SET TenNguoiMua=?, DiaChi=?, SDT=?, Email=?, MaDVVC=?, TrangThai=?, NgayDuKien=?, MaHangHoa=?, SoLuong=?, MaVoucher=? WHERE MaDH=?";
         try (Connection conn = getConnection(); PreparedStatement p = conn.prepareStatement(sql)) {
             p.setString(1, dh.getTenNguoiMua());
             p.setString(2, dh.getDiaChi());
             p.setString(3, dh.getSdt());
-            p.setString(4, dh.getMaDVVC());
-            p.setString(5, dh.getTrangThai());
-            p.setDate(6, dh.getNgayDuKien());
-            p.setString(7, dh.getMaDH());
+            p.setString(4, dh.getEmail());
+            p.setString(5, dh.getMaDVVC());
+            p.setString(6, dh.getTrangThai());
+            p.setDate(7, dh.getNgayDuKien());
+            p.setString(8, dh.getMaHangHoa()); // Cho phép sửa sản phẩm
+            p.setInt(9, dh.getSoLuong());      // Cho phép sửa số lượng
+            
+            if (dh.getMaVoucher() == null || dh.getMaVoucher().isEmpty()) 
+                p.setNull(10, java.sql.Types.VARCHAR);
+            else 
+                p.setString(10, dh.getMaVoucher());
+                
+            p.setString(11, dh.getMaDH());
             return p.executeUpdate() > 0;
         } catch (Exception e) { e.printStackTrace(); return false; }
     }
@@ -150,5 +168,31 @@ public class DonHangDAL {
             while(rs.next()) map.put(rs.getString("TenVoucher"), rs.getString("MaVoucher"));
         } catch (Exception e) {}
         return map;
+    }
+    
+    public double[] getThongTinHangHoa(String maHH) {
+        double[] thongTin = {0.0, 0.0};
+        String sql = "SELECT GiaBan, SoLuongConLai FROM HangHoa WHERE MaHangHoa = ?"; // Lưu ý: Trigger dùng cột SoLuongConLai thì ở đây cũng phải lấy SoLuongConLai
+        try (Connection conn = getConnection(); PreparedStatement p = conn.prepareStatement(sql)) {
+            p.setString(1, maHH);
+            ResultSet rs = p.executeQuery();
+            if (rs.next()) {
+                thongTin[0] = rs.getDouble("GiaBan");
+                thongTin[1] = rs.getInt("SoLuongConLai");
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+        return thongTin;
+    }
+    
+    public double getGiaTriVoucher(String maVoucher) {
+        if(maVoucher == null) return 0;
+        // Giả sử bảng Voucher có cột GiamGia (số tiền được giảm)
+        String sql = "SELECT GiamGia FROM Voucher WHERE MaVoucher = ?"; 
+        try (Connection conn = getConnection(); PreparedStatement p = conn.prepareStatement(sql)) {
+            p.setString(1, maVoucher);
+            ResultSet rs = p.executeQuery();
+            if (rs.next()) return rs.getDouble("GiamGia");
+        } catch (Exception e) {}
+        return 0;
     }
 }

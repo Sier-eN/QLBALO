@@ -62,14 +62,21 @@ CREATE TABLE Voucher (
 );
 GO
 
--- 6. Bảng Hàng Hóa (Quản lý Hàng Hóa - Image 5)
+-- 6. Bảng Hàng Hóa (Đã chỉnh sửa)
 CREATE TABLE HangHoa (
     MaHangHoa VARCHAR(20) PRIMARY KEY,
     TenHangHoa NVARCHAR(100) NOT NULL,
-    SoLuong INT,
+    
+    -- Thay đổi ở đây:
+    SoLuongNhap INT DEFAULT 0,      -- Số lượng lúc nhập hàng về
+    SoLuongConLai INT DEFAULT 0,    -- Số lượng thực tế còn trong kho (để bán)
+    
     GiaBan DECIMAL(18, 0),
     GiaNhap DECIMAL(18, 0),
-    MaNhaCungCap VARCHAR(20), -- Khóa ngoại
+    
+    TongTienNhap DECIMAL(18, 0) DEFAULT 0, -- Tự động tính = SoLuongNhap * GiaNhap
+    
+    MaNhaCungCap VARCHAR(20),
     FOREIGN KEY (MaNhaCungCap) REFERENCES NhaCungCap(MaNhaCungCap)
 );
 GO
@@ -112,49 +119,123 @@ GO
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-CREATE TRIGGER trg_XuLyDonHang
+CREATE OR ALTER TRIGGER trg_XuLyDonHang
 ON DonHang
 AFTER INSERT, UPDATE
 AS
 BEGIN
-    -- 1. TỰ ĐỘNG TÍNH TỔNG TIỀN
-    -- Logic: Lấy các dòng vừa thêm/sửa (trong bảng inserted)
-    -- Join với Hàng hóa, Voucher, DVVC để lấy giá
-    UPDATE dh
-    SET dh.TongTien = 
-        (hh.GiaBan * i.SoLuong) -- Tiền hàng
-        - ISNULL(v.GiaTri, 0)   -- Trừ Voucher (ISNULL là để nếu ko có voucher thì tính là 0)
-        + ISNULL(dv.PhiVanChuyen, 0) -- Cộng phí ship
-    FROM DonHang dh
-    JOIN inserted i ON dh.MaDH = i.MaDH
-    JOIN HangHoa hh ON dh.MaHangHoa = hh.MaHangHoa
-    LEFT JOIN Voucher v ON dh.MaVoucher = v.MaVoucher -- Dùng LEFT JOIN vì có thể ko có voucher
-    JOIN DonViVanChuyen dv ON dh.MaDVVC = dv.MaDVVC;
+    SET NOCOUNT ON;
 
-    -- 2. TỰ ĐỘNG TRỪ KHO (CHỈ KHI ĐÃ THANH TOÁN)
-    -- Logic: Chỉ trừ khi đơn hàng ở trạng thái 'Đã thanh toán'
-    -- Lưu ý: Để tránh trừ 2 lần khi sửa đơn, ta cần kiểm tra kỹ thuật (nhưng ở mức cơ bản, code dưới đây sẽ trừ khi trạng thái là Đã thanh toán)
+    -- 1. TỰ ĐỘNG TÍNH TỔNG TIỀN ĐƠN HÀNG (Giữ nguyên logic cũ)
+    IF UPDATE(SoLuong) OR UPDATE(MaHangHoa) OR UPDATE(MaVoucher) OR UPDATE(MaDVVC)
+    BEGIN
+        UPDATE dh
+        SET dh.TongTien = 
+            (hh.GiaBan * i.SoLuong) 
+            - ISNULL(v.GiaTri, 0)   
+            + ISNULL(dv.PhiVanChuyen, 0)
+        FROM DonHang dh
+        JOIN inserted i ON dh.MaDH = i.MaDH
+        JOIN HangHoa hh ON dh.MaHangHoa = hh.MaHangHoa
+        LEFT JOIN Voucher v ON dh.MaVoucher = v.MaVoucher
+        JOIN DonViVanChuyen dv ON dh.MaDVVC = dv.MaDVVC;
+    END
+
+    -- 2. TỰ ĐỘNG TRỪ KHO VÀO CỘT 'SoLuongConLai'
+    -- Logic: Chỉ trừ khi trạng thái đơn hàng là 'Đã thanh toán'
     
-    -- Trường hợp 1: Mới thêm đơn hàng (INSERT) mà đã set là "Đã thanh toán" luôn
+    -- Trường hợp A: Đơn hàng mới thêm vào đã là 'Đã thanh toán' (Bán tại quầy)
     IF EXISTS (SELECT * FROM inserted WHERE TrangThai = N'Đã Giao Hàng')
-       AND NOT EXISTS (SELECT * FROM deleted) -- Đảm bảo đây là lệnh INSERT mới
+       AND NOT EXISTS (SELECT * FROM deleted)
     BEGIN
         UPDATE hh
-        SET hh.SoLuong = hh.SoLuong - i.SoLuong
+        SET hh.SoLuongConLai = hh.SoLuongConLai - i.SoLuong
         FROM HangHoa hh
         JOIN inserted i ON hh.MaHangHoa = i.MaHangHoa
         WHERE i.TrangThai = N'Đã Giao Hàng';
     END
 
-    -- Trường hợp 2: Sửa đơn hàng (UPDATE) từ trạng thái khác -> sang "Đã thanh toán"
+    -- Trường hợp B: Cập nhật từ trạng thái khác sang 'Đã thanh toán' (Ship COD thành công)
     IF EXISTS (SELECT * FROM inserted WHERE TrangThai = N'Đã Giao Hàng')
-       AND EXISTS (SELECT * FROM deleted WHERE TrangThai <> N'Đã Giao Hàng') -- Trước đó chưa thanh toán
+       AND EXISTS (SELECT * FROM deleted WHERE TrangThai <> N'Đã Giao Hàng')
     BEGIN
         UPDATE hh
-        SET hh.SoLuong = hh.SoLuong - i.SoLuong
+        SET hh.SoLuongConLai = hh.SoLuongConLai - i.SoLuong
         FROM HangHoa hh
         JOIN inserted i ON hh.MaHangHoa = i.MaHangHoa
         WHERE i.TrangThai = N'Đã Giao Hàng';
+    END
+    
+    -- (Nâng cao) Trường hợp C: Hoàn tác kho nếu đơn hàng từ 'Đã thanh toán' chuyển sang 'Đã Hủy' (Khách trả hàng)
+    IF EXISTS (SELECT * FROM inserted WHERE TrangThai = N'Hủy Đơn')
+       AND EXISTS (SELECT * FROM deleted WHERE TrangThai = N'Đã Giao Hàng')
+    BEGIN
+        UPDATE hh
+        SET hh.SoLuongConLai = hh.SoLuongConLai + i.SoLuong -- Cộng lại kho
+        FROM HangHoa hh
+        JOIN inserted i ON hh.MaHangHoa = i.MaHangHoa
+        WHERE i.TrangThai = N'Hủy Đơn';
+    END
+END;
+GO
+--------------------------------------------------------------------------------------------------------------------------------
+CREATE OR ALTER TRIGGER trg_TuDongTinhTienNhap
+ON HangHoa
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    -- Chỉ chạy khi có update liên quan đến Số Lượng Nhập hoặc Giá Nhập
+    IF UPDATE(SoLuongNhap) OR UPDATE(GiaNhap)
+    BEGIN
+        -- 1. Cập nhật Tổng tiền nhập
+        UPDATE h
+        SET h.TongTienNhap = i.SoLuongNhap * i.GiaNhap
+        FROM HangHoa h
+        JOIN inserted i ON h.MaHangHoa = i.MaHangHoa;
+
+        -- 2. Cập nhật Số lượng còn lại (Logic: Khởi tạo kho)
+        -- Lưu ý: Chỉ cập nhật SoLuongConLai bằng SoLuongNhap KHI CHÚNG TA THÊM MỚI (INSERT)
+        -- Nếu là UPDATE, ta không reset SoLuongConLai vì có thể đã bán bớt rồi.
+        
+        -- Logic dưới đây xử lý cho trường hợp INSERT mới
+        UPDATE h
+        SET h.SoLuongConLai = i.SoLuongNhap
+        FROM HangHoa h
+        JOIN inserted i ON h.MaHangHoa = i.MaHangHoa
+        WHERE NOT EXISTS (SELECT 1 FROM deleted); -- Đây là dấu hiệu của lệnh INSERT (không có bảng deleted)
+    END
+END;
+GO
+-----------------------------------------------------------------------------------------------------------------------------------
+CREATE OR ALTER TRIGGER trg_CapNhatHangHoa
+ON HangHoa
+AFTER UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- 1. Nếu có sửa Số Lượng Nhập -> Cập nhật lại Số Lượng Còn Lại & Tổng Tiền
+    IF UPDATE(SoLuongNhap)
+    BEGIN
+        UPDATE h
+        SET 
+            -- Công thức: Tồn mới = Tồn cũ + (Nhập mới - Nhập cũ)
+            h.SoLuongConLai = h.SoLuongConLai + (i.SoLuongNhap - d.SoLuongNhap),
+            
+            -- Tính lại tổng tiền nhập
+            h.TongTienNhap = i.SoLuongNhap * h.GiaNhap
+        FROM HangHoa h
+        JOIN inserted i ON h.MaHangHoa = i.MaHangHoa
+        JOIN deleted d ON h.MaHangHoa = d.MaHangHoa;
+    END
+
+    -- 2. Nếu có sửa Giá Nhập -> Tính lại Tổng Tiền
+    IF UPDATE(GiaNhap)
+    BEGIN
+        UPDATE h
+        SET h.TongTienNhap = h.SoLuongNhap * i.GiaNhap
+        FROM HangHoa h
+        JOIN inserted i ON h.MaHangHoa = i.MaHangHoa;
     END
 END;
 GO
@@ -316,11 +397,10 @@ INSERT INTO NhaCungCap (MaNhaCungCap, TenCongTy, DiaChi, SDT_LienHe, Email, Nguo
 VALUES ('NCC02', N'Balo Hàng Hiệu LTD', N'TP.HCM', '0909333444', 'admin@hanghieu.com', N'Lê Thị B');
 GO
 
-INSERT INTO HangHoa (MaHangHoa, TenHangHoa, SoLuong, GiaBan, GiaNhap, MaNhaCungCap)
+INSERT INTO HangHoa (MaHangHoa, TenHangHoa, SoLuongNhap, GiaBan, GiaNhap, MaNhaCungCap)
 VALUES ('HH01', N'Balo Chống Gù Nhật Bản', 50, 1200000, 800000, 'NCC01');
 
--- Ví dụ 2: Cặp sách phổ thông
-INSERT INTO HangHoa (MaHangHoa, TenHangHoa, SoLuong, GiaBan, GiaNhap, MaNhaCungCap)
+INSERT INTO HangHoa (MaHangHoa, TenHangHoa, SoLuongNhap, GiaBan, GiaNhap, MaNhaCungCap)
 VALUES ('HH02', N'Cặp Sách Học Sinh Cấp 1', 100, 350000, 200000, 'NCC02');
 GO
 

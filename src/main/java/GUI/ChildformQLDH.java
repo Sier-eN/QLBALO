@@ -48,9 +48,17 @@ public class ChildformQLDH extends javax.swing.JPanel {
         loadComboBox();
         cauHinhBang();
         loadTable(bll.layDanhSach());
+        
+        this.addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentShown(java.awt.event.ComponentEvent e) {
+                loadComboBox();
+                System.out.println("Đã cập nhật dữ liệu mới nhất!");
+            }
+        });
     }
     
-    private void loadComboBox() {
+    public void loadComboBox() {
         mapHangHoa = bll.layMapHangHoa();
         mapDVVC = bll.layMapDVVC();
         mapVoucher = bll.layMapVoucher();
@@ -440,7 +448,7 @@ public class ChildformQLDH extends javax.swing.JPanel {
         dh.setTrangThai(cb_trangthai.getSelectedItem().toString());
 
         String kq = bll.themDonHang(dh);
-        javax.swing.JOptionPane.showMessageDialog(this, kq);
+        javax.swing.JOptionPane.showMessageDialog(getFrame(), kq);
         if(kq.contains("thành công")) loadTable(bll.layDanhSach());
     }//GEN-LAST:event_btn_themActionPerformed
 
@@ -476,7 +484,6 @@ public class ChildformQLDH extends javax.swing.JPanel {
                 // 2. Load lại bảng Hàng Hóa (để thấy kho bị trừ)
                 if (ChildformQLHH.instance != null) {
                     ChildformQLHH.instance.loadTable();
-                    System.out.println("Đã cập nhật bảng Hàng Hóa từ xa!");
                 }
             }
         }

@@ -9,6 +9,7 @@ import BLL.HangHoaBLL;
 import BLL.NhaCungCapBLL;
 import DTO.HangHoaDTO;
 import DTO.NhaCungCapDTO;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -42,9 +43,16 @@ public class ChildformQLHH extends javax.swing.JPanel {
         cauHinhBang();
         loadComboboxNCC();
         loadTable();
+        
+        this.addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentShown(java.awt.event.ComponentEvent e) {
+                loadComboboxNCC();
+            }
+        });
     }
     
-    private void loadComboboxNCC() {
+    public void loadComboboxNCC() {
         cb_congty.removeAllItems();
         ArrayList<NhaCungCapDTO> listNCC = nccBLL.layDanhSach();
         
@@ -55,32 +63,36 @@ public class ChildformQLHH extends javax.swing.JPanel {
     
     private void cauHinhBang() {
         String[] columnNames = {
-            "Mã HH", "Tên Hàng Hóa", "Số Lượng", "Giá Bán", "Giá Nhập", "Mã NCC"
+            // Sửa tiêu đề cột cho rõ nghĩa
+            "Mã HH", "Tên Hàng Hóa", "SL Nhập", "SL Còn", "Tổng Vốn",  "Giá Nhập", "Giá Bán", "Mã NCC"
         };
         
         DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Không cho sửa trên bảng
+                return false; 
             }
         };
         tb_dulieu.setModel(model);
     }
 
-    // 2. Load danh sách Hàng hóa lên bảng
     public void loadTable() {
         DefaultTableModel model = (DefaultTableModel) tb_dulieu.getModel();
-        model.setRowCount(0); // Xóa dữ liệu cũ
+        model.setRowCount(0); 
         
-        ArrayList<HangHoaDTO> list = bll.layDanhSach(); // Sử dụng biến bll đã khai báo
+        ArrayList<HangHoaDTO> list = bll.layDanhSach(); 
+        
+        DecimalFormat df = new DecimalFormat("#,###");
         
         for (HangHoaDTO hh : list) {
             model.addRow(new Object[]{
                 hh.getMaHangHoa(),
                 hh.getTenHangHoa(),
-                hh.getSoLuong(),
-                hh.getGiaBan(), 
-                hh.getGiaNhap(),
+                hh.getSoLuongNhap(),      // Cột 2
+                hh.getSoLuongConLai(),    // Cột 3
+                df.format(hh.getGiaNhap()),           
+                df.format(hh.getTongTienNhap()), // Cột 5: Tổng Tiền
+                df.format(hh.getGiaBan()),
                 hh.getMaNhaCungCap()
             });
         }
@@ -93,10 +105,16 @@ public class ChildformQLHH extends javax.swing.JPanel {
         String tuKhoa = tf_timkiem.getText();
         ArrayList<HangHoaDTO> list = bll.timKiemHH(tuKhoa);
         
+        java.text.DecimalFormat df = new java.text.DecimalFormat("#,###"); // Format tiền cho đẹp (tùy chọn)
+
         for (HangHoaDTO hh : list) {
             model.addRow(new Object[]{
-                hh.getMaHangHoa(), hh.getTenHangHoa(), hh.getSoLuong(), 
-                hh.getGiaBan(), hh.getGiaNhap(), hh.getMaNhaCungCap()
+                hh.getMaHangHoa(), 
+                hh.getTenHangHoa(), 
+                hh.getSoLuongConLai(), // <--- SỬA: Dùng getSoLuongConLai() thay vì getSoLuong()
+                df.format(hh.getGiaBan()), // Format tiền
+                df.format(hh.getGiaNhap()), 
+                hh.getMaNhaCungCap()
             });
         }
     }
@@ -351,7 +369,7 @@ public class ChildformQLHH extends javax.swing.JPanel {
                 return;
             }
             
-            hh.setSoLuong(sl);
+            hh.setSoLuongNhap(sl); // Sửa: Set vào Số Lượng Nhập
             hh.setGiaBan(giaBan);
             hh.setGiaNhap(giaNhap);
             
@@ -392,25 +410,21 @@ public class ChildformQLHH extends javax.swing.JPanel {
             int row = tb_dulieu.getSelectedRow();
             if (row >= 0) {
                 try {
-                    // Lấy dữ liệu từ bảng (Ép kiểu về String/Int/Double cho đúng)
                     String ma = tb_dulieu.getValueAt(row, 0).toString();
                     String ten = tb_dulieu.getValueAt(row, 1).toString();
-                    int sl = Integer.parseInt(tb_dulieu.getValueAt(row, 2).toString());
-                    double giaBan = Double.parseDouble(tb_dulieu.getValueAt(row, 3).toString());
-                    double giaNhap = Double.parseDouble(tb_dulieu.getValueAt(row, 4).toString());
-                    String maNCC = tb_dulieu.getValueAt(row, 5).toString();
-
-                    // Mở Form Sửa
+                    int slNhap = Integer.parseInt(tb_dulieu.getValueAt(row, 2).toString()); 
+                    String giaNhapStr = tb_dulieu.getValueAt(row, 4).toString().replace(",", "");
+                    String giaBanStr = tb_dulieu.getValueAt(row, 6).toString().replace(",", "");
+                    double giaNhap = Double.parseDouble(giaNhapStr);
+                    double giaBan = Double.parseDouble(giaBanStr);
+                    String maNCC = tb_dulieu.getValueAt(row, 7).toString();
                     java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
                     FormSuaHH sua = new FormSuaHH(parent, true);
                     
-                    // Truyền dữ liệu sang Form con
-                    sua.setDuLieu(ma, ten, sl, giaNhap, giaBan, maNCC);
+                    sua.setDuLieu(ma, ten, slNhap, giaNhap, giaBan, maNCC);
                     
-                    sua.setTitle("Cập Nhật Hàng Hóa");
-                    sua.setVisible(true); // Chờ ở đây
-                    
-                    // Khi form con đóng -> Load lại bảng
+                    sua.setTitle("Điều chỉnh thông tin nhập hàng");
+                    sua.setVisible(true);
                     loadTable();
                     
                 } catch (Exception e) {

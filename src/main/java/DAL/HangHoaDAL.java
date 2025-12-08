@@ -34,9 +34,11 @@ public class HangHoaDAL {
                 list.add(new HangHoaDTO(
                     rs.getString("MaHangHoa"),
                     rs.getString("TenHangHoa"),
-                    rs.getInt("SoLuong"),
+                    rs.getInt("SoLuongNhap"),
+                    rs.getInt("SoLuongConLai"),
                     rs.getDouble("GiaBan"),
                     rs.getDouble("GiaNhap"),
+                    rs.getDouble("TongTienNhap"), // Lấy thêm cột này
                     rs.getString("MaNhaCungCap")
                 ));
             }
@@ -45,11 +47,12 @@ public class HangHoaDAL {
     }
 
     public boolean them(HangHoaDTO hh) {
-        String sql = "INSERT INTO HangHoa VALUES(?, ?, ?, ?, ?, ?)";
+        // Sửa: Chỉ định rõ cột để tránh lỗi trigger (bỏ qua cột TongTienNhap và SoLuongConLai vì Trigger tự tính)
+        String sql = "INSERT INTO HangHoa (MaHangHoa, TenHangHoa, SoLuongNhap, GiaBan, GiaNhap, MaNhaCungCap) VALUES(?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement p = conn.prepareStatement(sql)) {
             p.setString(1, hh.getMaHangHoa());
             p.setString(2, hh.getTenHangHoa());
-            p.setInt(3, hh.getSoLuong());
+            p.setInt(3, hh.getSoLuongNhap()); // Khi thêm mới, đây là số lượng nhập
             p.setDouble(4, hh.getGiaBan());
             p.setDouble(5, hh.getGiaNhap());
             p.setString(6, hh.getMaNhaCungCap());
@@ -58,16 +61,17 @@ public class HangHoaDAL {
     }
 
     public boolean sua(HangHoaDTO hh) {
-        String sql = "UPDATE HangHoa SET TenHangHoa=?, SoLuong=?, GiaBan=?, GiaNhap=?, MaNhaCungCap=? WHERE MaHangHoa=?";
+       String sql = "UPDATE HangHoa SET TenHangHoa=?, SoLuongNhap=?, GiaBan=?, GiaNhap=?, MaNhaCungCap=? WHERE MaHangHoa=?";
+        
         try (Connection conn = getConnection(); PreparedStatement p = conn.prepareStatement(sql)) {
             p.setString(1, hh.getTenHangHoa());
-            p.setInt(2, hh.getSoLuong());
+            p.setInt(2, hh.getSoLuongNhap()); // Truyền số lượng nhập mới vào đây
             p.setDouble(3, hh.getGiaBan());
             p.setDouble(4, hh.getGiaNhap());
             p.setString(5, hh.getMaNhaCungCap());
             p.setString(6, hh.getMaHangHoa());
             return p.executeUpdate() > 0;
-        } catch (Exception e) { return false; }
+        } catch (Exception e) { e.printStackTrace(); return false; }
     }
 
     public boolean xoa(String ma) {
@@ -78,7 +82,6 @@ public class HangHoaDAL {
         } catch (Exception e) { return false; }
     }
     
-    // Tìm kiếm hàng hóa
     public ArrayList<HangHoaDTO> timKiem(String keyword) {
         ArrayList<HangHoaDTO> list = new ArrayList<>();
         String sql = "SELECT * FROM HangHoa WHERE TenHangHoa LIKE ?";
@@ -89,9 +92,11 @@ public class HangHoaDAL {
                 list.add(new HangHoaDTO(
                     rs.getString("MaHangHoa"),
                     rs.getString("TenHangHoa"),
-                    rs.getInt("SoLuong"),
+                    rs.getInt("SoLuongNhap"),
+                    rs.getInt("SoLuongConLai"),
                     rs.getDouble("GiaBan"),
                     rs.getDouble("GiaNhap"),
+                    rs.getDouble("TongTienNhap"), // Lấy thêm cột này
                     rs.getString("MaNhaCungCap")
                 ));
             }

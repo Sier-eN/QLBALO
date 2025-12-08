@@ -76,21 +76,17 @@ public class FormSuaDH extends javax.swing.JDialog {
                 tf_diachi.setText(dh.getDiaChi());
                 tf_sdt.setText(dh.getSdt());
                 tf_email.setText(dh.getEmail());
-                
+                tf_soluong.setText(String.valueOf(dh.getSoLuong())); 
                 this.trangThaiCu = dh.getTrangThai();
                 cb_trangthai.setSelectedItem(dh.getTrangThai());
-                
                 if (dh.getTenDVVC() != null) cb_donvivanchuyen.setSelectedItem(dh.getTenDVVC());
-                
                 String v = dh.getTenVoucher();
                 if (v == null || v.isEmpty()) {
                     cb_voucher.setSelectedItem("Không có");
                 } else {
                     cb_voucher.setSelectedItem(v);
                 }
-                
                 if (dh.getTenHangHoa() != null) cb_sanpham.setSelectedItem(dh.getTenHangHoa());
-                
                 if(dh.getNgayDuKien() != null) 
                     dp_ngaygiaodukien.setDate(dh.getNgayDuKien().toLocalDate());
                 break;
@@ -128,6 +124,8 @@ public class FormSuaDH extends javax.swing.JDialog {
         cb_voucher = new javax.swing.JComboBox<>();
         cb_donvivanchuyen = new javax.swing.JComboBox<>();
         lbl_title_dvvc = new javax.swing.JLabel();
+        tf_soluong = new javax.swing.JTextField();
+        lbl_title_soluong = new javax.swing.JLabel();
         btn_capnhat = new javax.swing.JButton();
         btn_huy = new javax.swing.JButton();
         btn_xoa = new javax.swing.JButton();
@@ -169,32 +167,38 @@ public class FormSuaDH extends javax.swing.JDialog {
         tf_sdt.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_sdt.setText("jTextField1");
 
-        cb_sanpham.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         cb_sanpham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_sanpham.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        lbl_title_madh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_title_madh.setText("Mã ĐH:");
+        lbl_title_madh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        lbl_madh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_madh.setText("DH123");
+        lbl_madh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        lbl_title_email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_title_email.setText("email");
+        lbl_title_email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         tf_email.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tf_email.setText("jTextField1");
 
-        lbl_title_voucher.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_title_voucher.setText("Voucher:");
+        lbl_title_voucher.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        cb_voucher.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         cb_voucher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "item 1", "item 2", "item 3", "item 4", " " }));
+        cb_voucher.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        cb_donvivanchuyen.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         cb_donvivanchuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "item 1", "item 2", "item 3", "item 4", " " }));
+        cb_donvivanchuyen.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        lbl_title_dvvc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_title_dvvc.setText("Đơn Vị Vận Chuyển");
+        lbl_title_dvvc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        tf_soluong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tf_soluong.setText("jTextField1");
+
+        lbl_title_soluong.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_title_soluong.setText("Số Lượng:");
 
         javax.swing.GroupLayout Pnl_ThongtinLayout = new javax.swing.GroupLayout(Pnl_Thongtin);
         Pnl_Thongtin.setLayout(Pnl_ThongtinLayout);
@@ -203,6 +207,10 @@ public class FormSuaDH extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_ThongtinLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Pnl_ThongtinLayout.createSequentialGroup()
+                        .addComponent(lbl_title_soluong, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_soluong, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Pnl_ThongtinLayout.createSequentialGroup()
                         .addGroup(Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbl_title_ngaygiaodukien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -279,6 +287,10 @@ public class FormSuaDH extends javax.swing.JDialog {
                     .addComponent(cb_voucher, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_title_soluong, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_soluong, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_title_dvvc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_donvivanchuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -314,11 +326,11 @@ public class FormSuaDH extends javax.swing.JDialog {
             }
         });
 
+        btn_xoa.setText("Xóa");
         btn_xoa.setBackground(new java.awt.Color(50, 50, 50));
+        btn_xoa.setBorderPainted(false);
         btn_xoa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_xoa.setForeground(new java.awt.Color(255, 255, 255));
-        btn_xoa.setText("Xóa");
-        btn_xoa.setBorderPainted(false);
         btn_xoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_xoaActionPerformed(evt);
@@ -343,7 +355,7 @@ public class FormSuaDH extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Pnl_Thongtin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_capnhat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_huy, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -375,6 +387,15 @@ public class FormSuaDH extends javax.swing.JDialog {
         
         String tenDV = cb_donvivanchuyen.getSelectedItem().toString();
         dh.setMaDVVC(mapDVVC.get(tenDV));
+        
+        try {
+            int sl = Integer.parseInt(tf_soluong.getText().trim());
+            if (sl <= 0) throw new NumberFormatException();
+            dh.setSoLuong(sl);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Số lượng phải là số nguyên dương!", "Lỗi nhập liệu", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         if (cb_sanpham.getSelectedItem() != null) {
             String tenSP = cb_sanpham.getSelectedItem().toString();
@@ -489,12 +510,14 @@ public class FormSuaDH extends javax.swing.JDialog {
     private javax.swing.JLabel lbl_title_madh;
     private javax.swing.JLabel lbl_title_ngaygiaodukien;
     private javax.swing.JLabel lbl_title_sdt;
+    private javax.swing.JLabel lbl_title_soluong;
     private javax.swing.JLabel lbl_title_ten;
     private javax.swing.JLabel lbl_title_trangthai;
     private javax.swing.JLabel lbl_title_voucher;
     private javax.swing.JTextField tf_diachi;
     private javax.swing.JTextField tf_email;
     private javax.swing.JTextField tf_sdt;
+    private javax.swing.JTextField tf_soluong;
     private javax.swing.JTextField tf_tenkhach;
     private javax.swing.JLabel title_title_sanpham;
     // End of variables declaration//GEN-END:variables
