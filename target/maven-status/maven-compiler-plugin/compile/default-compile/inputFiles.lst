@@ -9,6 +9,7 @@ D:\quanlybalo\src\main\java\BLL\MainController.java
 D:\quanlybalo\src\main\java\BLL\NhaCungCapBLL.java
 D:\quanlybalo\src\main\java\BLL\NhanVienBLL.java
 D:\quanlybalo\src\main\java\BLL\TaiKhoanBLL.java
+D:\quanlybalo\src\main\java\BLL\ThongKeBLL.java
 D:\quanlybalo\src\main\java\BLL\VoucherBLL.java
 D:\quanlybalo\src\main\java\DAL\Database.java
 D:\quanlybalo\src\main\java\DAL\DonHangDAL.java
@@ -17,6 +18,7 @@ D:\quanlybalo\src\main\java\DAL\HangHoaDAL.java
 D:\quanlybalo\src\main\java\DAL\NhaCungCapDAL.java
 D:\quanlybalo\src\main\java\DAL\NhanVienDAL.java
 D:\quanlybalo\src\main\java\DAL\TaiKhoanDAL.java
+D:\quanlybalo\src\main\java\DAL\ThongKeDAL.java
 D:\quanlybalo\src\main\java\DAL\VoucherDAL.java
 D:\quanlybalo\src\main\java\DTO\DonHangDTO.java
 D:\quanlybalo\src\main\java\DTO\DonViVanChuyenDTO.java

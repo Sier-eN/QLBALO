@@ -49,6 +49,7 @@ GUI\FormSuaVoucher$3.class
 GUI\ChildformQLNV$1.class
 GUI\ChildformQLVoucher.class
 GUI\FormSuaHH$4$1.class
+GUI\ChildformThongke$1.class
 GUI\FormQMK$1.class
 GUI\ChildformQLNCC$4.class
 GUI\ChildformQLHH$2.class
@@ -62,6 +63,7 @@ GUI\ChildformQLHH.class
 BLL\NhaCungCapBLL.class
 GUI\FormSuaDH.class
 GUI\FormSuaTTNhanVien$1.class
+BLL\ThongKeBLL.class
 GUI\FormDMK$2.class
 GUI\FormSuaNCC$3.class
 GUI\ChildformQLDH.class
@@ -77,6 +79,7 @@ DAL\Database.class
 GUI\ChildformQLNV$3.class
 GUI\ChildformTrangChu.class
 GUI\ChildformQLHH$4.class
+DAL\ThongKeDAL.class
 GUI\ChildformQLNCC.class
 GUI\ChildformQLDH$2.class
 BLL\MainController$1.class
