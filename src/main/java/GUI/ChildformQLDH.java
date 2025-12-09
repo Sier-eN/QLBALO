@@ -53,7 +53,6 @@ public class ChildformQLDH extends javax.swing.JPanel {
             @Override
             public void componentShown(java.awt.event.ComponentEvent e) {
                 loadComboBox();
-                System.out.println("Đã cập nhật dữ liệu mới nhất!");
             }
         });
     }

@@ -441,7 +441,7 @@ public class FormSuaDH extends javax.swing.JDialog {
         
         if (!duocPhepXoa) {
             JOptionPane.showMessageDialog(this, 
-                "Bạn là: " + currentRole + ".\nChỉ được xóa đơn 'Hủy Đơn' hoặc 'Đã Giao Hàng'!", 
+                "Bạn là: " + currentRole + ".\nKhông đủ quyền hạn để xóa dữ liệu!", 
                 "Không đủ quyền hạn", JOptionPane.ERROR_MESSAGE);
             return;
         }

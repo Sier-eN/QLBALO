@@ -95,14 +95,6 @@ public class DonHangBLL {
         if (role.equalsIgnoreCase("Admin")) {
             return true;
         }
-
-        // Nhân Viên: Chỉ được xóa đơn đã xong (Hủy hoặc Đã Giao)
-        if (role.equalsIgnoreCase("NhanVien")) {
-            if (status.equals("Hủy Đơn") || status.equals("Đã Giao Hàng")) {
-                return true;
-            }
-        }
-
         return false; // Các trường hợp còn lại không được xóa
     }
 }
