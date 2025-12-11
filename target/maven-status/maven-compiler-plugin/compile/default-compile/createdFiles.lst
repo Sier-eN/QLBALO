@@ -77,7 +77,6 @@ GUI\FormSuaTTNhanVien$4.class
 BLL\MainController$7.class
 DAL\Database.class
 GUI\ChildformQLNV$3.class
-GUI\ChildformTrangChu.class
 GUI\ChildformQLHH$4.class
 DAL\ThongKeDAL.class
 GUI\ChildformQLNCC.class

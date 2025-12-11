@@ -48,4 +48,14 @@ public class HangHoaBLL {
         }
         return dal.timKiem(tuKhoa);
     }
+    
+    public boolean kiemTraQuyenXoa(String status, String role) {
+        // Nếu vai trò null hoặc rỗng -> chặn luôn
+        if (role == null || role.isEmpty()) return false;
+        // Admin: Quyền lực tối thượng (Xóa gì cũng được)
+        if (role.equalsIgnoreCase("Admin")) {
+            return true;
+        }
+        return false; // Các trường hợp còn lại không được xóa
+    }
 }

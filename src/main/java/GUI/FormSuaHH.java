@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import App.LuuTruTK;
 import BLL.HangHoaBLL;
 import BLL.NhaCungCapBLL;
 import DTO.HangHoaDTO;
@@ -16,6 +17,8 @@ import javax.swing.JOptionPane;
  * @author Nghia
  */
 public class FormSuaHH extends javax.swing.JDialog {
+    
+    private String trangThaiCu = "";
     
     private HangHoaBLL hhBLL = new HangHoaBLL();
     private NhaCungCapBLL nccBLL = new NhaCungCapBLL(); // Để lấy danh sách NCC
@@ -147,32 +150,30 @@ public class FormSuaHH extends javax.swing.JDialog {
                             .addComponent(tf_giaban, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(Pnl_ThongtinLayout.createSequentialGroup()
-                                    .addComponent(lbl_title_mahh, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(12, 12, 12)
-                                    .addComponent(lbl_mahh, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(Pnl_ThongtinLayout.createSequentialGroup()
-                                    .addComponent(lbl_title_tenhh)
-                                    .addGap(6, 6, 6)
-                                    .addComponent(tf_tenhh, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(Pnl_ThongtinLayout.createSequentialGroup()
                                     .addComponent(lbl_title_soluong, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(6, 6, 6)
                                     .addComponent(tf_soluong, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(Pnl_ThongtinLayout.createSequentialGroup()
                                     .addComponent(lbl_title_gianhap, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(6, 6, 6)
-                                    .addComponent(tf_gianhap, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(tf_gianhap, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(Pnl_ThongtinLayout.createSequentialGroup()
+                                    .addGroup(Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(lbl_title_mahh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lbl_title_tenhh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(6, 6, 6)
+                                    .addGroup(Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lbl_mahh, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tf_tenhh, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(3, 3, 3))))
         );
         Pnl_ThongtinLayout.setVerticalGroup(
             Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Pnl_ThongtinLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_title_mahh, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Pnl_ThongtinLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lbl_mahh, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbl_mahh, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(Pnl_ThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_title_tenhh, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,21 +301,31 @@ public class FormSuaHH extends javax.swing.JDialog {
 
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
         // TODO add your handling code here:
+        if (LuuTruTK.taiKhoanHienTai == null) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa đăng nhập!");
+            this.dispose();
+            return;
+        }
+
+        String currentRole = LuuTruTK.taiKhoanHienTai.getVaiTro(); 
+        
+        boolean duocPhepXoa = hhBLL.kiemTraQuyenXoa(trangThaiCu, currentRole);
+        
+        if (!duocPhepXoa) {
+            JOptionPane.showMessageDialog(this, 
+                "Bạn là: " + currentRole + ".\nKhông đủ quyền hạn để xóa dữ liệu!", 
+                "Không đủ quyền hạn", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         int confirm = JOptionPane.showConfirmDialog(this, 
-                "Bạn có chắc chắn muốn xóa Hàng hóa này?", 
-                "Xác nhận xóa", 
-                JOptionPane.YES_NO_OPTION);
+                "Xóa vĩnh viễn đơn hàng này?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
         
         if (confirm == JOptionPane.YES_OPTION) {
-            String ma = lbl_mahh.getText();
-            String ketQua = hhBLL.xoaHangHoa(ma);
-            
-            JOptionPane.showMessageDialog(this, ketQua);
-            
-            if (ketQua.contains("thành công")) {
-                this.dispose();
-            }
-        }
+            String kq = hhBLL.xoaHangHoa(lbl_mahh.getText());
+            JOptionPane.showMessageDialog(this, kq);
+            if(kq.contains("thành công")) this.dispose();
+        }       
     }//GEN-LAST:event_btn_xoaActionPerformed
 
     private void btn_huyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_huyActionPerformed
